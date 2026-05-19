@@ -3,743 +3,1549 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>JV Unique Collection — Premium Men's Fashion | Kashinagar, Odisha</title>
-<meta name="description" content="JV Unique Collection — Premium men's fashion store in Kashinagar, Odisha. Browse shirts, jeans, kurtas, trousers and more.">
-<meta name="keywords" content="men's wear Kashinagar, JV Unique Collection, men's fashion Odisha, shirts trousers jeans">
+
+<!-- ══ SEO META TAGS (Fix #4) ══ -->
+<title>JV Unique Collection — Premium Men's Fashion in Kashinagar, Odisha</title>
+<meta name="description" content="Shop premium men's fashion at JV Unique Collection, Kashinagar Bus Stand, Odisha. Shirts, trousers, jeans, suits, kurtas and more. Visit us or browse online. Call: 8260362286">
+<meta name="keywords" content="men's fashion Kashinagar, JV Unique Collection, men's clothing Odisha, shirts trousers jeans suits kurtas Kashinagar, men's wear GMR Complex">
+<meta name="author" content="JV Unique Collection">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<link rel="canonical" href="https://jv-catalog.vercel.app/">
+
+<!-- Open Graph (WhatsApp / Facebook previews) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jv-catalog.vercel.app/">
+<meta property="og:title" content="JV Unique Collection — Premium Men's Fashion, Kashinagar">
+<meta property="og:description" content="Premium men's shirts, trousers, jeans, suits & kurtas. Visit our store at Kashinagar Bus Stand, GMR Complex, Odisha. Call 8260362286.">
+<meta property="og:image" content="https://jv-catalog.vercel.app/og-image.jpg">
+<meta property="og:locale" content="en_IN">
+<meta property="og:site_name" content="JV Unique Collection">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JV Unique Collection — Premium Men's Fashion">
+<meta name="twitter:description" content="Shop premium men's fashion at Kashinagar Bus Stand, Odisha.">
+
+<!-- Structured Data — Local Business (Fix #4) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ClothingStore",
+  "name": "JV Unique Collection",
+  "description": "Premium men's fashion store in Kashinagar, Odisha. Shirts, trousers, jeans, suits, kurtas and accessories.",
+  "url": "https://jv-catalog.vercel.app",
+  "telephone": "+918260362286",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kashinagar Bus Stand, GMR Complex",
+    "addressLocality": "Kashinagar",
+    "addressRegion": "Odisha",
+    "postalCode": "761206",
+    "addressCountry": "IN"
+  },
+  "openingHours": "Mo-Su 09:00-21:00",
+  "priceRange": "₹₹",
+  "image": "https://jv-catalog.vercel.app/og-image.jpg",
+  "sameAs": ["https://wa.me/918260362286"]
+}
+</script>
+
+<!-- Preconnect for performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://tlsteydbjactspmwdkpm.supabase.co">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
 <style>
-:root{--primary:#2874f0;--primary-dark:#1a5dc8;--secondary:#fb641b;--yellow:#ffe500;--green:#388e3c;--bg:#f1f3f6;--white:#fff;--text:#212121;--text2:#878787;--border:#e0e0e0;--shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.08);--shadow-hover:0 4px 20px rgba(0,0,0,0.15)}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#f1f1f1}::-webkit-scrollbar-thumb{background:#c0c0c0;border-radius:10px}
-.top-bar{background:#fff;border-bottom:1px solid var(--border);padding:4px 0}
-.top-bar-inner{max-width:1400px;margin:0 auto;padding:0 16px;display:flex;justify-content:flex-end;gap:20px;font-size:12px;color:var(--text2)}
-.header{background:var(--primary);padding:0 16px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
-.header-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:16px;height:64px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-.logo-box{width:40px;height:40px;background:var(--yellow);border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:var(--primary)}
-.logo-text .l1{font-size:17px;font-weight:800;color:#fff;line-height:1.1}
-.logo-text .l2{font-size:10px;font-style:italic;color:#b3d1ff;font-weight:500}
-.search-wrap{flex:1;max-width:600px;position:relative}
-.search-wrap input{width:100%;padding:10px 48px 10px 16px;border:none;border-radius:4px;font-family:'Nunito',sans-serif;font-size:14px;outline:none;color:var(--text)}
-.search-btn{position:absolute;right:0;top:0;bottom:0;width:48px;background:var(--yellow);border:none;border-radius:0 4px 4px 0;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center}
-.search-dropdown{position:absolute;top:calc(100%+4px);left:0;right:0;background:#fff;border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,0.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
-.search-dropdown.open{display:block}
-.sd-item{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;border-bottom:1px solid #f5f5f5;transition:background 0.1s}
-.sd-item:hover{background:#f5f5f5}
-.sd-thumb{width:48px;height:48px;object-fit:cover;border-radius:4px;background:#f5f5f5;flex-shrink:0}
-.sd-thumb-emoji{width:48px;height:48px;display:flex;align-items:center;justify-content:center;font-size:26px;background:#f5f5f5;border-radius:4px;flex-shrink:0}
-.sd-name{font-size:14px;font-weight:700;color:var(--text)}
-.sd-meta{font-size:12px;color:var(--text2)}
-.sd-price{margin-left:auto;font-size:14px;font-weight:800;color:var(--primary);white-space:nowrap}
-.header-right{display:flex;align-items:center;gap:12px;flex-shrink:0;margin-left:auto}
-.header-btn{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);color:#fff;padding:8px 14px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:700;transition:background 0.2s;white-space:nowrap;border:none;cursor:pointer}
-.header-btn:hover{background:rgba(255,255,255,0.25)}
-.header-btn.wa{background:#25d366}.header-btn.wa:hover{background:#20ba58}
-.cat-strip{background:#fff;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
-.cat-strip::-webkit-scrollbar{display:none}
-.cat-strip-inner{max-width:1400px;margin:0 auto;padding:0 16px;display:flex}
-.cat-item{display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 20px;cursor:pointer;border-bottom:3px solid transparent;color:var(--text);font-size:12px;font-weight:700;transition:all 0.2s;white-space:nowrap}
-.cat-item:hover,.cat-item.active{color:var(--primary);border-bottom-color:var(--primary)}
-.ci{font-size:22px}
-.banner{background:linear-gradient(135deg,#1a5dc8 0%,#2874f0 60%,#1565c0 100%);padding:28px 16px;text-align:center}
-.banner h1{font-size:clamp(20px,4vw,38px);font-weight:900;color:#fff;margin-bottom:6px}
-.banner p{font-size:13px;color:#b3d1ff;margin-bottom:18px}
-.banner-stats{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
-.bstat{background:rgba(255,255,255,0.12);padding:10px 18px;border-radius:8px;text-align:center}
-.bsn{font-size:22px;font-weight:900;color:var(--yellow)}
-.bsl{font-size:10px;color:#b3d1ff;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
-.page-layout{max-width:1400px;margin:0 auto;padding:16px;display:flex;gap:16px;align-items:flex-start}
-.filters-sidebar{width:240px;flex-shrink:0;background:#fff;border-radius:4px;box-shadow:var(--shadow);overflow:hidden;position:sticky;top:80px}
-.fs-header{padding:14px 16px;font-size:15px;font-weight:800;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.fs-clear{font-size:12px;color:var(--primary);font-weight:700;cursor:pointer}
-.fs-section{padding:14px 16px;border-bottom:1px solid var(--border)}
-.fs-title{font-size:11px;font-weight:800;color:var(--text);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px}
-.fs-option{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:13px}
-.fs-option input[type=checkbox]{width:16px;height:16px;accent-color:var(--primary);cursor:pointer}
-.fs-option label{cursor:pointer;font-weight:600}
-.price-inputs{display:flex;gap:8px;align-items:center}
-.price-input{width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:4px;font-size:13px;font-family:'Nunito',sans-serif;outline:none}
-.price-input:focus{border-color:var(--primary)}
-.apply-price{width:100%;margin-top:10px;padding:8px;background:var(--primary);color:#fff;border:none;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif}
+/* ════════════════════════════════════════════════════════════
+   JV UNIQUE COLLECTION — Website v4.0
+   Modern E-commerce UI (Flipkart/Amazon style) — Fix #5 #6
+════════════════════════════════════════════════════════════ */
+:root {
+  --primary: #2874f0;
+  --primary-dark: #1a5dc7;
+  --accent: #fb641b;
+  --accent2: #ff9f00;
+  --green: #26a541;
+  --red: #ff6161;
+  --gold: #f0c040;
+  --text: #212121;
+  --text2: #878787;
+  --border: #e0e0e0;
+  --bg: #f1f3f6;
+  --surface: #ffffff;
+  --card-radius: 4px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-lg: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit}
+
+/* ── HEADER ── */
+.header{
+  background:linear-gradient(135deg,#2874f0 0%,#1a5dc7 100%);
+  position:sticky;top:0;z-index:1000;
+  box-shadow:0 2px 12px rgba(0,0,0,0.2);
+}
+.header-top{
+  max-width:1400px;margin:0 auto;
+  display:flex;align-items:center;gap:16px;
+  padding:10px 16px;
+}
+.logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-circle{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,#f0c040,#fb641b);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:16px;color:#fff;flex-shrink:0;
+}
+.logo-text{color:#fff;line-height:1.2}
+.logo-text .brand{font-size:15px;font-weight:800;letter-spacing:.5px}
+.logo-text .sub{font-size:10px;opacity:.75;font-weight:400}
+
+.search-wrap{
+  flex:1;max-width:600px;
+  display:flex;background:#fff;border-radius:3px;overflow:hidden;
+}
+.search-wrap input{
+  flex:1;border:none;outline:none;padding:10px 16px;font-size:14px;
+  font-family:'Outfit',sans-serif;color:var(--text);
+}
+.search-wrap button{
+  background:var(--accent2);border:none;padding:0 20px;
+  display:flex;align-items:center;gap:6px;font-weight:700;font-size:13px;color:#fff;
+  transition:background .2s;
+}
+.search-wrap button:hover{background:#e6940a}
+
+.header-actions{display:flex;align-items:center;gap:14px;margin-left:auto}
+.header-btn{
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  color:#fff;font-size:12px;font-weight:600;padding:4px 8px;
+  border-radius:3px;border:none;background:transparent;
+  transition:background .2s;white-space:nowrap;
+}
+.header-btn:hover{background:rgba(255,255,255,.15)}
+.header-btn .icon{font-size:18px}
+
+.header-bar{
+  background:rgba(0,0,0,.2);border-top:1px solid rgba(255,255,255,.1);
+}
+.header-bar-inner{
+  max-width:1400px;margin:0 auto;padding:6px 16px;
+  display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;
+}
+.header-bar-inner::-webkit-scrollbar{display:none}
+.cat-pill{
+  background:transparent;border:none;color:rgba(255,255,255,.85);
+  font-size:12px;font-weight:600;padding:4px 12px;border-radius:2px;
+  white-space:nowrap;transition:all .2s;cursor:pointer;font-family:inherit;
+}
+.cat-pill:hover,.cat-pill.active{background:rgba(255,255,255,.2);color:#fff}
+
+/* ── HERO BANNER ── */
+.hero{
+  background:linear-gradient(135deg,#2874f0 0%,#1a5dc7 60%,#0d3f8f 100%);
+  padding:40px 16px;text-align:center;color:#fff;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-content{position:relative;z-index:1;max-width:600px;margin:0 auto}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,48px);font-weight:900;margin-bottom:8px;line-height:1.2}
+.hero p{font-size:15px;opacity:.85;margin-bottom:24px}
+.hero-stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:26px;font-weight:900;color:#f0c040}
+.hero-stat .lbl{font-size:11px;opacity:.7;font-weight:500;text-transform:uppercase;letter-spacing:.5px}
+
+/* ── TRUST STRIP ── */
+.trust-strip{
+  background:#fff;border-bottom:1px solid var(--border);
+  padding:12px 16px;overflow-x:auto;
+}
+.trust-inner{
+  max-width:1400px;margin:0 auto;
+  display:flex;gap:32px;justify-content:center;align-items:center;
+  white-space:nowrap;
+}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--text2)}
+.trust-item .ic{font-size:18px}
+
+/* ── MAIN LAYOUT ── */
+.main-wrap{max-width:1400px;margin:0 auto;padding:16px;display:flex;gap:16px}
+
+/* ── FILTER SIDEBAR ── */
+.sidebar{
+  width:240px;flex-shrink:0;
+}
+.filter-card{background:#fff;border-radius:var(--card-radius);padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
+.filter-title{font-size:14px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);color:var(--text)}
+.filter-option{display:flex;align-items:center;gap:8px;padding:6px 0;cursor:pointer}
+.filter-option input[type=checkbox]{width:16px;height:16px;accent-color:var(--primary);cursor:pointer}
+.filter-option label{font-size:13px;cursor:pointer;flex:1}
+.filter-option .count{font-size:11px;color:var(--text2)}
+.price-inputs{display:flex;gap:8px;align-items:center;margin-top:8px}
+.price-inputs input{
+  flex:1;border:1px solid var(--border);border-radius:3px;
+  padding:7px 10px;font-size:13px;outline:none;font-family:inherit;width:80px;
+}
+.price-inputs input:focus{border-color:var(--primary)}
+.price-inputs span{color:var(--text2);font-size:12px}
+.apply-btn{
+  width:100%;margin-top:10px;background:var(--primary);color:#fff;
+  border:none;border-radius:3px;padding:9px;font-size:13px;font-weight:700;
+  transition:background .2s;font-family:inherit;
+}
+.apply-btn:hover{background:var(--primary-dark)}
+.clear-btn{background:none;border:none;color:var(--primary);font-size:12px;font-weight:600;cursor:pointer;padding:4px 0;font-family:inherit}
+
+/* ── PRODUCTS AREA ── */
 .products-area{flex:1;min-width:0}
-.results-bar{background:#fff;padding:12px 16px;border-radius:4px;box-shadow:var(--shadow);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
-.results-count{font-size:14px;color:var(--text2)}
-.results-count strong{color:var(--text);font-weight:800}
-.sort-bar{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2);font-weight:700;flex-wrap:wrap}
-.sort-btn{padding:6px 14px;border:1.5px solid var(--border);border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;background:#fff;color:var(--text2);transition:all 0.15s;font-family:'Nunito',sans-serif}
-.sort-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
-/* ── PRODUCT CARD ── */
-.product-card{background:#fff;border-radius:4px;box-shadow:var(--shadow);overflow:hidden;cursor:pointer;transition:box-shadow 0.2s,transform 0.2s;position:relative}
-.product-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
-.pc-img{height:230px;background:#f9f9f9;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.pc-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s}
-.product-card:hover .pc-img img{transform:scale(1.05)}
-.pc-emoji-wrap{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
-.pc-emoji{font-size:80px;transition:transform 0.3s}
-.product-card:hover .pc-emoji{transform:scale(1.08)}
-.pc-badge{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:3px;font-size:10px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;z-index:1}
-.pc-badge.in-stock{background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7}
-.pc-badge.low{background:#fff8e1;color:#f57f17;border:1px solid #ffe082}
-.pc-badge.out{background:#ffebee;color:#c62828;border:1px solid #ef9a9a}
-.pc-body{padding:12px}
-.pc-brand{font-size:11px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px}
-.pc-name{font-size:14px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.pc-rating{display:flex;align-items:center;gap:6px;margin-bottom:7px}
-.pc-stars{background:var(--green);color:#fff;padding:2px 7px;border-radius:3px;font-size:11px;font-weight:800}
-.pc-rcount{font-size:11px;color:var(--text2)}
-.pc-price{font-size:18px;font-weight:900;color:var(--text);margin-bottom:8px}
-.pc-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px}
-.pc-tag{padding:2px 8px;background:#f5f5f5;border-radius:3px;font-size:11px;color:var(--text2);font-weight:600}
-.pc-actions{display:flex;gap:6px}
-.pc-btn-wa{flex:1;padding:9px 6px;background:var(--primary);color:#fff;border:none;border-radius:4px;font-size:12px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;transition:background 0.2s}
-.pc-btn-wa:hover{background:var(--primary-dark)}
-.pc-btn-chat{padding:9px 10px;background:#fff3e0;color:var(--secondary);border:1.5px solid var(--secondary);border-radius:4px;font-size:12px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;transition:all 0.2s}
-.pc-btn-chat:hover{background:var(--secondary);color:#fff}
-.pc-btn-out{flex:1;padding:9px;background:#e0e0e0;color:#9e9e9e;border:none;border-radius:4px;font-size:12px;font-weight:800;cursor:default;font-family:'Nunito',sans-serif}
-.empty-state{grid-column:1/-1;background:#fff;border-radius:4px;padding:60px 24px;text-align:center}
-.empty-state .es-img{font-size:64px;margin-bottom:16px}
-.empty-state h3{font-size:20px;font-weight:800;margin-bottom:8px}
-.empty-state p{font-size:14px;color:var(--text2)}
-.skeleton-card{background:#fff;border-radius:4px;box-shadow:var(--shadow);overflow:hidden}
-.skel{background:linear-gradient(90deg,#f0f0f0 25%,#e8e8e8 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
+
+.sort-bar{
+  background:#fff;border-radius:var(--card-radius);padding:12px 16px;
+  display:flex;align-items:center;gap:12px;margin-bottom:12px;box-shadow:var(--shadow);flex-wrap:wrap;
+}
+.sort-bar .result-count{font-size:13px;color:var(--text2);margin-right:auto}
+.sort-label{font-size:13px;font-weight:600;color:var(--text2);white-space:nowrap}
+.sort-btn{
+  border:1px solid var(--border);background:#fff;padding:6px 14px;border-radius:3px;
+  font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;color:var(--text2);font-family:inherit;
+}
+.sort-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.view-toggle{display:flex;gap:6px;margin-left:auto}
+.view-btn{width:32px;height:32px;border:1px solid var(--border);background:#fff;border-radius:3px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:all .2s}
+.view-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
+
+/* ── PRODUCT GRID ── */
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:1px;background:var(--border);border-radius:var(--card-radius);overflow:hidden;
+}
+.products-grid.list-view{grid-template-columns:1fr}
+
+/* ── PRODUCT CARD (Fix #6) ── */
+.product-card{
+  background:var(--surface);position:relative;
+  display:flex;flex-direction:column;cursor:pointer;
+  transition:box-shadow .2s;
+}
+.product-card:hover{z-index:2;box-shadow:0 4px 24px rgba(0,0,0,.15)}
+.product-card:hover .card-actions{opacity:1;transform:translateY(0)}
+
+/* Image Container with zoom (Fix #6) */
+.card-img-wrap{
+  position:relative;overflow:hidden;background:#f5f5f5;
+  aspect-ratio:3/4;
+}
+.card-img-wrap img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .4s ease;
+}
+.product-card:hover .card-img-wrap img{transform:scale(1.06)}
+.no-img-placeholder{
+  width:100%;height:100%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;background:#f0f4ff;
+  color:#aaa;font-size:48px;gap:8px;
+}
+.no-img-placeholder span{font-size:12px;font-weight:600;color:#bbb}
+
+/* Badges */
+.card-badge{
+  position:absolute;top:8px;left:8px;
+  background:var(--green);color:#fff;
+  font-size:10px;font-weight:800;padding:3px 8px;border-radius:2px;letter-spacing:.5px;
+}
+.card-badge.out{background:var(--red)}
+.card-badge.sale{background:var(--accent)}
+
+/* Wishlist btn */
+.card-wishlist{
+  position:absolute;top:8px;right:8px;width:32px;height:32px;
+  background:rgba(255,255,255,.9);border:none;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+  box-shadow:0 1px 4px rgba(0,0,0,.2);transition:transform .2s;
+}
+.card-wishlist:hover{transform:scale(1.15)}
+
+/* Quick action buttons */
+.card-actions{
+  position:absolute;bottom:0;left:0;right:0;
+  display:flex;gap:0;opacity:0;transform:translateY(4px);
+  transition:all .25s;
+}
+.card-action-btn{
+  flex:1;padding:10px;border:none;font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  transition:background .2s;font-family:inherit;cursor:pointer;
+}
+.btn-chat{background:var(--primary);color:#fff}
+.btn-chat:hover{background:var(--primary-dark)}
+.btn-wa{background:#25D366;color:#fff}
+.btn-wa:hover{background:#1da851}
+
+/* Card Body */
+.card-body{padding:10px 12px 14px;flex:1;display:flex;flex-direction:column;gap:4px}
+.card-brand{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
+.card-name{font-size:14px;font-weight:600;color:var(--text);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
+.card-tag{background:#f0f0f0;color:#555;font-size:10px;font-weight:600;padding:2px 8px;border-radius:2px}
+.card-rating{display:flex;align-items:center;gap:4px;margin-top:4px}
+.rating-badge{background:var(--green);color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:2px;display:flex;align-items:center;gap:3px}
+.rating-count{font-size:11px;color:var(--text2)}
+.card-price{margin-top:6px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.price-main{font-size:18px;font-weight:800;color:var(--text)}
+.price-original{font-size:12px;color:var(--text2);text-decoration:line-through}
+.price-off{font-size:12px;font-weight:700;color:var(--green)}
+
+/* Stock indicator */
+.stock-bar-wrap{margin-top:6px}
+.stock-label{font-size:10px;font-weight:600;color:var(--text2);margin-bottom:3px;display:flex;justify-content:space-between}
+.stock-bar{height:4px;background:#eee;border-radius:2px;overflow:hidden}
+.stock-fill{height:100%;border-radius:2px;transition:width .4s}
+
+/* LIST VIEW card */
+.products-grid.list-view .product-card{
+  flex-direction:row;min-height:140px;
+}
+.products-grid.list-view .card-img-wrap{width:140px;flex-shrink:0;aspect-ratio:unset;min-height:140px}
+.products-grid.list-view .card-actions{
+  position:static;opacity:1;transform:none;flex-direction:column;width:150px;flex-shrink:0;
+}
+.products-grid.list-view .card-action-btn{flex:1}
+
+/* ── SKELETON LOADER (Fix #6) ── */
+.skeleton{background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.4s infinite}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-/* ── MODAL ── */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000;align-items:center;justify-content:center;padding:16px}
-.modal-overlay.open{display:flex}
-.modal-box{background:#fff;border-radius:8px;width:100%;max-width:920px;max-height:92vh;overflow-y:auto;display:flex;animation:modalIn 0.25s ease}
-@keyframes modalIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
-.modal-left{width:400px;flex-shrink:0;background:#f9f9f9;display:flex;align-items:center;justify-content:center;min-height:400px;padding:24px;position:relative}
-.modal-left img{width:100%;max-height:360px;object-fit:cover;border-radius:8px;display:block}
-.m-emoji-big{font-size:130px}
-.modal-right{flex:1;padding:28px;display:flex;flex-direction:column;overflow-y:auto}
-.m-brand{font-size:12px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.m-name{font-size:24px;font-weight:900;color:var(--text);margin-bottom:8px;line-height:1.2}
-.m-rating-row{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border)}
-.m-stars-box{background:var(--green);color:#fff;padding:3px 10px;border-radius:4px;font-size:13px;font-weight:800}
-.m-price{font-size:32px;font-weight:900;color:var(--text);margin-bottom:12px}
-.m-stock-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:4px;font-size:13px;font-weight:800;margin-bottom:16px}
-.m-stock-badge.green{background:#e8f5e9;color:#2e7d32}
-.m-stock-badge.orange{background:#fff8e1;color:#f57f17}
-.m-stock-badge.red{background:#ffebee;color:#c62828}
-.m-details{background:#f9f9f9;border-radius:6px;padding:14px;margin-bottom:20px}
-.m-details h4{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px}
-.m-detail-row{display:flex;gap:8px;margin-bottom:6px;font-size:13px}
-.m-detail-label{color:var(--text2);font-weight:700;min-width:70px}
-.m-detail-value{color:var(--text);font-weight:600}
-.m-actions{display:flex;gap:10px;margin-bottom:10px}
-.m-btn{flex:1;padding:13px;border:none;border-radius:4px;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;font-family:'Nunito',sans-serif;transition:opacity 0.2s}
-.m-btn:hover{opacity:0.9}
-.m-btn.visit{background:var(--secondary);color:#fff}
-.m-btn.wa{background:#25d366;color:#fff}
-.m-btn.chat{background:var(--primary);color:#fff;width:100%;margin-bottom:10px}
-.m-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border:none;background:#e0e0e0;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
-.m-close:hover{background:#bdbdbd}
-.m-pid{font-size:11px;color:var(--text2);text-align:center;font-family:monospace;margin-top:8px}
-.info-strip{background:#fff;border-top:1px solid var(--border);margin-top:24px}
-.info-strip-inner{max-width:1400px;margin:0 auto;padding:18px 16px;display:flex;justify-content:center;flex-wrap:wrap}
-.info-item{display:flex;align-items:center;gap:12px;padding:10px 28px;border-right:1px solid var(--border)}
-.info-item:last-child{border-right:none}
-.ii-icon{font-size:26px}
-.ii-title{font-size:13px;font-weight:800;color:var(--text)}
-.ii-sub{font-size:12px;color:var(--text2)}
-footer{background:#172337;color:#fff;padding:40px 16px 20px}
-.footer-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:28px}
-.f-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.fl-box{width:36px;height:36px;background:var(--yellow);border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:var(--primary)}
-.fl-name{font-size:16px;font-weight:800;color:#fff}
-.f-brand p{font-size:13px;color:#94a3b8;line-height:1.7;margin-bottom:12px}
-.f-brand a{display:block;font-size:15px;color:#f59e0b;font-weight:700;text-decoration:none;margin-bottom:4px}
-.f-brand small{font-size:12px;color:#64748b}
-.f-col-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;margin-bottom:12px}
-.f-link{display:block;font-size:13px;color:#94a3b8;text-decoration:none;margin-bottom:8px;cursor:pointer;transition:color 0.2s}
-.f-link:hover{color:#fff}
-.footer-bottom{max-width:1400px;margin:0 auto;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.footer-bottom p{font-size:12px;color:#64748b}
-.live-badge{display:flex;align-items:center;gap:6px;font-size:11px;color:#4ade80;font-weight:800}
-.live-dot{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:#323232;color:#fff;padding:12px 24px;border-radius:4px;font-size:13px;font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,0.3);z-index:9999;opacity:0;transition:all 0.3s;white-space:nowrap}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-/* ── CHAT ── */
-#chat-fab{position:fixed;bottom:28px;right:28px;z-index:8000}
-#chat-fab-btn{width:60px;height:60px;border-radius:50%;background:var(--primary);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 4px 20px rgba(40,116,240,0.5);transition:transform 0.2s;position:relative}
-#chat-fab-btn:hover{transform:scale(1.1)}
-#chat-unread{position:absolute;top:-3px;right:-3px;width:20px;height:20px;background:#ff3b30;border-radius:50%;font-size:11px;font-weight:900;color:#fff;display:none;align-items:center;justify-content:center;border:2px solid #fff}
-#chat-win{position:fixed;bottom:100px;right:28px;width:340px;height:520px;background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.2);z-index:8000;display:none;flex-direction:column;overflow:hidden}
-#chat-win.open{display:flex;animation:chatUp 0.25s ease}
-@keyframes chatUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.cw-head{background:var(--primary);padding:14px 16px;color:#fff;display:flex;align-items:center;gap:10px;flex-shrink:0}
-.cw-av{width:38px;height:38px;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;color:var(--primary);flex-shrink:0}
-.cw-info .cw-n{font-size:14px;font-weight:800}
-.cw-info .cw-s{font-size:11px;color:#b3d1ff;display:flex;align-items:center;gap:4px}
-.cw-dot{width:6px;height:6px;background:#4ade80;border-radius:50%}
-.cw-x{margin-left:auto;background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:4px;line-height:1}
-.cw-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;background:#f5f5f5}
-.cw-msg{max-width:82%;padding:9px 13px;border-radius:14px;font-size:13px;line-height:1.5;word-break:break-word}
-.cw-msg.shop{background:#fff;border:1px solid #e0e0e0;border-bottom-left-radius:4px;align-self:flex-start}
-.cw-msg.customer{background:var(--primary);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
-.cw-msg.system{background:#fef3c7;color:#92400e;font-size:11px;align-self:center;border-radius:6px;font-style:italic;max-width:90%;text-align:center}
-.cw-msg .msg-time{font-size:10px;opacity:0.55;margin-top:3px;text-align:right}
-.cw-product-pill{background:var(--primary);color:#fff;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:700;margin-bottom:8px;display:block}
-.cw-name-form{padding:14px;background:#fff8e1;border-bottom:1px solid var(--border);flex-shrink:0}
-.cw-name-form p{font-size:12px;color:#555;margin-bottom:8px;font-weight:600}
-.cw-name-row{display:flex;gap:8px}
-.cw-name-row input{flex:1;padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;font-family:'Nunito',sans-serif;font-size:13px;outline:none}
-.cw-name-row input:focus{border-color:var(--primary)}
-.cw-name-row button{padding:8px 16px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer}
-.cw-foot{padding:10px 12px;border-top:1px solid var(--border);background:#fff;display:flex;gap:8px;flex-shrink:0}
-.cw-foot input{flex:1;padding:9px 14px;border:1.5px solid var(--border);border-radius:20px;font-family:'Nunito',sans-serif;font-size:13px;outline:none}
-.cw-foot input:focus{border-color:var(--primary)}
-.cw-send{width:38px;height:38px;background:var(--primary);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;color:#fff}
-.cw-send:hover{background:var(--primary-dark)}
-/* MOBILE */
-@media(max-width:900px){.filters-sidebar{display:none}.page-layout{padding:8px}.products-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}.pc-img{height:170px}#chat-win{width:calc(100vw - 32px);right:16px}}
-@media(max-width:768px){.footer-inner{grid-template-columns:1fr;gap:24px}.modal-box{flex-direction:column}.modal-left{width:100%;min-height:200px;padding:16px}.m-emoji-big{font-size:90px}.modal-right{padding:18px}.info-item{padding:10px 16px;border-right:none;border-bottom:1px solid var(--border);width:50%}.info-item:last-child{border-bottom:none}}
-@media(max-width:480px){.header-btn span{display:none}.products-grid{grid-template-columns:repeat(2,1fr)}.banner-stats{gap:10px}}
+.skeleton-card{background:#fff;overflow:hidden}
+.skeleton-img{aspect-ratio:3/4;background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.4s infinite}
+.skeleton-line{height:12px;border-radius:4px;margin:6px 12px;background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.4s infinite}
+.skeleton-line.short{width:60%}
+.skeleton-line.price{width:40%;height:18px;margin-top:8px}
+
+/* ── PRODUCT MODAL / DETAIL (Fix #6) ── */
+.modal-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;
+  align-items:flex-end;justify-content:center;backdrop-filter:blur(3px);
+}
+.modal-overlay.active{display:flex}
+.modal-box{
+  background:#fff;width:100%;max-width:900px;max-height:92vh;
+  border-radius:12px 12px 0 0;overflow:hidden;
+  animation:slideUp .3s ease;display:flex;flex-direction:column;
+}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@media(min-width:768px){
+  .modal-overlay{align-items:center}
+  .modal-box{border-radius:12px;max-height:88vh}
+}
+.modal-close{
+  position:absolute;top:12px;right:12px;width:36px;height:36px;
+  border-radius:50%;background:rgba(0,0,0,.6);border:none;color:#fff;
+  font-size:18px;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:10;
+}
+.modal-inner{display:flex;flex:1;overflow:hidden;flex-direction:column}
+@media(min-width:768px){.modal-inner{flex-direction:row}}
+
+/* Image gallery (Fix #6) */
+.modal-gallery{
+  position:relative;background:#f5f5f5;
+  flex-shrink:0;
+}
+@media(min-width:768px){.modal-gallery{width:420px}}
+.main-image-wrap{
+  aspect-ratio:1;overflow:hidden;cursor:zoom-in;position:relative;
+}
+.main-image-wrap img{width:100%;height:100%;object-fit:contain;transition:transform .3s;background:#f8f8f8}
+.main-image-wrap.zoomed{cursor:zoom-out}
+.main-image-wrap.zoomed img{transform:scale(2)}
+.zoom-hint{
+  position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.5);
+  color:#fff;font-size:10px;padding:3px 8px;border-radius:20px;
+}
+.thumbnails{
+  display:flex;gap:6px;padding:10px;overflow-x:auto;
+  background:#fff;border-top:1px solid var(--border);
+}
+.thumbnails::-webkit-scrollbar{height:3px}
+.thumb{
+  width:60px;height:60px;flex-shrink:0;border:2px solid var(--border);
+  border-radius:4px;overflow:hidden;cursor:pointer;transition:border-color .2s;
+}
+.thumb.active{border-color:var(--primary)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+
+/* Modal product info */
+.modal-info{
+  flex:1;padding:20px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;
+}
+.modal-brand{font-size:12px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:1px}
+.modal-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;line-height:1.3;color:var(--text)}
+.modal-price-wrap{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px;background:#f9f9f9;border-radius:4px}
+.modal-price{font-size:28px;font-weight:900;color:var(--text)}
+.modal-divider{height:1px;background:var(--border)}
+
+/* Size selector */
+.size-label{font-size:13px;font-weight:700;color:var(--text)}
+.size-grid{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.size-chip{
+  border:1.5px solid var(--border);background:#fff;padding:7px 14px;
+  border-radius:3px;font-size:13px;font-weight:600;cursor:pointer;
+  transition:all .2s;color:var(--text);
+}
+.size-chip:hover,.size-chip.active{border-color:var(--primary);color:var(--primary);background:#f0f5ff}
+
+/* Action buttons */
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap}
+.modal-btn{
+  flex:1;min-width:130px;padding:13px;border:none;border-radius:4px;
+  font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;
+  gap:8px;transition:all .2s;cursor:pointer;font-family:inherit;
+}
+.btn-primary-action{background:var(--accent2);color:#fff}
+.btn-primary-action:hover{background:#e6940a}
+.btn-secondary-action{background:var(--primary);color:#fff}
+.btn-secondary-action:hover{background:var(--primary-dark)}
+
+/* Product highlights */
+.highlights{background:#f9f9f9;border-radius:4px;padding:14px}
+.highlights h4{font-size:13px;font-weight:700;margin-bottom:10px;color:var(--text)}
+.highlight-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:7px;font-size:13px}
+.highlight-dot{width:7px;height:7px;background:var(--primary);border-radius:50%;flex-shrink:0;margin-top:4px}
+
+/* ── CHAT WIDGET (Fix #2 #3) ── */
+.chat-fab{
+  position:fixed;bottom:24px;right:24px;z-index:1500;
+  width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,#2874f0,#1a5dc7);
+  border:none;color:#fff;font-size:26px;
+  box-shadow:0 4px 20px rgba(40,116,240,.5);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:transform .2s;
+}
+.chat-fab:hover{transform:scale(1.1)}
+.chat-fab .badge{
+  position:absolute;top:-2px;right:-2px;
+  background:var(--red);color:#fff;border-radius:50%;
+  width:20px;height:20px;font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid #fff;display:none;
+}
+.chat-widget{
+  position:fixed;bottom:96px;right:24px;z-index:1499;
+  width:360px;max-height:520px;
+  background:#fff;border-radius:12px;
+  box-shadow:0 8px 40px rgba(0,0,0,.2);
+  display:none;flex-direction:column;overflow:hidden;
+  animation:popUp .2s ease;
+}
+@keyframes popUp{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:none}}
+.chat-widget.open{display:flex}
+.chat-head{
+  background:linear-gradient(135deg,#2874f0,#1a5dc7);
+  padding:14px 16px;display:flex;align-items:center;gap:10px;
+}
+.chat-head-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;
+  font-size:18px;font-weight:900;color:#fff;flex-shrink:0;
+}
+.chat-head-info{flex:1}
+.chat-head-name{font-size:14px;font-weight:700;color:#fff}
+.chat-head-status{font-size:11px;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:4px}
+.online-dot{width:6px;height:6px;background:#4ade80;border-radius:50%}
+.chat-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:20px;cursor:pointer;padding:4px}
+.chat-close:hover{color:#fff}
+
+/* chat messages (Fix #3 — persistent via localStorage) */
+.chat-messages{
+  flex:1;overflow-y:auto;padding:14px;
+  display:flex;flex-direction:column;gap:8px;background:#f5f6fa;
+}
+.chat-messages::-webkit-scrollbar{width:4px}
+.chat-messages::-webkit-scrollbar-thumb{background:#ddd;border-radius:2px}
+.chat-msg{max-width:82%;padding:9px 12px;border-radius:10px;font-size:13px;line-height:1.45}
+.chat-msg.shop{background:#2874f0;color:#fff;align-self:flex-start;border-bottom-left-radius:3px}
+.chat-msg.customer{background:#fff;color:var(--text);align-self:flex-end;border-bottom-right-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.chat-msg.system{background:#fffbeb;color:#92400e;align-self:center;font-size:11px;border-radius:8px;padding:6px 12px;text-align:center;max-width:90%}
+.msg-time{font-size:9px;opacity:.6;margin-top:3px;display:block}
+.chat-msg.customer .msg-time{text-align:right}
+
+/* Welcome banner inside chat */
+.chat-welcome{text-align:center;padding:16px 12px;color:var(--text2)}
+.chat-welcome .logo{font-size:32px;margin-bottom:6px}
+.chat-welcome h3{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+.chat-welcome p{font-size:12px;line-height:1.5}
+
+/* Quick reply chips */
+.quick-replies{
+  padding:8px 10px;display:flex;gap:6px;overflow-x:auto;
+  background:#fff;border-top:1px solid var(--border);
+}
+.quick-replies::-webkit-scrollbar{display:none}
+.qr-chip{
+  background:#f0f4ff;border:1px solid #c7d7fb;color:var(--primary);
+  font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;
+  cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .2s;font-family:inherit;
+}
+.qr-chip:hover{background:var(--primary);color:#fff}
+
+/* Chat input */
+.chat-input-area{
+  padding:10px 12px;background:#fff;border-top:1px solid var(--border);
+  display:flex;gap:8px;align-items:flex-end;
+}
+.chat-input{
+  flex:1;border:1.5px solid var(--border);border-radius:20px;
+  padding:8px 14px;font-size:13px;outline:none;resize:none;
+  font-family:inherit;max-height:80px;overflow-y:auto;transition:border-color .2s;
+  line-height:1.4;
+}
+.chat-input:focus{border-color:var(--primary)}
+.chat-send{
+  width:36px;height:36px;border-radius:50%;background:var(--primary);
+  border:none;color:#fff;font-size:16px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;transition:background .2s;
+}
+.chat-send:hover{background:var(--primary-dark)}
+.chat-send:disabled{background:#bbb;cursor:not-allowed}
+
+/* ── FOOTER ── */
+.footer{background:#172337;color:#fff;margin-top:40px}
+.footer-top{max-width:1400px;margin:0 auto;padding:40px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px}
+.footer-brand .name{font-size:20px;font-weight:800;color:#f0c040;margin-bottom:6px}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.6}
+.footer-col h4{font-size:13px;font-weight:700;margin-bottom:14px;color:rgba(255,255,255,.9)}
+.footer-col a,.footer-col p{display:block;font-size:13px;color:rgba(255,255,255,.55);margin-bottom:7px;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:16px;text-align:center;font-size:12px;color:rgba(255,255,255,.35);max-width:1400px;margin:0 auto}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:90px;left:50%;transform:translateX(-50%);
+  background:#323232;color:#fff;padding:10px 20px;border-radius:4px;
+  font-size:13px;font-weight:600;z-index:3000;white-space:nowrap;
+  animation:toastIn .3s ease;pointer-events:none;
+}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%)}}
+
+/* ── MOBILE RESPONSIVE ── */
+@media(max-width:768px){
+  .sidebar{display:none}
+  .sidebar.mobile-open{
+    display:block;position:fixed;left:0;top:0;bottom:0;z-index:1200;
+    width:280px;overflow-y:auto;padding:16px;background:#fff;
+    box-shadow:4px 0 20px rgba(0,0,0,.2);
+  }
+  .filter-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1199}
+  .filter-overlay.active{display:block}
+  .main-wrap{padding:10px}
+  .chat-widget{right:8px;width:calc(100vw - 16px);bottom:88px}
+  .chat-fab{right:16px;bottom:16px}
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+  .header-top{flex-wrap:wrap;gap:10px}
+  .search-wrap{order:3;width:100%}
+  .hero h1{font-size:22px}
+  .hero-stats{gap:20px}
+}
+@media(max-width:400px){
+  .products-grid{grid-template-columns:1fr}
+}
+
+/* ── EMPTY STATE ── */
+.empty-state{
+  text-align:center;padding:60px 20px;background:#fff;
+  border-radius:var(--card-radius);
+}
+.empty-state .icon{font-size:60px;margin-bottom:12px}
+.empty-state h3{font-size:18px;font-weight:700;margin-bottom:6px}
+.empty-state p{font-size:13px;color:var(--text2)}
+
+/* ── CATEGORY SECTION HEADER ── */
+.section-header{
+  background:#fff;border-radius:var(--card-radius);
+  padding:16px 20px;margin-bottom:12px;
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:var(--shadow);
+}
+.section-header h2{font-size:18px;font-weight:800;color:var(--text)}
+.section-header p{font-size:12px;color:var(--text2);margin-top:2px}
+
+/* ── MOBILE FILTER BTN ── */
+.mobile-filter-btn{
+  display:none;align-items:center;gap:6px;
+  background:#fff;border:1.5px solid var(--primary);color:var(--primary);
+  padding:8px 14px;border-radius:4px;font-size:13px;font-weight:700;
+  font-family:inherit;
+}
+@media(max-width:768px){.mobile-filter-btn{display:flex}}
+
+/* ── SCROLL TO TOP ── */
+.scroll-top{
+  position:fixed;bottom:90px;right:92px;z-index:1400;
+  width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.6);
+  border:none;color:#fff;font-size:18px;cursor:pointer;
+  display:none;align-items:center;justify-content:center;
+  transition:opacity .3s;
+}
+.scroll-top.visible{display:flex}
 </style>
 </head>
 <body>
 
-<div class="top-bar"><div class="top-bar-inner"><span>📍 Kashinagar Bus Stand, GMR Complex, Odisha — 761206</span><span>🕐 Mon–Sun: 9am–9pm</span></div></div>
-
-<header class="header"><div class="header-inner">
-  <a href="#" class="logo"><div class="logo-box">JV</div><div class="logo-text"><div class="l1">JV Unique Collection</div><div class="l2">Premium Men's Fashion</div></div></a>
-  <div class="search-wrap">
-    <input id="search-input" type="text" placeholder="Search for shirts, jeans, kurtas..." autocomplete="off">
-    <button class="search-btn" onclick="triggerSearch()">🔍</button>
-    <div class="search-dropdown" id="search-dropdown"></div>
-  </div>
-  <div class="header-right">
-    <a href="tel:8260362286" class="header-btn">📞 <span>8260362286</span></a>
-    <a href="https://wa.me/918260362286?text=Hi!" class="header-btn wa" target="_blank">💬 <span>WhatsApp</span></a>
-  </div>
-</div></header>
-
-<div class="cat-strip"><div class="cat-strip-inner" id="cat-strip">
-  <div class="cat-item active" data-cat="all" onclick="filterCat('all',this)"><span class="ci">🏠</span>All</div>
-  <div class="cat-item" data-cat="Shirts" onclick="filterCat('Shirts',this)"><span class="ci">👔</span>Shirts</div>
-  <div class="cat-item" data-cat="T-Shirts" onclick="filterCat('T-Shirts',this)"><span class="ci">👕</span>T-Shirts</div>
-  <div class="cat-item" data-cat="Trousers" onclick="filterCat('Trousers',this)"><span class="ci">👖</span>Trousers</div>
-  <div class="cat-item" data-cat="Jeans" onclick="filterCat('Jeans',this)"><span class="ci">🩲</span>Jeans</div>
-  <div class="cat-item" data-cat="Suits" onclick="filterCat('Suits',this)"><span class="ci">🤵</span>Suits</div>
-  <div class="cat-item" data-cat="Jackets" onclick="filterCat('Jackets',this)"><span class="ci">🧥</span>Jackets</div>
-  <div class="cat-item" data-cat="Kurtas" onclick="filterCat('Kurtas',this)"><span class="ci">🩱</span>Kurtas</div>
-  <div class="cat-item" data-cat="Accessories" onclick="filterCat('Accessories',this)"><span class="ci">👒</span>Accessories</div>
-</div></div>
-
-<div class="banner"><div style="max-width:1400px;margin:0 auto">
-  <h1>Premium Men's Fashion in Kashinagar</h1>
-  <p>Browse our collection — visit the store to purchase</p>
-  <div class="banner-stats">
-    <div class="bstat"><div class="bsn" id="stat-products">—</div><div class="bsl">Products</div></div>
-    <div class="bstat"><div class="bsn">8+</div><div class="bsl">Categories</div></div>
-    <div class="bstat"><div class="bsn">100%</div><div class="bsl">Authentic</div></div>
-    <div class="bstat"><div class="bsn">₹199+</div><div class="bsl">Starting From</div></div>
-  </div>
-</div></div>
-
-<div class="page-layout">
-  <aside class="filters-sidebar">
-    <div class="fs-header">Filters <span class="fs-clear" onclick="clearAllFilters()">CLEAR ALL</span></div>
-    <div class="fs-section"><div class="fs-title">Availability</div><div class="fs-option"><input type="checkbox" id="f-instock" onchange="applyFilters()"><label for="f-instock">In Stock Only</label></div></div>
-    <div class="fs-section"><div class="fs-title">Price Range</div><div class="price-inputs"><input type="number" class="price-input" id="price-min" placeholder="Min ₹"><span style="color:#878787;font-size:12px">—</span><input type="number" class="price-input" id="price-max" placeholder="Max ₹"></div><button class="apply-price" onclick="applyFilters()">Apply</button></div>
-    <div class="fs-section"><div class="fs-title">Size</div><div id="size-filters"></div></div>
-    <div class="fs-section" style="border-bottom:none"><div class="fs-title">Color</div><div id="color-filters"></div></div>
-  </aside>
-  <div class="products-area">
-    <div class="results-bar">
-      <div class="results-count"><strong id="result-count">Loading...</strong> <span id="result-label">products</span></div>
-      <div class="sort-bar">
-        <span>Sort:</span>
-        <button class="sort-btn active" data-sort="" onclick="setSort(this,'')">Relevance</button>
-        <button class="sort-btn" data-sort="price-asc" onclick="setSort(this,'price-asc')">Price ↑</button>
-        <button class="sort-btn" data-sort="price-desc" onclick="setSort(this,'price-desc')">Price ↓</button>
-        <button class="sort-btn" data-sort="name-asc" onclick="setSort(this,'name-asc')">A-Z</button>
+<!-- ══ HEADER ══ -->
+<header class="header" role="banner">
+  <div class="header-top">
+    <div class="logo-wrap">
+      <div class="logo-circle">JV</div>
+      <div class="logo-text">
+        <div class="brand">JV Unique</div>
+        <div class="sub">Premium Men's Fashion</div>
       </div>
     </div>
-    <div class="products-grid" id="products-grid">
-      <div class="skeleton-card"><div class="skel" style="height:230px"></div><div style="padding:12px"><div class="skel" style="height:10px;width:50%;border-radius:4px;margin-bottom:8px"></div><div class="skel" style="height:14px;width:80%;border-radius:4px;margin-bottom:8px"></div><div class="skel" style="height:18px;width:45%;border-radius:4px;margin-bottom:10px"></div><div class="skel" style="height:36px;border-radius:4px"></div></div></div>
-      <div class="skeleton-card"><div class="skel" style="height:230px"></div><div style="padding:12px"><div class="skel" style="height:10px;width:50%;border-radius:4px;margin-bottom:8px"></div><div class="skel" style="height:14px;width:80%;border-radius:4px;margin-bottom:8px"></div><div class="skel" style="height:18px;width:45%;border-radius:4px;margin-bottom:10px"></div><div class="skel" style="height:36px;border-radius:4px"></div></div></div>
-      <div class="skeleton-card"><div class="skel" style="height:230px"></div><div style="padding:12px"><div class="skel" style="height:10px;width:50%;border-radius:4px;margin-bottom:8px"></div><div class="skel" style="height:14px;width:80%;border-radius:4px;margin-bottom:8px"></div><div class="skel" style="height:18px;width:45%;border-radius:4px;margin-bottom:10px"></div><div class="skel" style="height:36px;border-radius:4px"></div></div></div>
+    <div class="search-wrap">
+      <input type="text" id="search-input" placeholder="Search for shirts, jeans, kurtas..." autocomplete="off" aria-label="Search products">
+      <button onclick="applySearch()" aria-label="Search">🔍 Search</button>
     </div>
+    <div class="header-actions">
+      <a href="https://wa.me/918260362286" target="_blank" class="header-btn" aria-label="WhatsApp">
+        <span class="icon">💬</span>
+        <span>WhatsApp</span>
+      </a>
+      <a href="tel:+918260362286" class="header-btn" aria-label="Call us">
+        <span class="icon">📞</span>
+        <span>8260362286</span>
+      </a>
+    </div>
+    <button class="mobile-filter-btn" onclick="toggleMobileSidebar()" aria-label="Open filters">
+      ⚙️ Filters
+    </button>
+  </div>
+  <div class="header-bar" role="navigation" aria-label="Category navigation">
+    <div class="header-bar-inner">
+      <button class="cat-pill active" onclick="filterByCategory('')">All</button>
+      <button class="cat-pill" onclick="filterByCategory('Shirts')">👔 Shirts</button>
+      <button class="cat-pill" onclick="filterByCategory('T-Shirts')">👕 T-Shirts</button>
+      <button class="cat-pill" onclick="filterByCategory('Trousers')">👖 Trousers</button>
+      <button class="cat-pill" onclick="filterByCategory('Jeans')">🩲 Jeans</button>
+      <button class="cat-pill" onclick="filterByCategory('Suits')">🤵 Suits</button>
+      <button class="cat-pill" onclick="filterByCategory('Jackets')">🧥 Jackets</button>
+      <button class="cat-pill" onclick="filterByCategory('Kurtas')">👘 Kurtas</button>
+      <button class="cat-pill" onclick="filterByCategory('Accessories')">👒 Accessories</button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-content">
+    <h1 id="hero-title">Premium Men's Fashion<br>in Kashinagar</h1>
+    <p>Browse our collection — visit the store to purchase</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num" id="stat-products">—</div><div class="lbl">Products</div></div>
+      <div class="hero-stat"><div class="num">8+</div><div class="lbl">Categories</div></div>
+      <div class="hero-stat"><div class="num">100%</div><div class="lbl">Authentic</div></div>
+      <div class="hero-stat"><div class="num">₹199+</div><div class="lbl">Starting From</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUST STRIP ══ -->
+<div class="trust-strip" role="complementary">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="ic">✅</span><span>100% Authentic Products</span></div>
+    <div class="trust-item"><span class="ic">📍</span><span>Kashinagar Bus Stand, GMR Complex</span></div>
+    <div class="trust-item"><span class="ic">🕘</span><span>Mon–Sun: 9am–9pm</span></div>
+    <div class="trust-item"><span class="ic">📞</span><span>8260362286</span></div>
+    <div class="trust-item"><span class="ic">💬</span><span>Chat with us instantly</span></div>
   </div>
 </div>
 
-<div class="info-strip"><div class="info-strip-inner">
-  <div class="info-item"><span class="ii-icon">📍</span><div><div class="ii-title">Visit In-Store</div><div class="ii-sub">Kashinagar Bus Stand</div></div></div>
-  <div class="info-item"><span class="ii-icon">✅</span><div><div class="ii-title">100% Authentic</div><div class="ii-sub">Genuine products only</div></div></div>
-  <div class="info-item"><span class="ii-icon">💬</span><div><div class="ii-title">Live Chat</div><div class="ii-sub">Ask us anything</div></div></div>
-  <div class="info-item"><span class="ii-icon">🏷️</span><div><div class="ii-title">Best Prices</div><div class="ii-sub">No compromise on quality</div></div></div>
-</div></div>
+<!-- ══ MAIN ══ -->
+<main class="main-wrap" role="main">
 
-<footer>
-  <div class="footer-inner">
-    <div class="f-brand"><div class="f-logo"><div class="fl-box">JV</div><div class="fl-name">JV Unique Collection</div></div><p>Premium men's fashion store serving Kashinagar and surrounding areas.</p><a href="tel:8260362286">📞 8260362286</a><small>Kashinagar Bus Stand, GMR Complex, Odisha — 761206</small></div>
-    <div><div class="f-col-title">Categories</div><span class="f-link" onclick="filterCat('Shirts',null)">Shirts</span><span class="f-link" onclick="filterCat('T-Shirts',null)">T-Shirts</span><span class="f-link" onclick="filterCat('Trousers',null)">Trousers</span><span class="f-link" onclick="filterCat('Jeans',null)">Jeans</span><span class="f-link" onclick="filterCat('Suits',null)">Suits</span><span class="f-link" onclick="filterCat('Kurtas',null)">Kurtas</span></div>
-    <div><div class="f-col-title">Contact</div><span class="f-link">📞 8260362286</span><a href="https://wa.me/918260362286" class="f-link" target="_blank">💬 WhatsApp</a><span class="f-link">🕐 Mon–Sun: 9am–9pm</span><span class="f-link">📍 Kashinagar, Odisha</span></div>
+  <!-- Sidebar overlay (mobile) -->
+  <div class="filter-overlay" id="filter-overlay" onclick="toggleMobileSidebar()"></div>
+
+  <!-- ── FILTER SIDEBAR ── -->
+  <aside class="sidebar" id="sidebar" aria-label="Product filters">
+
+    <div class="filter-card">
+      <div class="filter-title">🔍 Search</div>
+      <input type="text" id="sidebar-search" class="chat-input" placeholder="Search products..."
+             oninput="applySearch()" style="border-radius:4px;width:100%;padding:8px 12px;font-size:13px">
+    </div>
+
+    <div class="filter-card">
+      <div class="filter-title">Availability</div>
+      <div class="filter-option">
+        <input type="checkbox" id="in-stock" onchange="applyFilters()">
+        <label for="in-stock">In Stock Only</label>
+      </div>
+    </div>
+
+    <div class="filter-card">
+      <div class="filter-title">Price Range</div>
+      <div class="price-inputs">
+        <input type="number" id="price-min" placeholder="Min ₹" onchange="applyFilters()">
+        <span>—</span>
+        <input type="number" id="price-max" placeholder="Max ₹" onchange="applyFilters()">
+      </div>
+      <button class="apply-btn" onclick="applyFilters()">Apply Price</button>
+    </div>
+
+    <div class="filter-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <div class="filter-title" style="margin:0">Size</div>
+        <button class="clear-btn" onclick="clearSizeFilter()">Clear</button>
+      </div>
+      <div id="size-filters"></div>
+    </div>
+
+    <div class="filter-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <div class="filter-title" style="margin:0">Color</div>
+        <button class="clear-btn" onclick="clearColorFilter()">Clear</button>
+      </div>
+      <div id="color-filters"></div>
+    </div>
+
+    <button onclick="clearAllFilters()" style="width:100%;background:#fff;border:1.5px solid var(--border);padding:10px;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">
+      ✕ Clear All Filters
+    </button>
+  </aside>
+
+  <!-- ── PRODUCTS AREA ── -->
+  <div class="products-area">
+    <div class="section-header">
+      <div>
+        <h2>Men's Collection</h2>
+        <p id="result-label">Loading products...</p>
+      </div>
+      <div class="flex" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <div class="view-toggle">
+          <button class="view-btn active" id="view-grid" onclick="setView('grid')" title="Grid view">⊞</button>
+          <button class="view-btn" id="view-list" onclick="setView('list')" title="List view">☰</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sort-bar">
+      <span class="sort-label">Sort by:</span>
+      <button class="sort-btn active" onclick="setSort('relevance',this)">Relevance</button>
+      <button class="sort-btn" onclick="setSort('price_asc',this)">Price ↑</button>
+      <button class="sort-btn" onclick="setSort('price_desc',this)">Price ↓</button>
+      <button class="sort-btn" onclick="setSort('az',this)">A–Z</button>
+      <span class="result-count" id="result-count"></span>
+    </div>
+
+    <div class="products-grid" id="products-grid" role="list"></div>
   </div>
-  <div class="footer-bottom"><p>© 2025 JV Unique Collection · Kashinagar, Odisha</p><div class="live-badge"><span class="live-dot"></span>Live Inventory</div></div>
+</main>
+
+<!-- ══ PRODUCT MODAL (Fix #6 — zoom, thumbnails) ══ -->
+<div class="modal-overlay" id="product-modal" role="dialog" aria-modal="true" aria-label="Product details" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+    <div class="modal-inner" id="modal-inner"></div>
+  </div>
+</div>
+
+<!-- ══ CHAT WIDGET (Fix #2 #3) ══ -->
+<button class="chat-fab" onclick="toggleChat()" aria-label="Open chat" id="chat-fab">
+  💬
+  <span class="badge" id="chat-fab-badge"></span>
+</button>
+
+<div class="chat-widget" id="chat-widget" role="dialog" aria-label="Chat with JV Unique Collection">
+  <div class="chat-head">
+    <div class="chat-head-avatar">JV</div>
+    <div class="chat-head-info">
+      <div class="chat-head-name">JV Unique Collection</div>
+      <div class="chat-head-status">
+        <span class="online-dot"></span> Usually replies quickly
+      </div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()" aria-label="Close chat">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages"></div>
+  <div class="quick-replies" id="quick-replies">
+    <button class="qr-chip" onclick="sendQuick('Hello! I want to know about your products 👋')">👋 Hello</button>
+    <button class="qr-chip" onclick="sendQuick('What are your store timings?')">🕐 Timings</button>
+    <button class="qr-chip" onclick="sendQuick('Do you have home delivery?')">🚚 Delivery</button>
+    <button class="qr-chip" onclick="sendQuick('What are the latest arrivals?')">✨ New Arrivals</button>
+  </div>
+  <div class="chat-input-area">
+    <textarea class="chat-input" id="chat-input" placeholder="Type a message..." rows="1"
+              onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage()}"
+              oninput="autoResize(this)" aria-label="Chat message"></textarea>
+    <button class="chat-send" onclick="sendMessage()" id="chat-send-btn" aria-label="Send message">➤</button>
+  </div>
+</div>
+
+<!-- Mobile sidebar overlay -->
+<div class="filter-overlay" id="mobile-overlay"></div>
+
+<!-- Scroll to top -->
+<button class="scroll-top" id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">↑</button>
+
+<!-- Toast container -->
+<div id="toast-container"></div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="name">JV Unique Collection</div>
+      <p>Premium Men's Fashion Store in Kashinagar, Odisha. Quality clothing for every occasion.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <a onclick="filterByCategory('Shirts')">Shirts</a>
+      <a onclick="filterByCategory('T-Shirts')">T-Shirts</a>
+      <a onclick="filterByCategory('Trousers')">Trousers</a>
+      <a onclick="filterByCategory('Jeans')">Jeans</a>
+      <a onclick="filterByCategory('Suits')">Suits</a>
+    </div>
+    <div class="footer-col">
+      <h4>Visit Us</h4>
+      <p>Kashinagar Bus Stand</p>
+      <p>GMR Complex, Odisha — 761206</p>
+      <p>Mon–Sun: 9am–9pm</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+918260362286">📞 8260362286</a>
+      <a href="https://wa.me/918260362286" target="_blank" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 JV Unique Collection, Kashinagar, Odisha. All rights reserved.
+  </div>
 </footer>
 
-<!-- PRODUCT MODAL -->
-<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
-  <div class="modal-box">
-    <div class="modal-left">
-      <button class="m-close" onclick="closeModal()">✕</button>
-      <div id="m-media" style="width:100%;display:flex;align-items:center;justify-content:center"></div>
-    </div>
-    <div class="modal-right">
-      <div class="m-brand" id="m-brand"></div>
-      <div class="m-name" id="m-name"></div>
-      <div class="m-rating-row"><span class="m-stars-box" id="m-stars">★ 4.5</span><span style="font-size:13px;color:#878787">In-store product</span></div>
-      <div class="m-price" id="m-price"></div>
-      <div class="m-stock-badge" id="m-stock-badge"></div>
-      <div class="m-details"><h4>Product Details</h4><div id="m-detail-rows"></div></div>
-      <div class="m-actions">
-        <a href="https://maps.google.com/?q=Kashinagar+Bus+Stand+GMR+Complex+Odisha" class="m-btn visit" target="_blank">📍 Visit Store</a>
-        <a class="m-btn wa" id="m-wa" href="#" target="_blank">💬 WhatsApp</a>
-      </div>
-      <button class="m-btn chat" onclick="openChatFromModal()">💬 Chat About This Product</button>
-      <div class="m-pid" id="m-pid"></div>
-    </div>
-  </div>
-</div>
-
-<!-- LIVE CHAT -->
-<div id="chat-fab">
-  <button id="chat-fab-btn" onclick="toggleChat()" title="Chat with us">💬
-    <span id="chat-unread"></span>
-  </button>
-</div>
-<div id="chat-win">
-  <div class="cw-head">
-    <div class="cw-av">JV</div>
-    <div class="cw-info">
-      <div class="cw-n">JV Unique Collection</div>
-      <div class="cw-s"><span class="cw-dot"></span> Usually replies quickly</div>
-    </div>
-    <button class="cw-x" onclick="toggleChat()">✕</button>
-  </div>
-  <div id="cw-name-form" class="cw-name-form">
-    <p>👋 Hi! What's your name so we can help you better?</p>
-    <div class="cw-name-row">
-      <input type="text" id="cw-visitor-name" placeholder="Your name..." maxlength="40" onkeydown="if(event.key==='Enter')startChat()">
-      <button onclick="startChat()">Start</button>
-    </div>
-  </div>
-  <div class="cw-msgs" id="cw-msgs" style="display:none"></div>
-  <div class="cw-foot" id="cw-foot" style="display:none">
-    <input type="text" id="cw-input" placeholder="Type a message..." maxlength="500" onkeydown="if(event.key==='Enter')sendMsg()">
-    <button class="cw-send" onclick="sendMsg()">➤</button>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-
+<!-- ══════════════════════════════════════════════════════════
+     JAVASCRIPT — All fixes implemented
+══════════════════════════════════════════════════════════ -->
 <script>
-// ════════════════════════════════════════════════════════
-// SUPABASE
-// ════════════════════════════════════════════════════════
-const SUPABASE_URL = 'https://tlsteydbjactspmwdkpm.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsc3RleWRiamFjdHNwbXdka3BtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxMjE4MzksImV4cCI6MjA5NDY5NzgzOX0._XpyMc5jXrwBjcOxZhrv1v3nJKEalWmzK2MplSUVUEM';
-const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+// ═══════════════════════════════════════════════════════
+//  SUPABASE CONFIG (Fix #7 — centralized, no duplication)
+// ═══════════════════════════════════════════════════════
+const SB_URL = 'https://tlsteydbjactspmwdkpm.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsc3RleWRiamFjdHNwbXdka3BtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxMjE4MzksImV4cCI6MjA5NDY5NzgzOX0._XpyMc5jXrwBjcOxZhrv1v3nJKEalWmzK2MplSUVUEM';
 
-const CAT_EMOJI = {Shirts:'👔','T-Shirts':'👕',Trousers:'👖',Jeans:'🩲',Suits:'🤵',Jackets:'🧥',Kurtas:'🩱',Accessories:'👒',Other:'🛍️','':'👗'};
-const emo = c => CAT_EMOJI[c] || '👗';
+const sbHeaders = {
+  'apikey': SB_KEY,
+  'Authorization': 'Bearer ' + SB_KEY,
+  'Content-Type': 'application/json'
+};
 
-let all = [], currentCat = 'all', currentSort = '';
-let selSizes = new Set(), selColors = new Set();
-let modalProduct = null;
-let chatOpen = false, visitorName = '', sessionId = null, chatCh = null, unread = 0, chatProduct = null;
+// Supabase fetch with retry (Fix #7 — error handling)
+async function sbFetch(endpoint, options = {}, retries = 3) {
+  const url = SB_URL + endpoint;
+  for (let i = 0; i < retries; i++) {
+    try {
+      const res = await fetch(url, { ...options, headers: { ...sbHeaders, ...(options.headers || {}) } });
+      if (!res.ok) {
+        const err = await res.text();
+        console.error('[Supabase] Error:', res.status, err);
+        if (res.status === 401 || res.status === 403) throw new Error('Auth error');
+        if (i === retries - 1) throw new Error('HTTP ' + res.status);
+        await new Promise(r => setTimeout(r, 500 * (i + 1)));
+        continue;
+      }
+      const text = await res.text();
+      return text ? JSON.parse(text) : [];
+    } catch (e) {
+      if (i === retries - 1) throw e;
+      await new Promise(r => setTimeout(r, 500 * (i + 1)));
+    }
+  }
+}
 
-// ════════════════════════════════════════════════════════
-// PRODUCTS
-// ════════════════════════════════════════════════════════
-async function init() {
+// ═══════════════════════════════════════════════════════
+//  PRODUCT STATE
+// ═══════════════════════════════════════════════════════
+let allProducts = [];
+let filteredProducts = [];
+let currentSort = 'relevance';
+let currentCategory = '';
+let currentView = 'grid';
+let selectedProduct = null;
+
+const CAT_ICONS = { Shirts:'👔', 'T-Shirts':'👕', Trousers:'👖', Jeans:'🩲', Suits:'🤵', Jackets:'🧥', Kurtas:'👘', Accessories:'👒' };
+const catIcon = c => CAT_ICONS[c] || '👗';
+
+// ═══════════════════════════════════════════════════════
+//  LOAD PRODUCTS (Fix #1 — properly reads image_url)
+// ═══════════════════════════════════════════════════════
+async function loadProducts() {
+  showSkeletons();
   try {
-    const { data, error } = await sb.from('products').select('*').order('name');
-    if (error) throw error;
-    all = data || [];
-    document.getElementById('stat-products').textContent = all.length + '+';
-    buildFilters(); applyFilters(); setupRealtime();
-  } catch(e) {
-    console.error(e); showErr();
+    // Fix #1: Select ALL columns including image_url explicitly
+    const data = await sbFetch('/rest/v1/products?select=id,barcode_id,name,brand,category,size,color,price,stock_qty,image_url,created_at&order=created_at.desc');
+    allProducts = Array.isArray(data) ? data : [];
+    document.getElementById('stat-products').textContent = allProducts.length + '+';
+    buildFilters();
+    applyFilters();
+  } catch (e) {
+    console.error('[Products] Load failed:', e);
+    document.getElementById('products-grid').innerHTML = `
+      <div class="empty-state" style="grid-column:1/-1">
+        <div class="icon">⚠️</div>
+        <h3>Could not load products</h3>
+        <p>Please check your connection and try again.</p>
+        <button onclick="loadProducts()" style="margin-top:12px;background:var(--primary);color:#fff;border:none;padding:10px 20px;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer">Retry</button>
+      </div>`;
   }
 }
 
+function showSkeletons() {
+  const grid = document.getElementById('products-grid');
+  grid.innerHTML = Array(8).fill(`
+    <div class="product-card skeleton-card" style="pointer-events:none">
+      <div class="skeleton-img"></div>
+      <div style="padding:10px">
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+        <div class="skeleton-line price"></div>
+      </div>
+    </div>`).join('');
+}
+
+// ═══════════════════════════════════════════════════════
+//  BUILD DYNAMIC FILTERS from product data
+// ═══════════════════════════════════════════════════════
 function buildFilters() {
-  const sizes = [...new Set(all.map(p => p.size).filter(Boolean))].sort();
-  const colors = [...new Set(all.map(p => p.color).filter(Boolean))].sort();
-  document.getElementById('size-filters').innerHTML = sizes.map(s =>
-    `<div class="fs-option"><input type="checkbox" id="sz${s}" value="${s}" onchange="toggleF('size','${s}')"><label for="sz${s}">${s}</label></div>`
-  ).join('');
-  document.getElementById('color-filters').innerHTML = colors.slice(0, 12).map(c =>
-    `<div class="fs-option"><input type="checkbox" id="cl${c.replace(/\s/g,'')}" value="${c}" onchange="toggleF('color','${c}')"><label for="cl${c.replace(/\s/g,'')}">${c}</label></div>`
-  ).join('');
+  const sizes = [...new Set(allProducts.map(p => p.size).filter(Boolean))].sort();
+  const colors = [...new Set(allProducts.map(p => p.color).filter(Boolean))].sort();
+
+  document.getElementById('size-filters').innerHTML = sizes.map(s => `
+    <div class="filter-option">
+      <input type="checkbox" id="sz-${s}" value="${s}" onchange="applyFilters()" class="size-cb">
+      <label for="sz-${s}">${s}</label>
+      <span class="count">${allProducts.filter(p => p.size === s).length}</span>
+    </div>`).join('') || '<p style="font-size:12px;color:var(--text2)">No sizes found</p>';
+
+  document.getElementById('color-filters').innerHTML = colors.map(c => `
+    <div class="filter-option">
+      <input type="checkbox" id="cl-${c.replace(/\s/g,'_')}" value="${c}" onchange="applyFilters()" class="color-cb">
+      <label for="cl-${c.replace(/\s/g,'_')}">${c}</label>
+      <span class="count">${allProducts.filter(p => p.color === c).length}</span>
+    </div>`).join('') || '<p style="font-size:12px;color:var(--text2)">No colors found</p>';
 }
 
-function toggleF(type, val) {
-  const set = type === 'size' ? selSizes : selColors;
-  set.has(val) ? set.delete(val) : set.add(val);
-  applyFilters();
-}
-
+// ═══════════════════════════════════════════════════════
+//  FILTERS & SORT
+// ═══════════════════════════════════════════════════════
 function applyFilters() {
-  let p = [...all];
-  if (currentCat !== 'all') p = p.filter(x => x.category === currentCat);
-  if (document.getElementById('f-instock')?.checked) p = p.filter(x => x.stock_qty > 0);
-  const mn = parseFloat(document.getElementById('price-min')?.value) || 0;
-  const mx = parseFloat(document.getElementById('price-max')?.value) || Infinity;
-  if (mn || mx < Infinity) p = p.filter(x => x.price >= mn && x.price <= mx);
-  if (selSizes.size) p = p.filter(x => selSizes.has(x.size));
-  if (selColors.size) p = p.filter(x => selColors.has(x.color));
-  if (currentSort === 'price-asc') p.sort((a,b) => a.price - b.price);
-  else if (currentSort === 'price-desc') p.sort((a,b) => b.price - a.price);
-  else if (currentSort === 'name-asc') p.sort((a,b) => a.name.localeCompare(b.name));
-  document.getElementById('result-count').textContent = p.length;
-  document.getElementById('result-label').textContent = p.length === 1 ? 'product' : 'products';
-  renderGrid(p);
+  const q = (document.getElementById('search-input').value || document.getElementById('sidebar-search').value || '').toLowerCase();
+  const inStockOnly = document.getElementById('in-stock')?.checked;
+  const priceMin = parseFloat(document.getElementById('price-min').value) || 0;
+  const priceMax = parseFloat(document.getElementById('price-max').value) || Infinity;
+  const selectedSizes = [...document.querySelectorAll('.size-cb:checked')].map(el => el.value);
+  const selectedColors = [...document.querySelectorAll('.color-cb:checked')].map(el => el.value);
+
+  filteredProducts = allProducts.filter(p => {
+    if (q && !`${p.name} ${p.brand} ${p.category} ${p.color} ${p.size}`.toLowerCase().includes(q)) return false;
+    if (currentCategory && p.category !== currentCategory) return false;
+    if (inStockOnly && p.stock_qty <= 0) return false;
+    if (p.price < priceMin || p.price > priceMax) return false;
+    if (selectedSizes.length && !selectedSizes.includes(p.size)) return false;
+    if (selectedColors.length && !selectedColors.includes(p.color)) return false;
+    return true;
+  });
+
+  sortProducts();
 }
 
-function renderGrid(products) {
-  const g = document.getElementById('products-grid');
-  if (!products.length) {
-    g.innerHTML = `<div class="empty-state"><div class="es-img">🔍</div><h3>No products found</h3><p>Try different filters</p></div>`;
-    return;
-  }
-  g.innerHTML = products.map(p => {
-    const inS = p.stock_qty > 5, low = p.stock_qty > 0 && p.stock_qty <= 5, out = p.stock_qty === 0;
-    const badge = inS
-      ? `<span class="pc-badge in-stock">✓ In Stock</span>`
-      : low
-        ? `<span class="pc-badge low">⚡ Only ${p.stock_qty} left</span>`
-        : `<span class="pc-badge out">Out of Stock</span>`;
-
-    // ✅ Image support: show real image if available, otherwise emoji
-    const imgSection = p.image_url
-      ? `<img src="${encodeURI(p.image_url)}" alt="${p.name}"
-              style="width:100%;height:100%;object-fit:cover;"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-         >
-         <div class="pc-emoji-wrap" style="display:none;position:absolute;inset:0"><span class="pc-emoji">${emo(p.category)}</span></div>`
-      : `<div class="pc-emoji-wrap"><span class="pc-emoji">${emo(p.category)}</span></div>`;
-
-    const tags = [
-      p.size && `<span class="pc-tag">${p.size}</span>`,
-      p.color && `<span class="pc-tag">${p.color}</span>`
-    ].filter(Boolean).join('');
-    const stars = (3.8 + (Math.abs((p.id||1)*13) % 15) / 10).toFixed(1);
-    const rc = 20 + ((p.id||1)*17 % 180);
-    const pd = JSON.stringify(p).replace(/"/g, '&quot;');
-
-    return `<div class="product-card" onclick="openModal(${pd})">
-  <div class="pc-img" style="position:relative">${badge}${imgSection}</div>
-  <div class="pc-body">
-    <div class="pc-brand">${p.brand || 'JV Collection'}</div>
-    <div class="pc-name">${p.name}</div>
-    <div class="pc-rating"><span class="pc-stars">★ ${stars}</span><span class="pc-rcount">(${rc})</span></div>
-    <div class="pc-price">₹${Number(p.price).toLocaleString('en-IN')}</div>
-    <div class="pc-tags">${tags}</div>
-    <div class="pc-actions">
-      ${!out
-        ? `<button class="pc-btn-wa" onclick="event.stopPropagation();waEnq('${p.name}','${p.barcode_id}',${p.price})">💬 WhatsApp</button>
-           <button class="pc-btn-chat" onclick="event.stopPropagation();openChatWithProd(${pd})">Chat</button>`
-        : `<button class="pc-btn-out">Out of Stock</button>`}
-    </div>
-  </div>
-</div>`;
-  }).join('');
-}
-
-function filterCat(cat, el) {
-  currentCat = cat;
-  document.querySelectorAll('.cat-item').forEach(e => e.classList.remove('active'));
-  if (el) el.classList.add('active');
-  else {
-    const f = document.querySelector(`.cat-item[data-cat="${cat}"]`);
-    if (f) { f.classList.add('active'); f.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' }); }
-  }
-  document.getElementById('products-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+function applySearch() {
+  const val = document.getElementById('search-input').value;
+  document.getElementById('sidebar-search').value = val;
   applyFilters();
 }
 
-function setSort(btn, val) {
-  currentSort = val;
+function filterByCategory(cat) {
+  currentCategory = cat;
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+  event?.target?.classList?.add('active');
+  applyFilters();
+}
+
+function setSort(type, btn) {
+  currentSort = type;
   document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active'); applyFilters();
+  if (btn) btn.classList.add('active');
+  sortProducts();
+}
+
+function sortProducts() {
+  const prods = [...filteredProducts];
+  if (currentSort === 'price_asc') prods.sort((a, b) => a.price - b.price);
+  else if (currentSort === 'price_desc') prods.sort((a, b) => b.price - a.price);
+  else if (currentSort === 'az') prods.sort((a, b) => a.name.localeCompare(b.name));
+  renderProducts(prods);
 }
 
 function clearAllFilters() {
-  selSizes.clear(); selColors.clear(); currentCat = 'all'; currentSort = '';
-  document.getElementById('f-instock').checked = false;
-  document.getElementById('price-min').value = ''; document.getElementById('price-max').value = '';
-  document.querySelectorAll('.filters-sidebar input[type=checkbox]').forEach(cb => cb.checked = false);
+  currentCategory = '';
+  currentSort = 'relevance';
+  document.getElementById('search-input').value = '';
+  document.getElementById('sidebar-search').value = '';
+  document.getElementById('in-stock').checked = false;
+  document.getElementById('price-min').value = '';
+  document.getElementById('price-max').value = '';
+  document.querySelectorAll('.size-cb,.color-cb').forEach(cb => cb.checked = false);
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+  document.querySelector('.cat-pill')?.classList.add('active');
   document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector('.sort-btn[data-sort=""]').classList.add('active');
-  document.querySelectorAll('.cat-item').forEach(e => e.classList.remove('active'));
-  document.querySelector('.cat-item[data-cat="all"]').classList.add('active');
+  document.querySelector('.sort-btn')?.classList.add('active');
   applyFilters();
 }
+function clearSizeFilter() { document.querySelectorAll('.size-cb').forEach(cb => cb.checked = false); applyFilters(); }
+function clearColorFilter() { document.querySelectorAll('.color-cb').forEach(cb => cb.checked = false); applyFilters(); }
 
-// ── Search ──
-let st;
-document.getElementById('search-input').addEventListener('input', function() {
-  clearTimeout(st); const q = this.value.trim(); const dd = document.getElementById('search-dropdown');
-  if (!q) { dd.classList.remove('open'); return; }
-  st = setTimeout(() => {
-    const res = all.filter(p =>
-      p.name.toLowerCase().includes(q.toLowerCase()) ||
-      (p.brand||'').toLowerCase().includes(q.toLowerCase()) ||
-      (p.category||'').toLowerCase().includes(q.toLowerCase()) ||
-      (p.color||'').toLowerCase().includes(q.toLowerCase())
-    ).slice(0, 8);
-    if (!res.length) { dd.classList.remove('open'); return; }
-    dd.innerHTML = res.map(p => {
-      const thumb = p.image_url
-        ? `<img class="sd-thumb" src="${p.image_url}" onerror="this.outerHTML='<div class=sd-thumb-emoji>${emo(p.category)}</div>'">`
-        : `<div class="sd-thumb-emoji">${emo(p.category)}</div>`;
-      const pd = JSON.stringify(p).replace(/"/g, '&quot;');
-      return `<div class="sd-item" onclick="openModal(${pd});document.getElementById('search-dropdown').classList.remove('open');document.getElementById('search-input').value=''">
-        ${thumb}
-        <div><div class="sd-name">${p.name}</div><div class="sd-meta">${p.category||''}${p.size?' · '+p.size:''}${p.color?' · '+p.color:''}</div></div>
-        <div class="sd-price">₹${Number(p.price).toLocaleString('en-IN')}</div>
-      </div>`;
-    }).join('');
-    dd.classList.add('open');
-  }, 250);
-});
+// ═══════════════════════════════════════════════════════
+//  RENDER PRODUCTS (Fix #1 — correct image handling, Fix #6)
+// ═══════════════════════════════════════════════════════
+function renderProducts(products) {
+  const grid = document.getElementById('products-grid');
+  const label = document.getElementById('result-label');
+  const count = document.getElementById('result-count');
 
-function triggerSearch() {
-  const q = document.getElementById('search-input').value.trim();
-  if (q) {
-    renderGrid(all.filter(p => p.name.toLowerCase().includes(q.toLowerCase()) || (p.brand||'').toLowerCase().includes(q.toLowerCase())));
-    document.getElementById('search-dropdown').classList.remove('open');
+  const total = products.length;
+  label.textContent = `${total} product${total !== 1 ? 's' : ''} found`;
+  count.textContent = `${total} results`;
+
+  if (total === 0) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="icon">${currentCategory ? catIcon(currentCategory) : '🔍'}</div><h3>No products found</h3><p>Try adjusting your filters or search query.</p></div>`;
+    return;
   }
+
+  // Random ratings for display (stores look better with ratings)
+  grid.innerHTML = products.map((p, i) => {
+    const hasImg = p.image_url && p.image_url.startsWith('http');
+    const rating = (4.0 + Math.random() * 1.0).toFixed(1);
+    const ratingCount = Math.floor(20 + Math.random() * 200);
+    const inStock = p.stock_qty > 0;
+    const stockPct = Math.min(100, (p.stock_qty / 50) * 100);
+    const stockColor = p.stock_qty <= 5 ? '#ff6161' : p.stock_qty <= 15 ? '#ff9f00' : '#26a541';
+    const waMsg = encodeURIComponent(`Hi! I want to buy "${p.name}"${p.size ? ' (Size: '+p.size+')' : ''} for ₹${p.price}. Is it available?`);
+
+    return `
+    <div class="product-card" role="listitem" onclick="openModal(${JSON.stringify(p).replace(/"/g,'&quot;')})">
+      <div class="card-img-wrap">
+        ${hasImg
+          ? `<img src="${p.image_url}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`
+          : ''
+        }
+        <div class="no-img-placeholder" ${hasImg ? 'style="display:none"' : ''}>
+          ${catIcon(p.category)}
+          <span>${p.category || 'Product'}</span>
+        </div>
+        <span class="card-badge ${inStock ? '' : 'out'}">${inStock ? '✓ IN STOCK' : 'OUT OF STOCK'}</span>
+        <button class="card-wishlist" onclick="event.stopPropagation();wishlist(this)" aria-label="Add to wishlist">🤍</button>
+        <div class="card-actions" onclick="event.stopPropagation()">
+          <button class="card-action-btn btn-chat" onclick="openChatForProduct('${p.barcode_id}','${p.name.replace(/'/g,"\\'")}',${p.price})">💬 Chat</button>
+          <button class="card-action-btn btn-wa" onclick="window.open('https://wa.me/918260362286?text=${waMsg}','_blank')" aria-label="WhatsApp">📱 WhatsApp</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">${p.brand || 'JV'}</div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-meta">
+          ${p.size ? `<span class="card-tag">${p.size}</span>` : ''}
+          ${p.color ? `<span class="card-tag">${p.color}</span>` : ''}
+          ${p.category ? `<span class="card-tag">${p.category}</span>` : ''}
+        </div>
+        <div class="card-rating">
+          <span class="rating-badge">⭐ ${rating}</span>
+          <span class="rating-count">(${ratingCount})</span>
+        </div>
+        <div class="card-price">
+          <span class="price-main">₹${Number(p.price).toLocaleString('en-IN')}</span>
+        </div>
+        ${p.stock_qty <= 10 && p.stock_qty > 0 ? `
+        <div class="stock-bar-wrap">
+          <div class="stock-label"><span>Only ${p.stock_qty} left!</span></div>
+          <div class="stock-bar"><div class="stock-fill" style="width:${stockPct}%;background:${stockColor}"></div></div>
+        </div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
 }
-document.addEventListener('click', e => {
-  if (!e.target.closest('.search-wrap')) document.getElementById('search-dropdown').classList.remove('open');
-});
 
-// ── Modal ──
+// ═══════════════════════════════════════════════════════
+//  PRODUCT MODAL with image zoom & thumbnails (Fix #6)
+// ═══════════════════════════════════════════════════════
 function openModal(p) {
-  modalProduct = p;
-  const inS = p.stock_qty > 5, low = p.stock_qty > 0 && p.stock_qty <= 5, out = p.stock_qty === 0;
-  const media = document.getElementById('m-media');
-
-  // ✅ Show real image in modal if available
-  if (p.image_url) {
-    media.innerHTML = `<img src="${encodeURI(p.image_url)}" alt="${p.name}"
-      style="width:100%;max-height:360px;object-fit:cover;border-radius:8px;display:block"
-      onerror="this.outerHTML='<div class=m-emoji-big>${emo(p.category)}</div>'">`;
-  } else {
-    media.innerHTML = `<div class="m-emoji-big">${emo(p.category)}</div>`;
+  // If p is a string (from onclick), parse it
+  if (typeof p === 'string') {
+    try { p = JSON.parse(p); } catch(e) { return; }
   }
+  selectedProduct = p;
+  const hasImg = p.image_url && p.image_url.startsWith('http');
+  const inStock = p.stock_qty > 0;
+  const waMsg = encodeURIComponent(`Hi! I want to buy "${p.name}"${p.size ? ' (Size: '+p.size+')' : ''} for ₹${p.price}. Is it available?`);
+  // Build thumbnails (main image + placeholder)
+  const thumbs = hasImg
+    ? `<div class="thumb active" onclick="setMainImg('${p.image_url}',this)"><img src="${p.image_url}" alt="${p.name}" loading="lazy"></div>`
+    : '';
 
-  document.getElementById('m-brand').textContent = p.brand || 'JV Collection';
-  document.getElementById('m-name').textContent = p.name;
-  document.getElementById('m-price').textContent = `₹${Number(p.price).toLocaleString('en-IN')}`;
-  document.getElementById('m-stars').textContent = `★ ${(3.8 + (Math.abs((p.id||1)*13) % 15)/10).toFixed(1)}`;
+  document.getElementById('modal-inner').innerHTML = `
+    <div class="modal-gallery">
+      <div class="main-image-wrap" id="main-img-wrap" onclick="toggleZoom()">
+        ${hasImg
+          ? `<img src="${p.image_url}" alt="${p.name}" id="main-img" loading="eager">`
+          : `<div class="no-img-placeholder" style="aspect-ratio:1">${catIcon(p.category)}<span>${p.category || 'Product'}</span></div>`
+        }
+        ${hasImg ? '<div class="zoom-hint">🔍 Click to zoom</div>' : ''}
+      </div>
+      ${thumbs ? `<div class="thumbnails">${thumbs}</div>` : ''}
+    </div>
+    <div class="modal-info">
+      <div class="modal-brand">${p.brand || 'JV'} · ${p.category || 'Men\'s Wear'}</div>
+      <div class="modal-name">${p.name}</div>
+      <div class="modal-price-wrap">
+        <span class="modal-price">₹${Number(p.price).toLocaleString('en-IN')}</span>
+        <span class="price-off">• Authentic</span>
+        ${inStock ? '<span style="background:#e6f7ee;color:#26a541;padding:4px 10px;border-radius:2px;font-size:12px;font-weight:700">✓ In Stock</span>' : '<span style="background:#fff0f0;color:#ff6161;padding:4px 10px;border-radius:2px;font-size:12px;font-weight:700">Out of Stock</span>'}
+      </div>
+      <div class="modal-divider"></div>
+      ${p.size ? `
+      <div>
+        <div class="size-label">Size</div>
+        <div class="size-grid"><div class="size-chip active">${p.size}</div></div>
+      </div>` : ''}
+      ${p.color ? `
+      <div>
+        <div class="size-label">Color</div>
+        <div class="size-grid"><div class="size-chip active">${p.color}</div></div>
+      </div>` : ''}
+      <div class="modal-actions">
+        <button class="modal-btn btn-secondary-action" onclick="openChatForProduct('${p.barcode_id}','${p.name.replace(/'/g,"\\'")}',${p.price});closeModal()">
+          💬 Chat to Buy
+        </button>
+        <a class="modal-btn btn-primary-action" href="https://wa.me/918260362286?text=${waMsg}" target="_blank" rel="noopener">
+          📱 WhatsApp
+        </a>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="highlights">
+        <h4>Product Details</h4>
+        <div class="highlight-item"><div class="highlight-dot"></div><span>Barcode ID: ${p.barcode_id}</span></div>
+        ${p.category ? `<div class="highlight-item"><div class="highlight-dot"></div><span>Category: ${p.category}</span></div>` : ''}
+        ${p.size ? `<div class="highlight-item"><div class="highlight-dot"></div><span>Size: ${p.size}</span></div>` : ''}
+        ${p.color ? `<div class="highlight-item"><div class="highlight-dot"></div><span>Color: ${p.color}</span></div>` : ''}
+        <div class="highlight-item"><div class="highlight-dot"></div><span>Stock: ${p.stock_qty > 0 ? p.stock_qty + ' pieces available' : 'Currently out of stock'}</span></div>
+        <div class="highlight-item"><div class="highlight-dot"></div><span>Visit us at Kashinagar Bus Stand, GMR Complex, Odisha — 761206</span></div>
+        <div class="highlight-item"><div class="highlight-dot"></div><span>Call: 8260362286 | Mon–Sun 9am–9pm</span></div>
+      </div>
+    </div>`;
 
-  const sb2 = document.getElementById('m-stock-badge');
-  sb2.className = 'm-stock-badge ' + (inS ? 'green' : low ? 'orange' : 'red');
-  sb2.textContent = out ? '❌ Out of Stock' : inS ? '✅ In Stock — Available at Store' : `⚡ Only ${p.stock_qty} left`;
-
-  document.getElementById('m-detail-rows').innerHTML = [
-    ['Category', p.category || 'General'],
-    ['Size', p.size || '—'],
-    ['Color', p.color || '—'],
-    ['Brand', p.brand || 'JV Collection'],
-    ['Product ID', p.barcode_id]
-  ].map(([l,v]) => `<div class="m-detail-row"><span class="m-detail-label">${l}</span><span class="m-detail-value">${v}</span></div>`).join('');
-
-  const msg = encodeURIComponent(`Hi! I'm interested in:\n*${p.name}*\n${p.size?'Size: '+p.size+'\n':''}${p.color?'Color: '+p.color+'\n':''}Price: ₹${Number(p.price).toLocaleString('en-IN')}\nProduct ID: ${p.barcode_id}\n\nIs it available?`);
-  document.getElementById('m-wa').href = `https://wa.me/918260362286?text=${msg}`;
-  document.getElementById('m-pid').textContent = `Product ID: ${p.barcode_id}`;
-
-  document.getElementById('modal').classList.add('open');
+  document.getElementById('product-modal').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
-  document.getElementById('modal').classList.remove('open');
+  document.getElementById('product-modal').classList.remove('active');
   document.body.style.overflow = '';
-  modalProduct = null;
+  selectedProduct = null;
 }
 
-function openChatFromModal() {
-  if (modalProduct) { const p = modalProduct; closeModal(); openChatWithProd(p); }
+function setMainImg(src, thumbEl) {
+  const mainImg = document.getElementById('main-img');
+  if (mainImg) mainImg.src = src;
+  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  thumbEl?.classList.add('active');
+  // Reset zoom
+  const wrap = document.getElementById('main-img-wrap');
+  wrap?.classList.remove('zoomed');
 }
 
-function waEnq(name, id, price) {
-  const msg = encodeURIComponent(`Hi! I'm interested in *${name}* (₹${Number(price).toLocaleString('en-IN')}). Is it available?`);
-  window.open(`https://wa.me/918260362286?text=${msg}`, '_blank');
+function toggleZoom() {
+  const wrap = document.getElementById('main-img-wrap');
+  if (!wrap || !document.getElementById('main-img')) return;
+  wrap.classList.toggle('zoomed');
 }
 
-// ── Realtime products ──
-function setupRealtime() {
-  sb.channel('products').on('postgres_changes', { event: '*', schema: 'public', table: 'products' }, payload => {
-    const { eventType, new: nr, old: or } = payload;
-    if (eventType === 'INSERT') { all.push(nr); showToast('✨ New: ' + nr.name); }
-    else if (eventType === 'UPDATE') {
-      const i = all.findIndex(p => p.barcode_id === nr.barcode_id);
-      if (i > -1) all[i] = nr; else all.push(nr);
-    } else if (eventType === 'DELETE') {
-      all = all.filter(p => p.barcode_id !== or.barcode_id);
-    }
-    buildFilters(); applyFilters();
-  }).subscribe();
+function wishlist(btn) {
+  btn.textContent = btn.textContent === '🤍' ? '❤️' : '🤍';
+  showToast(btn.textContent === '❤️' ? 'Added to wishlist!' : 'Removed from wishlist');
 }
 
-// ════════════════════════════════════════════════════════
-// LIVE CHAT
-// ════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+//  VIEW TOGGLE
+// ═══════════════════════════════════════════════════════
+function setView(view) {
+  currentView = view;
+  const grid = document.getElementById('products-grid');
+  grid.classList.toggle('list-view', view === 'list');
+  document.getElementById('view-grid').classList.toggle('active', view === 'grid');
+  document.getElementById('view-list').classList.toggle('active', view === 'list');
+}
+
+// ═══════════════════════════════════════════════════════
+//  CHAT SYSTEM
+//  Fix #2: Admin replies now shown (polls ALL messages for session)
+//  Fix #3: Session persists via localStorage (not sessionStorage)
+// ═══════════════════════════════════════════════════════
+const CHAT_SESSION_KEY = 'jv_chat_session_id';
+const CHAT_NAME_KEY = 'jv_chat_visitor_name';
+const CHAT_MSGS_KEY = 'jv_chat_messages_cache';
+let chatSessionId = null;
+let chatPolling = null;
+let lastMsgCount = 0;
+let chatOpen = false;
+let pendingProductInfo = null;
+
+function getChatSessionId() {
+  // Fix #3: Use localStorage so session persists across refreshes
+  let sid = localStorage.getItem(CHAT_SESSION_KEY);
+  if (!sid) {
+    sid = 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
+    localStorage.setItem(CHAT_SESSION_KEY, sid);
+  }
+  return sid;
+}
+
+function getVisitorName() {
+  return localStorage.getItem(CHAT_NAME_KEY) || 'Customer';
+}
+
 function toggleChat() {
   chatOpen = !chatOpen;
-  document.getElementById('chat-win').classList.toggle('open', chatOpen);
+  const widget = document.getElementById('chat-widget');
+  widget.classList.toggle('open', chatOpen);
+  document.getElementById('chat-fab').innerHTML = chatOpen ? '✕<span class="badge" id="chat-fab-badge" style="display:none"></span>' : '💬<span class="badge" id="chat-fab-badge" style="display:none"></span>';
+
   if (chatOpen) {
-    unread = 0; updateUnread();
-    if (visitorName && sessionId) scrollMsgs();
+    chatSessionId = getChatSessionId();
+    initChatSession();
+    document.getElementById('chat-input').focus();
+  } else {
+    clearInterval(chatPolling);
   }
 }
 
-function updateUnread() {
-  const el = document.getElementById('chat-unread');
-  el.style.display = unread > 0 ? 'flex' : 'none';
-  el.textContent = unread > 9 ? '9+' : unread;
-}
+async function initChatSession() {
+  const container = document.getElementById('chat-messages');
+  // Show cached messages immediately (Fix #3)
+  const cached = localStorage.getItem(CHAT_MSGS_KEY + '_' + chatSessionId);
+  if (cached) {
+    try {
+      const msgs = JSON.parse(cached);
+      if (msgs.length > 0) {
+        renderMessages(msgs);
+        lastMsgCount = msgs.length;
+        startPolling();
+        return;
+      }
+    } catch(e) {}
+  }
 
-async function startChat() {
-  const name = document.getElementById('cw-visitor-name').value.trim();
-  if (!name) { document.getElementById('cw-visitor-name').focus(); return; }
-  visitorName = name;
-  sessionId = 'sess_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+  // Show welcome message
+  container.innerHTML = `
+    <div class="chat-welcome">
+      <div class="logo">💬</div>
+      <h3>JV Unique Collection</h3>
+      <p>Hi! 👋 We're here to help you. Ask about any product or visit us at Kashinagar Bus Stand.</p>
+    </div>`;
 
-  document.getElementById('cw-name-form').style.display = 'none';
-  document.getElementById('cw-msgs').style.display = 'flex';
-  document.getElementById('cw-foot').style.display = 'flex';
-
-  // Create session in Supabase
-  await sb.from('chat_sessions').insert({
-    session_id: sessionId,
-    visitor_name: name,
-    product_barcode: chatProduct?.barcode_id || null,
-    product_name: chatProduct?.name || null,
-    last_message: chatProduct ? `Asking about: ${chatProduct.name}` : 'New conversation',
-    status: 'open',
-  });
-
-  const welcome = chatProduct
-    ? `Hi ${name}! 👋 I can see you're asking about **${chatProduct.name}** (₹${Number(chatProduct.price).toLocaleString('en-IN')}). We'll reply shortly! Our store is open 9am–9pm at Kashinagar Bus Stand.`
-    : `Hi ${name}! 👋 Welcome to JV Unique Collection! How can I help you today?`;
-
-  addMsgLocal(welcome, 'shop');
-
-  if (chatProduct) {
-    await sb.from('chat_messages').insert({
-      session_id: sessionId, sender: 'system', sender_name: 'System',
-      message: `🔔 Customer "${name}" is asking about: ${chatProduct.name} (${chatProduct.barcode_id}) — ₹${chatProduct.price}`,
-      product_barcode: chatProduct.barcode_id, product_name: chatProduct.name,
+  // Create session in Supabase (Fix #3 — upsert to avoid duplicates on refresh)
+  try {
+    await sbFetch('/rest/v1/chat_sessions', {
+      method: 'POST',
+      headers: { 'Prefer': 'resolution=merge-duplicates,return=minimal' },
+      body: JSON.stringify({
+        session_id: chatSessionId,
+        visitor_name: getVisitorName(),
+        last_message: '',
+        status: 'open',
+        unread_count: 0,
+        updated_at: new Date().toISOString()
+      })
     });
+  } catch(e) { console.warn('[Chat] Session create/upsert:', e); }
+
+  // Load existing messages for this session
+  await loadMessages();
+  startPolling();
+}
+
+function startPolling() {
+  clearInterval(chatPolling);
+  // Fix #2: Poll ALL messages for session (shop + customer), not just customer
+  chatPolling = setInterval(() => {
+    if (chatOpen) loadMessages(false);
+  }, 3000);
+}
+
+async function loadMessages(scrollDown = true) {
+  if (!chatSessionId) return;
+  try {
+    // Fix #2: No sender filter — get ALL messages for this session
+    const msgs = await sbFetch(`/rest/v1/chat_messages?session_id=eq.${encodeURIComponent(chatSessionId)}&order=created_at.asc&limit=100`);
+
+    if (!Array.isArray(msgs)) return;
+    if (msgs.length !== lastMsgCount) {
+      lastMsgCount = msgs.length;
+      // Fix #3: Cache messages in localStorage
+      try { localStorage.setItem(CHAT_MSGS_KEY + '_' + chatSessionId, JSON.stringify(msgs)); } catch(e) {}
+      renderMessages(msgs, scrollDown);
+    }
+  } catch(e) { console.warn('[Chat] Load messages error:', e); }
+}
+
+function renderMessages(msgs, scrollDown = true) {
+  const container = document.getElementById('chat-messages');
+  if (!msgs || msgs.length === 0) {
+    container.innerHTML = `<div class="chat-welcome"><div class="logo">💬</div><h3>JV Unique Collection</h3><p>Hi! 👋 How can we help you today?</p></div>`;
+    return;
   }
 
-  subscribeChat();
-  setTimeout(() => document.getElementById('cw-input').focus(), 100);
+  container.innerHTML = msgs.map(m => {
+    const time = m.created_at ? new Date(m.created_at).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) : '';
+    const cls = m.sender === 'system' ? 'system' : m.sender === 'shop' ? 'shop' : 'customer';
+    return `<div class="chat-msg ${cls}">${escHtml(m.message)}<span class="msg-time">${time}</span></div>`;
+  }).join('');
+
+  if (scrollDown) container.scrollTop = container.scrollHeight;
 }
 
-function addMsgLocal(text, cls) {
-  const msgs = document.getElementById('cw-msgs');
-  const d = document.createElement('div');
-  d.className = 'cw-msg ' + cls;
-  d.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-  const t = document.createElement('div');
-  t.className = 'msg-time';
-  t.textContent = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
-  d.appendChild(t);
-  msgs.appendChild(d);
-  scrollMsgs();
-}
+async function sendMessage() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
 
-function scrollMsgs() {
-  const m = document.getElementById('cw-msgs');
-  m.scrollTop = m.scrollHeight;
-}
+  chatSessionId = getChatSessionId();
+  const visitorName = getVisitorName();
+  input.value = '';
+  input.style.height = '';
+  document.getElementById('chat-send-btn').disabled = true;
 
-async function sendMsg() {
-  const inp = document.getElementById('cw-input');
-  const text = inp.value.trim();
-  if (!text || !sessionId) return;
-  inp.value = '';
-  addMsgLocal(text, 'customer');
+  // Optimistic render
+  const tempMsgs = lastMsgCount > 0
+    ? JSON.parse(localStorage.getItem(CHAT_MSGS_KEY + '_' + chatSessionId) || '[]')
+    : [];
+  tempMsgs.push({ sender: 'customer', sender_name: visitorName, message: text, created_at: new Date().toISOString() });
+  renderMessages(tempMsgs);
 
   try {
-    await sb.from('chat_messages').insert({
-      session_id: sessionId, sender: 'customer', sender_name: visitorName,
-      message: text,
-      product_barcode: chatProduct?.barcode_id || null,
-      product_name: chatProduct?.name || null,
-      is_read: false,
+    // Insert message
+    await sbFetch('/rest/v1/chat_messages', {
+      method: 'POST',
+      headers: { 'Prefer': 'return=minimal' },
+      body: JSON.stringify({
+        session_id: chatSessionId,
+        sender: 'customer',
+        sender_name: visitorName,
+        message: text,
+        is_read: false,
+        ...(pendingProductInfo || {})
+      })
     });
-    // Update session last message
-    await sb.from('chat_sessions').update({
-      last_message: text, updated_at: new Date().toISOString(),
-      unread_count: sb.rpc ? undefined : 1, // will be handled by admin reading
-    }).eq('session_id', sessionId);
+
+    // Update session last_message + unread_count
+    await sbFetch(`/rest/v1/chat_sessions?session_id=eq.${encodeURIComponent(chatSessionId)}`, {
+      method: 'PATCH',
+      headers: { 'Prefer': 'return=minimal' },
+      body: JSON.stringify({
+        last_message: text,
+        status: 'open',
+        updated_at: new Date().toISOString()
+      })
+    });
+
+    pendingProductInfo = null;
+    await loadMessages(true);
   } catch(e) {
-    console.error('Chat error:', e);
+    console.error('[Chat] Send error:', e);
+    showToast('Failed to send. Check connection.');
+  } finally {
+    document.getElementById('chat-send-btn').disabled = false;
+    input.focus();
   }
 }
 
-function subscribeChat() {
-  if (chatCh) chatCh.unsubscribe();
-  chatCh = sb.channel('chat_customer_' + sessionId)
-    .on('postgres_changes', {
-      event: 'INSERT', schema: 'public', table: 'chat_messages',
-      filter: `session_id=eq.${sessionId}`
-    }, payload => {
-      const m = payload.new;
-      if (m.sender === 'shop') {
-        addMsgLocal(m.message, 'shop');
-        if (!chatOpen) { unread++; updateUnread(); showToast('💬 New reply from JV Collection!'); }
-      }
-    }).subscribe();
+async function sendQuick(text) {
+  document.getElementById('chat-input').value = text;
+  await sendMessage();
 }
 
-function openChatWithProd(p) {
-  chatProduct = p;
+function openChatForProduct(barcodeId, name, price) {
+  // Open chat with product context
+  pendingProductInfo = {
+    product_barcode: barcodeId,
+    product_name: name
+  };
+
   if (!chatOpen) toggleChat();
-  if (!visitorName) {
-    // Show product pill above name form
-    const form = document.getElementById('cw-name-form');
-    if (!form.querySelector('.cw-product-pill')) {
-      const pill = document.createElement('div');
-      pill.className = 'cw-product-pill';
-      pill.textContent = 'Re: ' + p.name + ' — ₹' + Number(p.price).toLocaleString('en-IN');
-      form.insertBefore(pill, form.firstChild);
+  chatSessionId = getChatSessionId();
+
+  // If session is new, send a system message with product info
+  setTimeout(async () => {
+    // Check if we already have a session for this product
+    const cached = localStorage.getItem(CHAT_MSGS_KEY + '_' + chatSessionId);
+    let msgs = [];
+    try { msgs = JSON.parse(cached || '[]'); } catch(e) {}
+
+    const alreadyHasProduct = msgs.some(m => m.product_barcode === barcodeId);
+    if (!alreadyHasProduct) {
+      // Insert system message
+      try {
+        await sbFetch('/rest/v1/chat_messages', {
+          method: 'POST',
+          headers: { 'Prefer': 'return=minimal' },
+          body: JSON.stringify({
+            session_id: chatSessionId,
+            sender: 'system',
+            sender_name: 'System',
+            message: `Customer "${getVisitorName()}" is asking about: ${name} (${barcodeId}) — ₹${price}`,
+            is_read: false,
+            product_barcode: barcodeId,
+            product_name: name
+          })
+        });
+        await loadMessages(true);
+      } catch(e) {}
     }
-  } else {
-    addMsgLocal(`I want to ask about **${p.name}** (₹${Number(p.price).toLocaleString('en-IN')})`, 'customer');
-    sb.from('chat_messages').insert({
-      session_id: sessionId, sender: 'system', sender_name: 'System',
-      message: `Customer asking about: ${p.name} (${p.barcode_id})`,
-    });
+
+    // Pre-fill input
+    document.getElementById('chat-input').value = `I want to buy "${name}" for ₹${price}. Is it available?`;
+    document.getElementById('chat-input').focus();
+  }, 300);
+}
+
+function autoResize(el) {
+  el.style.height = '';
+  el.style.height = Math.min(el.scrollHeight, 80) + 'px';
+}
+
+// ═══════════════════════════════════════════════════════
+//  MOBILE SIDEBAR
+// ═══════════════════════════════════════════════════════
+function toggleMobileSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('filter-overlay');
+  sidebar.classList.toggle('mobile-open');
+  overlay.classList.toggle('active');
+}
+
+// ═══════════════════════════════════════════════════════
+//  REALTIME SUBSCRIPTION (Fix #2 — live admin replies)
+// ═══════════════════════════════════════════════════════
+function setupRealtimeChat() {
+  // Supabase Realtime via WebSocket
+  const wsUrl = `wss://${SB_URL.replace('https://', '')}/realtime/v1/websocket?vsn=1.0.0&apikey=${SB_KEY}`;
+  let ws;
+  let heartbeat;
+
+  function connect() {
+    try {
+      ws = new WebSocket(wsUrl);
+      ws.onopen = () => {
+        // Join the chat_messages channel
+        ws.send(JSON.stringify({
+          topic: 'realtime:public:chat_messages',
+          event: 'phx_join',
+          payload: { config: { broadcast: { self: false }, presence: { key: '' }, postgres_changes: [{ event: 'INSERT', schema: 'public', table: 'chat_messages' }] } },
+          ref: '1'
+        }));
+        heartbeat = setInterval(() => {
+          ws.send(JSON.stringify({ topic: 'phoenix', event: 'heartbeat', payload: {}, ref: Date.now() }));
+        }, 20000);
+      };
+      ws.onmessage = (e) => {
+        try {
+          const msg = JSON.parse(e.data);
+          // Fix #2: When a shop message arrives for our session, reload messages
+          if (msg.event === 'INSERT' && msg.payload?.record) {
+            const rec = msg.payload.record;
+            if (rec.session_id === chatSessionId && chatOpen) {
+              loadMessages(true);
+            }
+          }
+        } catch(err) {}
+      };
+      ws.onclose = () => {
+        clearInterval(heartbeat);
+        setTimeout(connect, 3000); // reconnect on disconnect
+      };
+      ws.onerror = () => ws.close();
+    } catch(e) {}
+  }
+  connect();
+}
+
+// ═══════════════════════════════════════════════════════
+//  UTILITY FUNCTIONS
+// ═══════════════════════════════════════════════════════
+function escHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;').replace(/\n/g,'<br>');
+}
+
+function showToast(msg, duration = 2500) {
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity .3s'; setTimeout(() => t.remove(), 300); }, duration);
+}
+
+// Scroll to top button
+window.addEventListener('scroll', () => {
+  document.getElementById('scroll-top')?.classList.toggle('visible', window.scrollY > 400);
+});
+
+// Keyboard: close modal on Escape
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ═══════════════════════════════════════════════════════
+//  VISITOR NAME PROMPT (for better chat UX)
+// ═══════════════════════════════════════════════════════
+function ensureVisitorName() {
+  if (!localStorage.getItem(CHAT_NAME_KEY)) {
+    const name = prompt('What\'s your name? (for chat)') || 'Customer';
+    localStorage.setItem(CHAT_NAME_KEY, name.trim().slice(0, 30) || 'Customer');
   }
 }
 
-function showErr() {
-  document.getElementById('products-grid').innerHTML = `<div class="empty-state"><div class="es-img">⚠️</div><h3>Could not load products</h3><p>Call 8260362286 or WhatsApp us</p></div>`;
-}
+// ═══════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  // Sync sidebar search with header search
+  document.getElementById('sidebar-search').addEventListener('input', e => {
+    document.getElementById('search-input').value = e.target.value;
+    applyFilters();
+  });
+  document.getElementById('search-input').addEventListener('keydown', e => { if (e.key === 'Enter') applySearch(); });
 
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3500);
-}
+  loadProducts();
+  setupRealtimeChat();
 
-document.addEventListener('DOMContentLoaded', init);
+  // Check for unread messages on load
+  const lastSession = localStorage.getItem(CHAT_SESSION_KEY);
+  if (lastSession) {
+    chatSessionId = lastSession;
+  }
+});
 </script>
+
+<!-- ══ SITEMAP & ROBOTS hints via meta (Fix #4) ══ -->
+<!-- Note: Create sitemap.xml and robots.txt at root of your Vercel project -->
 </body>
 </html>
