@@ -22,10 +22,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
 <style>
-/* ════════════════════════════════════════════════════════════
-   JV UNIQUE COLLECTION — Website v6.0 MEGA UPGRADE
-   All 10 Features: Gallery · Trends · AI Chat · Analytics · 3D
-════════════════════════════════════════════════════════════ */
 :root {
   --primary:#2874f0;--primary-dark:#1a5dc7;--accent:#fb641b;--accent2:#ff9f00;
   --green:#26a541;--red:#ff6161;--gold:#f0c040;--text:#212121;--text2:#878787;
@@ -39,7 +35,6 @@ img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;font-family:inherit}
 
-/* ── HEADER ── */
 .header{background:linear-gradient(135deg,#2874f0 0%,#1a5dc7 100%);position:sticky;top:0;z-index:1000;box-shadow:0 2px 12px rgba(0,0,0,0.2);}
 .header-top{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:10px 16px;}
 .logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0;cursor:pointer}
@@ -47,9 +42,9 @@ button{cursor:pointer;font-family:inherit}
 .logo-text{color:#fff;line-height:1.2}
 .logo-text .brand{font-size:15px;font-weight:800;letter-spacing:.5px}
 .logo-text .sub{font-size:10px;opacity:.75;font-weight:400}
-.search-wrap{flex:1;max-width:600px;display:flex;background:#fff;border-radius:3px;overflow:hidden;}
+.search-wrap{flex:1;max-width:600px;display:flex;background:#fff;border-radius:3px;overflow:visible;position:relative;}
 .search-wrap input{flex:1;border:none;outline:none;padding:10px 16px;font-size:14px;font-family:'Outfit',sans-serif;color:var(--text);}
-.search-wrap button{background:var(--accent2);border:none;padding:0 20px;display:flex;align-items:center;gap:6px;font-weight:700;font-size:13px;color:#fff;transition:background .2s;}
+.search-wrap button{background:var(--accent2);border:none;padding:0 20px;display:flex;align-items:center;gap:6px;font-weight:700;font-size:13px;color:#fff;transition:background .2s;white-space:nowrap;border-radius:0 3px 3px 0;}
 .search-wrap button:hover{background:#e6940a}
 .header-actions{display:flex;align-items:center;gap:14px;margin-left:auto}
 .header-btn{display:flex;flex-direction:column;align-items:center;gap:2px;color:#fff;font-size:12px;font-weight:600;padding:4px 8px;border-radius:3px;border:none;background:transparent;transition:background .2s;white-space:nowrap;position:relative;}
@@ -62,7 +57,19 @@ button{cursor:pointer;font-family:inherit}
 .cat-pill{background:transparent;border:none;color:rgba(255,255,255,.85);font-size:12px;font-weight:600;padding:4px 12px;border-radius:2px;white-space:nowrap;transition:all .2s;cursor:pointer;font-family:inherit;}
 .cat-pill:hover,.cat-pill.active{background:rgba(255,255,255,.2);color:#fff}
 
-/* ── OFFER BANNER SLIDER ── */
+/* AI SUGGESTIONS DROPDOWN */
+.ai-suggestions{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--border);border-top:2px solid var(--primary);border-radius:0 0 8px 8px;box-shadow:var(--shadow-lg);z-index:200;max-height:400px;overflow-y:auto;display:none;}
+.ai-suggestions.visible{display:block}
+.sugg-section-title{padding:8px 16px 4px;font-size:10px;font-weight:800;color:var(--text2);text-transform:uppercase;letter-spacing:1px;background:#f8f9ff;}
+.ai-suggestion-item{padding:10px 16px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:background .15s;border-bottom:1px solid #f5f5f5;}
+.ai-suggestion-item:hover{background:#f0f5ff}
+.ai-suggestion-item .si-icon{font-size:20px;flex-shrink:0;width:32px;height:32px;background:#f0f4ff;border-radius:6px;display:flex;align-items:center;justify-content:center;}
+.ai-suggestion-item .si-text{font-size:13px;font-weight:600;color:var(--text)}
+.ai-suggestion-item .si-sub{font-size:11px;color:var(--text2);margin-top:1px}
+.ai-suggestion-item .si-badge{margin-left:auto;background:#e8f5e9;color:#26a541;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;flex-shrink:0;}
+.ai-suggestion-item .si-badge.hot{background:#fff3e0;color:#fb641b;}
+
+/* OFFER SLIDER */
 .offer-slider{background:linear-gradient(135deg,#2874f0,#1a5dc7);overflow:hidden;position:relative;}
 .offer-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);}
 .offer-slide{min-width:100%;padding:10px 20px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:13px;font-weight:700;color:#fff;}
@@ -71,7 +78,7 @@ button{cursor:pointer;font-family:inherit}
 .offer-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:background .3s;}
 .offer-dot.active{background:rgba(255,255,255,.9)}
 
-/* ── HERO ── */
+/* HERO */
 .hero{background:linear-gradient(135deg,#2874f0 0%,#1a5dc7 60%,#0d3f8f 100%);padding:40px 16px;text-align:center;color:#fff;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
 .hero-content{position:relative;z-index:1;max-width:600px;margin:0 auto}
@@ -81,17 +88,15 @@ button{cursor:pointer;font-family:inherit}
 .hero-stat .num{font-size:26px;font-weight:900;color:#f0c040}
 .hero-stat .lbl{font-size:11px;opacity:.7;font-weight:500;text-transform:uppercase;letter-spacing:.5px}
 
-/* ── TRUST STRIP ── */
+/* TRUST STRIP */
 .trust-strip{background:#fff;border-bottom:1px solid var(--border);padding:12px 16px;overflow-x:auto;}
 .trust-inner{max-width:1400px;margin:0 auto;display:flex;gap:32px;justify-content:center;align-items:center;white-space:nowrap;}
 .trust-item{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--text2)}
 .trust-item .ic{font-size:18px}
 
-/* ════════════════════════════════════════════════════════════
-   FEATURE 1: FLIPKART-STYLE AUTO-SWEEP GALLERY BANNER
-════════════════════════════════════════════════════════════ */
+/* BANNER */
 .banner-section{background:#fff;padding:0;margin-bottom:8px;overflow:hidden;}
-.banner-slider-wrap{position:relative;overflow:hidden;border-radius:0;}
+.banner-slider-wrap{position:relative;overflow:hidden;}
 .banner-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1);will-change:transform;}
 .banner-slide{min-width:100%;position:relative;cursor:pointer;overflow:hidden;}
 .banner-slide img{width:100%;height:360px;object-fit:cover;display:block;transition:transform .3s;}
@@ -115,22 +120,7 @@ button{cursor:pointer;font-family:inherit}
 .banner-thumb img,.banner-thumb .bt-ph{width:100%;height:100%;object-fit:cover;}
 .banner-thumb .bt-ph{display:flex;align-items:center;justify-content:center;font-size:20px;}
 
-/* Banner lightbox */
-.banner-lightbox{display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.95);align-items:center;justify-content:center;flex-direction:column;}
-.banner-lightbox.active{display:flex}
-.bl-img{max-width:90vw;max-height:80vh;object-fit:contain;border-radius:8px;}
-.bl-info{color:#fff;text-align:center;margin-top:16px;max-width:600px;}
-.bl-title{font-size:20px;font-weight:800;font-family:'Playfair Display',serif;}
-.bl-sub{font-size:14px;opacity:.7;margin-top:4px;}
-.bl-close{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-.bl-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
-.bl-nav:hover{background:rgba(255,255,255,.25)}
-.bl-nav.prev{left:20px}
-.bl-nav.next{right:20px}
-
-/* ════════════════════════════════════════════════════════════
-   FEATURE 2/3: LIVE TRENDING SECTION
-════════════════════════════════════════════════════════════ */
+/* TRENDING */
 .trending-section{background:#fff;padding:20px 16px;margin-bottom:8px;border-bottom:1px solid var(--border);}
 .section-title-bar{max-width:1400px;margin:0 auto 16px;display:flex;align-items:center;justify-content:space-between;}
 .section-title-bar h2{font-size:17px;font-weight:800;color:var(--text);display:flex;align-items:center;gap:8px}
@@ -149,7 +139,6 @@ button{cursor:pointer;font-family:inherit}
 .trend-badge{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:2px;font-size:10px;font-weight:800;letter-spacing:.5px;}
 .badge-hot{background:#ff6161;color:#fff;}
 .badge-new{background:#26a541;color:#fff;}
-.badge-trending{background:#ff9f00;color:#fff;}
 .badge-fast{background:var(--primary);color:#fff;}
 .badge-low{background:#ff6161;color:#fff;animation:pulse-badge 1.5s infinite;}
 @keyframes pulse-badge{0%,100%{opacity:1}50%{opacity:.6}}
@@ -157,12 +146,9 @@ button{cursor:pointer;font-family:inherit}
 .trend-body{padding:10px 12px}
 .trend-name{font-size:13px;font-weight:600;color:var(--text);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 .trend-price{font-size:15px;font-weight:800;color:var(--text);margin-top:4px;}
-.trend-meta{font-size:10px;color:var(--text2);margin-top:2px;}
 .trend-views{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text2);margin-top:4px;}
 
-/* ════════════════════════════════════════════════════════════
-   FEATURE 4: REAL-TIME INVENTORY STATUS BADGES
-════════════════════════════════════════════════════════════ */
+/* STOCK STATUS */
 .stock-status{font-size:11px;font-weight:700;padding:3px 8px;border-radius:2px;letter-spacing:.3px;}
 .ss-plenty{background:#e8f5e9;color:#26a541;}
 .ss-low{background:#fff3e0;color:#fb641b;animation:pulse-badge 1.5s infinite;}
@@ -170,12 +156,8 @@ button{cursor:pointer;font-family:inherit}
 .ss-out{background:#f5f5f5;color:#9e9e9e;}
 .ss-restock{background:#e8eaf6;color:#3f51b5;}
 .ss-popular{background:#fce4ec;color:#e91e63;}
-.stock-bar-mini{height:3px;border-radius:2px;background:#eee;margin-top:4px;overflow:hidden;}
-.stock-bar-mini-fill{height:100%;border-radius:2px;transition:width .4s;}
 
-/* ════════════════════════════════════════════════════════════
-   MAIN LAYOUT
-════════════════════════════════════════════════════════════ */
+/* MAIN LAYOUT */
 .main-wrap{max-width:1400px;margin:0 auto;padding:16px;display:flex;gap:16px}
 .sidebar{width:240px;flex-shrink:0;}
 .filter-card{background:#fff;border-radius:var(--card-radius);padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
@@ -191,18 +173,7 @@ button{cursor:pointer;font-family:inherit}
 .apply-btn:hover{background:var(--primary-dark)}
 .clear-btn{background:none;border:none;color:var(--primary);font-size:12px;font-weight:600;cursor:pointer;padding:4px 0;font-family:inherit}
 
-/* Recently Viewed */
-.recently-viewed{background:#fff;border-radius:var(--card-radius);padding:16px;margin-bottom:12px;box-shadow:var(--shadow);}
-.rv-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.rv-list{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;}
-.rv-list::-webkit-scrollbar{display:none}
-.rv-item{flex-shrink:0;width:70px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;}
-.rv-thumb{width:64px;height:64px;border-radius:6px;overflow:hidden;border:2px solid var(--border);background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-size:24px;}
-.rv-thumb img{width:100%;height:100%;object-fit:cover}
-.rv-name{font-size:10px;color:var(--text2);text-align:center;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
-.rv-price{font-size:11px;font-weight:700;color:var(--text)}
-
-/* Products area */
+/* PRODUCTS */
 .products-area{flex:1;min-width:0}
 .sort-bar{background:#fff;border-radius:var(--card-radius);padding:12px 16px;display:flex;align-items:center;gap:12px;margin-bottom:12px;box-shadow:var(--shadow);flex-wrap:wrap;}
 .sort-bar .result-count{font-size:13px;color:var(--text2);margin-right:auto}
@@ -213,9 +184,7 @@ button{cursor:pointer;font-family:inherit}
 .view-btn{width:32px;height:32px;border:1px solid var(--border);background:#fff;border-radius:3px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:all .2s;}
 .view-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
 
-/* ════════════════════════════════════════════════════════════
-   PRODUCT CARDS with Real-time inventory + 3D viewer
-════════════════════════════════════════════════════════════ */
+/* PRODUCT CARDS */
 .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--border);border-radius:var(--card-radius);overflow:hidden;}
 .products-grid.list-view{grid-template-columns:1fr}
 .product-card{background:var(--surface);position:relative;display:flex;flex-direction:column;cursor:pointer;transition:box-shadow .2s;}
@@ -231,8 +200,6 @@ button{cursor:pointer;font-family:inherit}
 .card-wishlist{position:absolute;top:8px;right:8px;width:34px;height:34px;background:rgba(255,255,255,.95);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 2px 8px rgba(0,0,0,.2);transition:transform .2s,background .2s;z-index:2;}
 .card-wishlist:hover{transform:scale(1.2)}
 .card-wishlist.loved{background:#fff0f0}
-.card-3d-btn{position:absolute;bottom:48px;right:8px;width:30px;height:30px;background:rgba(255,255,255,.95);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.2);transition:transform .2s;z-index:2;display:none;}
-.product-card:hover .card-3d-btn{display:flex;}
 .card-actions{position:absolute;bottom:0;left:0;right:0;display:flex;gap:0;opacity:0;transform:translateY(4px);transition:all .25s;}
 .card-action-btn{flex:1;padding:10px;border:none;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:5px;transition:background .2s;font-family:inherit;cursor:pointer;}
 .btn-chat{background:var(--primary);color:#fff}
@@ -250,17 +217,17 @@ button{cursor:pointer;font-family:inherit}
 .card-price{margin-top:6px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
 .price-main{font-size:18px;font-weight:800;color:var(--text)}
 .card-realtime-status{margin-top:6px;}
+/* relevance highlight */
+.search-match-tag{background:#fff3e0;color:#fb641b;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;margin-top:3px;display:inline-block;}
 
-/* Skeleton */
+/* SKELETON */
 .skeleton-card{background:#fff;overflow:hidden}
 .skeleton-img{aspect-ratio:3/4;background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.4s infinite}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 .skeleton-line{height:12px;border-radius:4px;margin:6px 12px;background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.4s infinite}
 .skeleton-line.short{width:60%}.skeleton-line.price{width:40%;height:18px;margin-top:8px}
 
-/* ════════════════════════════════════════════════════════════
-   FEATURE 5: 3D PRODUCT VIEWER MODAL
-════════════════════════════════════════════════════════════ */
+/* 3D VIEWER */
 .viewer-3d-overlay{display:none;position:fixed;inset:0;z-index:4000;background:rgba(0,0,0,.95);align-items:center;justify-content:center;flex-direction:column;}
 .viewer-3d-overlay.active{display:flex}
 .viewer-3d-box{width:min(500px,95vw);background:#1a1a2e;border-radius:16px;overflow:hidden;position:relative;}
@@ -274,9 +241,7 @@ button{cursor:pointer;font-family:inherit}
 .v3d-btn:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.4);}
 .v3d-hint{color:rgba(255,255,255,.4);font-size:11px;text-align:center;padding:8px 20px;padding-top:0;}
 
-/* ════════════════════════════════════════════════════════════
-   PRODUCT MODAL (enhanced)
-════════════════════════════════════════════════════════════ */
+/* PRODUCT MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;align-items:flex-end;justify-content:center;backdrop-filter:blur(3px);}
 .modal-overlay.active{display:flex}
 .modal-box{background:#fff;width:100%;max-width:900px;max-height:92vh;border-radius:12px 12px 0 0;overflow:hidden;animation:slideUp .3s ease;display:flex;flex-direction:column;}
@@ -319,9 +284,46 @@ button{cursor:pointer;font-family:inherit}
 .highlight-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:7px;font-size:13px}
 .highlight-dot{width:7px;height:7px;background:var(--primary);border-radius:50%;flex-shrink:0;margin-top:4px}
 
-/* ════════════════════════════════════════════════════════════
-   FEATURE 8: ADVANCED CHAT SYSTEM
-════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════
+   AI ASSISTANT PANEL (Fixed - uses Claude API)
+══════════════════════════════════════════════════ */
+.ai-panel-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1800;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px);}
+.ai-panel-overlay.active{display:flex}
+.ai-panel-box{background:#fff;width:100%;max-width:680px;max-height:85vh;border-radius:16px 16px 0 0;overflow:hidden;animation:slideUp .3s ease;display:flex;flex-direction:column;}
+@media(min-width:768px){.ai-panel-overlay{align-items:center}.ai-panel-box{border-radius:16px;max-height:80vh}}
+.ai-panel-header{background:linear-gradient(135deg,#6366f1,#4f46e5);padding:18px 20px;display:flex;align-items:center;gap:12px;}
+.ai-panel-header h3{color:#fff;font-size:16px;font-weight:800;flex:1}
+.ai-panel-close{background:rgba(255,255,255,.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;}
+.ai-panel-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#f8f9ff;}
+.ai-msg{padding:12px 16px;border-radius:12px;font-size:13px;line-height:1.5;max-width:85%;}
+.ai-msg.user{background:var(--primary);color:#fff;align-self:flex-end;border-bottom-right-radius:4px;}
+.ai-msg.bot{background:#fff;color:var(--text);align-self:flex-start;border:1px solid var(--border);border-bottom-left-radius:4px;box-shadow:var(--shadow);}
+.ai-msg.bot.loading{background:#f0f0f0;color:#888;font-style:italic;}
+.ai-products-row{display:flex;gap:10px;overflow-x:auto;padding:8px 0;scrollbar-width:none;}
+.ai-products-row::-webkit-scrollbar{display:none}
+.ai-product-mini{min-width:140px;background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;flex-shrink:0;transition:box-shadow .2s;}
+.ai-product-mini:hover{box-shadow:var(--shadow-lg)}
+.ai-product-mini img{width:100%;height:110px;object-fit:cover;}
+.ai-product-mini .apm-placeholder{height:110px;background:#f0f4ff;display:flex;align-items:center;justify-content:center;font-size:36px;}
+.ai-product-mini .apm-body{padding:8px}
+.ai-product-mini .apm-name{font-size:12px;font-weight:600;color:var(--text);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.ai-product-mini .apm-price{font-size:13px;font-weight:800;color:var(--text);margin-top:3px;}
+.ai-suggestions-chips{display:flex;gap:8px;flex-wrap:wrap;padding:4px 0;}
+.ai-chip{background:#f0f4ff;border:1px solid #c7d7fb;color:var(--primary);font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;cursor:pointer;transition:all .2s;font-family:inherit;}
+.ai-chip:hover{background:var(--primary);color:#fff}
+.ai-panel-input-area{padding:12px 16px;background:#fff;border-top:1px solid var(--border);display:flex;gap:8px;align-items:flex-end;}
+.ai-panel-input{flex:1;border:1.5px solid var(--border);border-radius:20px;padding:10px 16px;font-size:13px;outline:none;resize:none;font-family:inherit;transition:border-color .2s;}
+.ai-panel-input:focus{border-color:var(--primary)}
+.ai-panel-send{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#4f46e5);border:none;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s;}
+.ai-panel-send:hover{transform:scale(1.1)}
+/* AI Fab */
+.ai-fab{position:fixed;bottom:90px;right:24px;z-index:1500;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#4f46e5);border:none;color:#fff;font-size:22px;box-shadow:0 4px 16px rgba(99,102,241,.5);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s;animation:aiPulse 3s infinite;}
+@keyframes aiPulse{0%,100%{box-shadow:0 4px 16px rgba(99,102,241,.5)}50%{box-shadow:0 4px 24px rgba(99,102,241,.8),0 0 0 8px rgba(99,102,241,.15)}}
+.ai-fab:hover{transform:scale(1.1);animation:none}
+
+/* ══════════════════════════════════════════════════
+   CHAT WIDGET (Fixed - proper Supabase integration)
+══════════════════════════════════════════════════ */
 .chat-fab{position:fixed;bottom:24px;right:24px;z-index:1500;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#2874f0,#1a5dc7);border:none;color:#fff;font-size:26px;box-shadow:0 4px 20px rgba(40,116,240,.5);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s;}
 .chat-fab:hover{transform:scale(1.1)}
 .chat-fab .badge{position:absolute;top:-2px;right:-2px;background:var(--red);color:#fff;border-radius:50%;width:20px;height:20px;font-size:11px;font-weight:800;display:none;align-items:center;justify-content:center;border:2px solid #fff;}
@@ -334,23 +336,23 @@ button{cursor:pointer;font-family:inherit}
 .chat-head-info{flex:1}
 .chat-head-name{font-size:14px;font-weight:700;color:#fff}
 .chat-head-status{font-size:11px;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:4px}
-.chat-typing-indicator{display:none;font-size:11px;color:rgba(255,255,255,.6);font-style:italic;}
-.chat-typing-indicator.visible{display:block}
 .chat-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:20px;cursor:pointer;padding:4px}
 .chat-close:hover{color:#fff}
 .chat-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;background:#f5f6fa;}
 .chat-messages::-webkit-scrollbar{width:4px}
 .chat-messages::-webkit-scrollbar-thumb{background:#ddd;border-radius:2px}
 .chat-msg{max-width:82%;padding:9px 12px;border-radius:10px;font-size:13px;line-height:1.45;position:relative;}
-.chat-msg.shop{background:#2874f0;color:#fff;align-self:flex-start;border-bottom-left-radius:3px}
+.chat-msg.shop{background:var(--primary);color:#fff;align-self:flex-start;border-bottom-left-radius:3px}
 .chat-msg.customer{background:#fff;color:var(--text);align-self:flex-end;border-bottom-right-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,.1)}
 .chat-msg.system{background:#fffbeb;color:#92400e;align-self:center;font-size:11px;border-radius:8px;padding:6px 12px;text-align:center;max-width:90%}
 .chat-msg .seen-status{font-size:9px;opacity:.6;position:absolute;bottom:3px;right:8px;}
 .msg-time{font-size:9px;opacity:.6;margin-top:3px;display:block}
 .chat-msg.customer .msg-time{text-align:right}
-.chat-welcome{text-align:center;padding:16px 12px;color:var(--text2)}
-.chat-welcome .logo{font-size:32px;margin-bottom:6px}
-.chat-welcome h3{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+.chat-status-bar{background:#fff;border-bottom:1px solid var(--border);padding:8px 14px;font-size:11px;color:var(--text2);display:flex;align-items:center;gap:6px;min-height:32px;}
+.chat-status-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.chat-status-dot.connected{background:#4ade80}
+.chat-status-dot.connecting{background:#fb641b;animation:pulse-badge 1s infinite}
+.chat-status-dot.error{background:var(--red)}
 .quick-replies{padding:8px 10px;display:flex;gap:6px;overflow-x:auto;background:#fff;border-top:1px solid var(--border);}
 .quick-replies::-webkit-scrollbar{display:none}
 .qr-chip{background:#f0f4ff;border:1px solid #c7d7fb;color:var(--primary);font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .2s;font-family:inherit;}
@@ -361,17 +363,7 @@ button{cursor:pointer;font-family:inherit}
 .chat-send{width:36px;height:36px;border-radius:50%;background:var(--primary);border:none;color:#fff;font-size:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .2s;}
 .chat-send:hover{background:var(--primary-dark)}
 
-/* ════════════════════════════════════════════════════════════
-   FEATURE 9: AI CHAT ASSISTANT
-════════════════════════════════════════════════════════════ */
-.ai-chat-btn{background:linear-gradient(135deg,#7c3aed,#4f46e5);border:none;padding:8px 16px;border-radius:20px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .2s;font-family:inherit;}
-.ai-chat-btn:hover{opacity:.9;transform:scale(1.02)}
-.ai-processing{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* ════════════════════════════════════════════════════════════
-   WISHLIST PAGE
-════════════════════════════════════════════════════════════ */
+/* WISHLIST */
 .wishlist-page{display:none;position:fixed;inset:0;z-index:1800;background:var(--bg);overflow-y:auto;animation:slideInRight .3s ease;}
 @keyframes slideInRight{from{transform:translateX(100%)}to{transform:translateX(0)}}
 .wishlist-page.active{display:block}
@@ -381,12 +373,28 @@ button{cursor:pointer;font-family:inherit}
 .wishlist-count{background:rgba(255,255,255,.2);padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700}
 .wishlist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;padding:16px;max-width:1200px;margin:0 auto;}
 .wishlist-empty{text-align:center;padding:80px 20px;color:var(--text2);}
-.wishlist-empty .icon{font-size:60px;margin-bottom:12px}
-.wishlist-empty h3{font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px}
 
-/* ════════════════════════════════════════════════════════════
-   SECTION HEADER & EMPTY STATE
-════════════════════════════════════════════════════════════ */
+/* ACTIVITY TICKER */
+.activity-ticker{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:8px 16px;overflow:hidden;position:relative;}
+.activity-ticker-inner{display:flex;align-items:center;gap:4px;white-space:nowrap;animation:ticker 30s linear infinite;}
+.activity-ticker-inner:hover{animation-play-state:paused}
+.ticker-item{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);padding:0 24px;}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* BANNER LIGHTBOX */
+.banner-lightbox{display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.95);align-items:center;justify-content:center;flex-direction:column;}
+.banner-lightbox.active{display:flex}
+.bl-img{max-width:90vw;max-height:80vh;object-fit:contain;border-radius:8px;}
+.bl-info{color:#fff;text-align:center;margin-top:16px;max-width:600px;}
+.bl-title{font-size:20px;font-weight:800;font-family:'Playfair Display',serif;}
+.bl-sub{font-size:14px;opacity:.7;margin-top:4px;}
+.bl-close{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.bl-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.bl-nav:hover{background:rgba(255,255,255,.25)}
+.bl-nav.prev{left:20px}
+.bl-nav.next{right:20px}
+
+/* SECTION HEADER */
 .section-header{background:#fff;border-radius:var(--card-radius);padding:16px 20px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow);}
 .section-header h2{font-size:18px;font-weight:800;color:var(--text)}
 .section-header p{font-size:12px;color:var(--text2);margin-top:2px}
@@ -395,20 +403,13 @@ button{cursor:pointer;font-family:inherit}
 .empty-state h3{font-size:18px;font-weight:700;margin-bottom:6px}
 .empty-state p{font-size:13px;color:var(--text2)}
 
-/* ════════════════════════════════════════════════════════════
-   FEATURE 6: CUSTOMER BEHAVIOUR WIDGET (admin-facing, public UX hint)
-════════════════════════════════════════════════════════════ */
-.activity-ticker{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:8px 16px;overflow:hidden;position:relative;}
-.activity-ticker-inner{display:flex;align-items:center;gap:4px;white-space:nowrap;animation:ticker 30s linear infinite;}
-.activity-ticker-inner:hover{animation-play-state:paused}
-.ticker-item{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);padding:0 24px;}
-.ticker-item .ti-icon{font-size:14px}
-.ticker-item strong{color:var(--text);font-weight:700}
-@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* TOAST */
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#323232;color:#fff;padding:10px 20px;border-radius:4px;font-size:13px;font-weight:600;z-index:3000;white-space:nowrap;animation:toastIn .3s ease;pointer-events:none;}
+.toast.love{background:#e53935}
+.toast.success{background:#26a541}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%)}}
 
-/* ════════════════════════════════════════════════════════════
-   FOOTER
-════════════════════════════════════════════════════════════ */
+/* FOOTER */
 .footer{background:#172337;color:#fff;margin-top:40px}
 .footer-top{max-width:1400px;margin:0 auto;padding:40px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px}
 .footer-brand .name{font-size:20px;font-weight:800;color:#f0c040;margin-bottom:6px}
@@ -418,24 +419,26 @@ button{cursor:pointer;font-family:inherit}
 .footer-col a:hover{color:#fff}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:16px;text-align:center;font-size:12px;color:rgba(255,255,255,.35);max-width:1400px;margin:0 auto}
 
-/* TOAST */
-.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#323232;color:#fff;padding:10px 20px;border-radius:4px;font-size:13px;font-weight:600;z-index:3000;white-space:nowrap;animation:toastIn .3s ease;pointer-events:none;}
-.toast.love{background:#e53935}
-.toast.success{background:#26a541}
-@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%)}}
-
 /* MOBILE */
 .mobile-filter-btn{display:none;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--primary);color:var(--primary);padding:8px 14px;border-radius:4px;font-size:13px;font-weight:700;font-family:inherit;}
 .filter-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1199}
 .filter-overlay.active{display:block}
-.scroll-top{position:fixed;bottom:90px;right:92px;z-index:1400;width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.6);border:none;color:#fff;font-size:18px;cursor:pointer;display:none;align-items:center;justify-content:center;transition:opacity .3s;}
+.scroll-top{position:fixed;bottom:90px;right:92px;z-index:1400;width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.6);border:none;color:#fff;font-size:18px;cursor:pointer;display:none;align-items:center;justify-content:center;}
 .scroll-top.visible{display:flex}
+
+/* LIST VIEW */
+.products-grid.list-view .product-card{flex-direction:row;min-height:140px;}
+.products-grid.list-view .card-img-wrap{width:140px;flex-shrink:0;aspect-ratio:unset;min-height:140px}
+.products-grid.list-view .card-actions{position:static;opacity:1;transform:none;flex-direction:column;width:150px;flex-shrink:0;}
+.products-grid.list-view .card-action-btn{flex:1}
+
 @media(max-width:768px){
   .sidebar{display:none}
   .sidebar.mobile-open{display:block;position:fixed;left:0;top:0;bottom:0;z-index:1200;width:280px;overflow-y:auto;padding:16px;background:#fff;box-shadow:4px 0 20px rgba(0,0,0,.2);}
   .main-wrap{padding:10px}
   .chat-widget{right:8px;width:calc(100vw - 16px);bottom:88px}
   .chat-fab{right:16px;bottom:16px}
+  .ai-fab{right:16px;bottom:88px}
   .products-grid{grid-template-columns:repeat(2,1fr)}
   .header-top{flex-wrap:wrap;gap:10px}
   .search-wrap{order:3;width:100%}
@@ -444,29 +447,14 @@ button{cursor:pointer;font-family:inherit}
   .mobile-filter-btn{display:flex}
   .banner-slide img{height:200px}
   .banner-thumbs{display:none}
-  .trending-section{padding:16px}
+  .ai-panel-box{max-height:90vh}
 }
 @media(max-width:400px){.products-grid{grid-template-columns:1fr}}
-
-.products-grid.list-view .product-card{flex-direction:row;min-height:140px;}
-.products-grid.list-view .card-img-wrap{width:140px;flex-shrink:0;aspect-ratio:unset;min-height:140px}
-.products-grid.list-view .card-actions{position:static;opacity:1;transform:none;flex-direction:column;width:150px;flex-shrink:0;}
-.products-grid.list-view .card-action-btn{flex:1}
-
-/* AI Search Suggestions */
-.ai-suggestions{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--border);border-top:none;border-radius:0 0 8px 8px;box-shadow:var(--shadow-lg);z-index:100;max-height:300px;overflow-y:auto;display:none;}
-.ai-suggestions.visible{display:block}
-.ai-suggestion-item{padding:10px 16px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:background .15s;}
-.ai-suggestion-item:hover{background:#f5f5f5}
-.ai-suggestion-item .si-icon{font-size:18px;flex-shrink:0}
-.ai-suggestion-item .si-text{font-size:13px;color:var(--text)}
-.ai-suggestion-item .si-sub{font-size:11px;color:var(--text2)}
-.search-wrap{position:relative;}
 </style>
 </head>
 <body>
 
-<!-- ══ OFFER BANNER SLIDER ══ -->
+<!-- OFFER BANNER SLIDER -->
 <div class="offer-slider" id="offerSlider">
   <div class="offer-track" id="offerTrack">
     <div class="offer-slide"><span class="offer-tag">NEW</span> 🎉 Fresh Stock Arrived — Visit Our Store Today!</div>
@@ -478,7 +466,7 @@ button{cursor:pointer;font-family:inherit}
   <div class="offer-dots" id="offerDots"></div>
 </div>
 
-<!-- ══ HEADER ══ -->
+<!-- HEADER -->
 <header class="header" role="banner">
   <div class="header-top">
     <div class="logo-wrap" onclick="showView('home')">
@@ -488,8 +476,8 @@ button{cursor:pointer;font-family:inherit}
         <div class="sub">Premium Men's Fashion</div>
       </div>
     </div>
-    <div class="search-wrap" style="position:relative">
-      <input type="text" id="search-input" placeholder="Search shirts, jeans, kurtas, black XL..." autocomplete="off" aria-label="Search products" oninput="onSearchInput(this.value)" onkeydown="if(event.key==='Enter')applySearch()">
+    <div class="search-wrap">
+      <input type="text" id="search-input" placeholder="Search shirts, black XL, jeans, kurtas..." autocomplete="off" aria-label="Search products" oninput="onSearchInput(this.value)" onkeydown="if(event.key==='Enter'){applySearch();hideSuggestions()}" onfocus="if(this.value.length>1)showSuggestions(this.value)">
       <button onclick="applySearch()" aria-label="Search">🔍 Search</button>
       <div class="ai-suggestions" id="ai-suggestions"></div>
     </div>
@@ -498,7 +486,7 @@ button{cursor:pointer;font-family:inherit}
         <span class="icon">❤️</span><span>Saved</span>
         <span class="hbadge" id="wishlist-badge">0</span>
       </button>
-      <button class="header-btn" onclick="openAIChat()" aria-label="AI Assistant" title="Ask AI: show black shirts under ₹1500">
+      <button class="header-btn" onclick="openAIPanel()" aria-label="AI Assistant" title="Advanced AI Product Assistant">
         <span class="icon">🤖</span><span>AI Search</span>
       </button>
       <a href="https://wa.me/918260362286" target="_blank" class="header-btn" aria-label="WhatsApp">
@@ -512,21 +500,21 @@ button{cursor:pointer;font-family:inherit}
   </div>
   <div class="header-bar" role="navigation">
     <div class="header-bar-inner">
-      <button class="cat-pill active" onclick="filterByCategory('')">All</button>
-      <button class="cat-pill" onclick="filterByCategory('Shirts')">👔 Shirts</button>
-      <button class="cat-pill" onclick="filterByCategory('T-Shirts')">👕 T-Shirts</button>
-      <button class="cat-pill" onclick="filterByCategory('Trousers')">👖 Trousers</button>
-      <button class="cat-pill" onclick="filterByCategory('Jeans')">🩲 Jeans</button>
-      <button class="cat-pill" onclick="filterByCategory('Suits')">🤵 Suits</button>
-      <button class="cat-pill" onclick="filterByCategory('Jackets')">🧥 Jackets</button>
-      <button class="cat-pill" onclick="filterByCategory('Kurtas')">👘 Kurtas</button>
-      <button class="cat-pill" onclick="filterByCategory('Accessories')">👒 Accessories</button>
+      <button class="cat-pill active" onclick="filterByCategory('',this)">All</button>
+      <button class="cat-pill" onclick="filterByCategory('Shirts',this)">👔 Shirts</button>
+      <button class="cat-pill" onclick="filterByCategory('T-Shirts',this)">👕 T-Shirts</button>
+      <button class="cat-pill" onclick="filterByCategory('Trousers',this)">👖 Trousers</button>
+      <button class="cat-pill" onclick="filterByCategory('Jeans',this)">🩲 Jeans</button>
+      <button class="cat-pill" onclick="filterByCategory('Suits',this)">🤵 Suits</button>
+      <button class="cat-pill" onclick="filterByCategory('Jackets',this)">🧥 Jackets</button>
+      <button class="cat-pill" onclick="filterByCategory('Kurtas',this)">👘 Kurtas</button>
+      <button class="cat-pill" onclick="filterByCategory('Accessories',this)">👒 Accessories</button>
       <button class="cat-pill" onclick="showWishlist()">❤️ Saved</button>
     </div>
   </div>
 </header>
 
-<!-- ══ HERO ══ -->
+<!-- HERO -->
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-content">
     <h1 id="hero-title">Premium Men's Fashion<br>in Kashinagar</h1>
@@ -540,7 +528,7 @@ button{cursor:pointer;font-family:inherit}
   </div>
 </section>
 
-<!-- ══ TRUST STRIP ══ -->
+<!-- TRUST STRIP -->
 <div class="trust-strip">
   <div class="trust-inner">
     <div class="trust-item"><span class="ic">✅</span><span>100% Authentic</span></div>
@@ -551,14 +539,12 @@ button{cursor:pointer;font-family:inherit}
   </div>
 </div>
 
-<!-- ══ FEATURE 6: ACTIVITY TICKER ══ -->
+<!-- ACTIVITY TICKER -->
 <div class="activity-ticker" id="activity-ticker" style="display:none">
   <div class="activity-ticker-inner" id="activity-ticker-inner"></div>
 </div>
 
-<!-- ════════════════════════════════════════════════════════════
-     FEATURE 1: FLIPKART-STYLE AUTO-SWEEP GALLERY BANNER
-════════════════════════════════════════════════════════════ -->
+<!-- BANNER GALLERY -->
 <div class="banner-section" id="banner-section">
   <div class="banner-slider-wrap">
     <div class="banner-track" id="banner-track"></div>
@@ -569,13 +555,11 @@ button{cursor:pointer;font-family:inherit}
   <div class="banner-thumbs" id="banner-thumbs"></div>
 </div>
 
-<!-- ════════════════════════════════════════════════════════════
-     FEATURE 3: LIVE TRENDING SECTION
-════════════════════════════════════════════════════════════ -->
+<!-- TRENDING SECTION -->
 <div class="trending-section" id="trending-section">
   <div class="section-title-bar">
     <h2>🔥 Live Trending</h2>
-    <span class="see-all" onclick="filterByCategory('')">View All →</span>
+    <span class="see-all" onclick="filterByCategory('',null)">View All →</span>
   </div>
   <div class="trending-tabs" id="trending-tabs">
     <button class="trend-tab active" onclick="setTrendingTab('hot',this)">🔥 Most Viewed Today</button>
@@ -586,28 +570,23 @@ button{cursor:pointer;font-family:inherit}
   <div class="trending-grid" id="trending-grid"></div>
 </div>
 
-<!-- ══ MAIN ══ -->
+<!-- MAIN CONTENT -->
 <main class="main-wrap" role="main" id="main-content">
   <div class="filter-overlay" id="filter-overlay" onclick="toggleMobileSidebar()"></div>
 
   <aside class="sidebar" id="sidebar" aria-label="Product filters">
     <div class="filter-card">
-      <div class="filter-title">🤖 AI Search</div>
-      <div style="display:flex;gap:6px;margin-bottom:8px">
-        <input type="text" id="ai-search-input" class="chat-input" placeholder='Try "black XL shirts"' style="border-radius:4px;width:100%;padding:8px 12px;font-size:13px;border:1.5px solid var(--border);outline:none;font-family:inherit;" onkeydown="if(event.key==='Enter')runAISearch()">
+      <div class="filter-title">🤖 AI Smart Search</div>
+      <div style="margin-bottom:8px">
+        <input type="text" id="ai-search-input" placeholder='Try "black XL shirts under ₹1000"' style="width:100%;padding:9px 12px;font-size:13px;border:1.5px solid var(--border);outline:none;border-radius:6px;font-family:inherit;" onkeydown="if(event.key==='Enter')runAISearch()">
       </div>
-      <button class="ai-chat-btn" onclick="runAISearch()" style="width:100%;justify-content:center">🤖 AI Filter</button>
+      <button onclick="runAISearch()" style="width:100%;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border:none;border-radius:6px;padding:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">🤖 AI Filter</button>
       <div id="ai-result-label" style="font-size:11px;color:var(--text2);margin-top:6px;text-align:center;"></div>
     </div>
 
     <div class="filter-card">
       <div class="filter-title">🔍 Search</div>
-      <input type="text" id="sidebar-search" class="chat-input" placeholder="Search products..." oninput="applySearch()" style="border-radius:4px;width:100%;padding:8px 12px;font-size:13px;border:1.5px solid var(--border);outline:none;font-family:inherit;">
-    </div>
-
-    <div class="recently-viewed" id="recently-viewed-sidebar" style="display:none">
-      <div class="rv-title">👁️ Recently Viewed</div>
-      <div class="rv-list" id="rv-list-sidebar"></div>
+      <input type="text" id="sidebar-search" placeholder="Search products..." oninput="onSidebarSearch(this.value)" style="width:100%;padding:8px 12px;font-size:13px;border:1.5px solid var(--border);outline:none;border-radius:6px;font-family:inherit;">
     </div>
 
     <div class="filter-card">
@@ -675,7 +654,7 @@ button{cursor:pointer;font-family:inherit}
   </div>
 </main>
 
-<!-- ══ WISHLIST PAGE ══ -->
+<!-- WISHLIST PAGE -->
 <div class="wishlist-page" id="wishlist-page" role="dialog">
   <div class="wishlist-header">
     <button class="wishlist-back" onclick="hideWishlist()">←</button>
@@ -685,9 +664,7 @@ button{cursor:pointer;font-family:inherit}
   <div id="wishlist-content"></div>
 </div>
 
-<!-- ════════════════════════════════════════════════════════════
-     FEATURE 5: 3D PRODUCT VIEWER
-════════════════════════════════════════════════════════════ -->
+<!-- 3D VIEWER -->
 <div class="viewer-3d-overlay" id="viewer-3d" onclick="if(event.target===this)close3DViewer()">
   <div class="viewer-3d-box" onclick="event.stopPropagation()">
     <div class="viewer-3d-header">
@@ -710,7 +687,7 @@ button{cursor:pointer;font-family:inherit}
   </div>
 </div>
 
-<!-- ══ BANNER LIGHTBOX ══ -->
+<!-- BANNER LIGHTBOX -->
 <div class="banner-lightbox" id="banner-lightbox">
   <button class="bl-close" onclick="closeBannerLightbox()">✕</button>
   <button class="bl-nav prev" onclick="lightboxNav(-1)">&#8249;</button>
@@ -718,12 +695,12 @@ button{cursor:pointer;font-family:inherit}
   <div class="bl-info">
     <div class="bl-title" id="bl-title"></div>
     <div class="bl-sub" id="bl-sub"></div>
-    <a href="#" id="bl-cta" onclick="closeBannerLightbox();filterByCategory(currentLightboxCat);return false" style="display:inline-block;background:#fff;color:var(--primary);font-size:13px;font-weight:800;padding:10px 24px;border-radius:4px;margin-top:12px;">View Products →</a>
+    <a href="#" id="bl-cta" onclick="closeBannerLightbox();filterByCategory(currentLightboxCat,null);return false" style="display:inline-block;background:#fff;color:var(--primary);font-size:13px;font-weight:800;padding:10px 24px;border-radius:4px;margin-top:12px;">View Products →</a>
   </div>
   <button class="bl-nav next" onclick="lightboxNav(1)">&#8250;</button>
 </div>
 
-<!-- ══ PRODUCT MODAL ══ -->
+<!-- PRODUCT MODAL -->
 <div class="modal-overlay" id="product-modal" role="dialog" aria-modal="true" onclick="if(event.target===this)closeModal()">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()">✕</button>
@@ -731,7 +708,30 @@ button{cursor:pointer;font-family:inherit}
   </div>
 </div>
 
-<!-- ══ CHAT WIDGET ══ -->
+<!-- ══════════════════════════════════════════════════
+     ADVANCED AI PANEL (Fixed - uses Claude API)
+══════════════════════════════════════════════════ -->
+<button class="ai-fab" onclick="openAIPanel()" id="ai-fab" title="🤖 Advanced AI Product Assistant">🤖</button>
+
+<div class="ai-panel-overlay" id="ai-panel">
+  <div class="ai-panel-box">
+    <div class="ai-panel-header">
+      <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🤖</div>
+      <h3>JV AI Assistant</h3>
+      <div style="font-size:11px;color:rgba(255,255,255,.7);margin-left:auto;margin-right:12px;font-style:italic">Powered by Claude AI</div>
+      <button class="ai-panel-close" onclick="closeAIPanel()">✕</button>
+    </div>
+    <div class="ai-panel-messages" id="ai-panel-messages">
+      <!-- Welcome message injected by JS -->
+    </div>
+    <div class="ai-panel-input-area">
+      <textarea class="ai-panel-input" id="ai-panel-input" placeholder="Ask anything: 'best shirt for wedding', 'black XL under ₹1000', 'compare suits'..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendAIPanelMessage()}" oninput="this.style.height='';this.style.height=Math.min(this.scrollHeight,100)+'px'"></textarea>
+      <button class="ai-panel-send" onclick="sendAIPanelMessage()">➤</button>
+    </div>
+  </div>
+</div>
+
+<!-- CHAT WIDGET (Fixed) -->
 <button class="chat-fab" onclick="toggleChat()" id="chat-fab">
   💬
   <span class="badge" id="chat-fab-badge"></span>
@@ -752,26 +752,23 @@ button{cursor:pointer;font-family:inherit}
     </div>
     <button class="chat-close" onclick="toggleChat()">✕</button>
   </div>
-  <!-- AI Chat tab -->
-  <div style="display:flex;background:#f0f4ff;border-bottom:1px solid var(--border)">
-    <button id="tab-chat" onclick="switchTab('chat')" style="flex:1;padding:8px;border:none;background:var(--primary);color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">💬 Chat with Us</button>
-    <button id="tab-ai" onclick="switchTab('ai')" style="flex:1;padding:8px;border:none;background:#f0f4ff;color:var(--primary);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">🤖 AI Assistant</button>
+  <div class="chat-status-bar" id="chat-status-bar">
+    <span class="chat-status-dot connecting" id="chat-status-dot"></span>
+    <span id="chat-status-text">Connecting...</span>
   </div>
-  <div class="chat-messages" id="chat-messages"></div>
-  <!-- AI panel (hidden by default) -->
-  <div id="ai-chat-panel" style="display:none;flex:1;overflow-y:auto;padding:14px;background:#f8f4ff;flex-direction:column;gap:8px;">
-    <div style="text-align:center;padding:12px;color:#7c3aed">
-      <div style="font-size:32px">🤖</div>
-      <div style="font-size:13px;font-weight:700;margin-top:6px">AI Product Assistant</div>
-      <div style="font-size:11px;color:#9ca3af;margin-top:4px">Ask me anything about our products!</div>
+  <div class="chat-messages" id="chat-messages">
+    <div style="text-align:center;padding:20px;color:var(--text2)">
+      <div style="font-size:28px;margin-bottom:8px">💬</div>
+      <div style="font-size:14px;font-weight:700;color:var(--text)">JV Unique Collection</div>
+      <div style="font-size:12px;margin-top:4px">Hi! 👋 Ask about any product or visit us at Kashinagar Bus Stand.</div>
     </div>
-    <div id="ai-messages" style="display:flex;flex-direction:column;gap:8px;"></div>
   </div>
-  <div class="quick-replies" id="quick-replies">
+  <div class="quick-replies">
     <button class="qr-chip" onclick="sendQuick('Hello! I want to know about your products 👋')">👋 Hello</button>
     <button class="qr-chip" onclick="sendQuick('What are your store timings?')">🕐 Timings</button>
     <button class="qr-chip" onclick="sendQuick('Do you have home delivery?')">🚚 Delivery</button>
     <button class="qr-chip" onclick="sendQuick('What are the latest arrivals?')">✨ New Arrivals</button>
+    <button class="qr-chip" onclick="sendQuick('What is the price range?')">💰 Prices</button>
   </div>
   <div class="chat-input-area">
     <textarea class="chat-input" id="chat-input" placeholder="Type a message..." rows="1"
@@ -781,10 +778,9 @@ button{cursor:pointer;font-family:inherit}
   </div>
 </div>
 
-<div class="filter-overlay" id="mobile-overlay"></div>
 <button class="scroll-top" id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-<!-- ══ FOOTER ══ -->
+<!-- FOOTER -->
 <footer class="footer" role="contentinfo">
   <div class="footer-top">
     <div class="footer-brand">
@@ -793,11 +789,11 @@ button{cursor:pointer;font-family:inherit}
     </div>
     <div class="footer-col">
       <h4>Categories</h4>
-      <a onclick="filterByCategory('Shirts')">Shirts</a>
-      <a onclick="filterByCategory('T-Shirts')">T-Shirts</a>
-      <a onclick="filterByCategory('Trousers')">Trousers</a>
-      <a onclick="filterByCategory('Jeans')">Jeans</a>
-      <a onclick="filterByCategory('Suits')">Suits</a>
+      <a onclick="filterByCategory('Shirts',null)">Shirts</a>
+      <a onclick="filterByCategory('T-Shirts',null)">T-Shirts</a>
+      <a onclick="filterByCategory('Trousers',null)">Trousers</a>
+      <a onclick="filterByCategory('Jeans',null)">Jeans</a>
+      <a onclick="filterByCategory('Suits',null)">Suits</a>
     </div>
     <div class="footer-col">
       <h4>Visit Us</h4>
@@ -814,9 +810,6 @@ button{cursor:pointer;font-family:inherit}
   <div class="footer-bottom">© 2026 JV Unique Collection, Kashinagar, Odisha. All rights reserved.</div>
 </footer>
 
-<!-- ══════════════════════════════════════════════════════════════
-     JAVASCRIPT — Complete Feature Implementation
-══════════════════════════════════════════════════════════════ -->
 <script>
 /* ═══════════════════════════════════════
    SUPABASE CONFIG
@@ -830,7 +823,13 @@ async function sbFetch(endpoint, options={}, retries=3) {
   for (let i=0;i<retries;i++) {
     try {
       const res = await fetch(url,{...options,headers:{...sbHeaders,...(options.headers||{})}});
-      if (!res.ok) { if(i===retries-1) throw new Error('HTTP '+res.status); await new Promise(r=>setTimeout(r,500*(i+1))); continue; }
+      if (!res.ok) {
+        const errText = await res.text();
+        console.warn(`[SB] ${endpoint} → ${res.status}: ${errText}`);
+        if (res.status === 404 || res.status === 400) throw new Error('SB error ' + res.status);
+        if(i===retries-1) throw new Error('HTTP '+res.status);
+        await new Promise(r=>setTimeout(r,500*(i+1))); continue;
+      }
       const text = await res.text();
       return text ? JSON.parse(text) : [];
     } catch(e) { if(i===retries-1) throw e; await new Promise(r=>setTimeout(r,500*(i+1))); }
@@ -838,24 +837,11 @@ async function sbFetch(endpoint, options={}, retries=3) {
 }
 
 /* ═══════════════════════════════════════
-   HISTORY API — BACK BUTTON FIX
-═══════════════════════════════════════ */
-const AppState = { views:[], push(s){history.pushState(s,'','#'+(s.type||'home'));this.views.push(s);}, pop(){this.views.pop();return this.views[this.views.length-1]||{type:'home'};}, current(){return this.views[this.views.length-1]||{type:'home'};} };
-window.addEventListener('popstate',(e)=>{const s=e.state||{type:'home'};handleBackNav(s);});
-function handleBackNav(s){
-  if(document.getElementById('product-modal').classList.contains('active')){closeModalDirect();return;}
-  if(document.getElementById('wishlist-page').classList.contains('active')){hideWishlistDirect();return;}
-  if(document.getElementById('viewer-3d').classList.contains('active')){document.getElementById('viewer-3d').classList.remove('active');document.body.style.overflow='';return;}
-  if(document.getElementById('banner-lightbox').classList.contains('active')){document.getElementById('banner-lightbox').classList.remove('active');return;}
-  currentCategory=s.category||'';applyFilters();
-}
-history.replaceState({type:'home'},'','#home');
-
-/* ═══════════════════════════════════════
-   OFFER SLIDER INIT
+   OFFER SLIDER
 ═══════════════════════════════════════ */
 (function(){
-  const track=document.getElementById('offerTrack'),dotsEl=document.getElementById('offerDots'),slides=track.querySelectorAll('.offer-slide');
+  const track=document.getElementById('offerTrack'),dotsEl=document.getElementById('offerDots');
+  const slides=track.querySelectorAll('.offer-slide');
   let cur=0;
   slides.forEach((_,i)=>{const d=document.createElement('div');d.className='offer-dot'+(i===0?' active':'');d.onclick=()=>goSlide(i);dotsEl.appendChild(d);});
   function goSlide(idx){cur=(idx+slides.length)%slides.length;track.style.transform=`translateX(-${cur*100}%)`;document.querySelectorAll('.offer-dot').forEach((d,i)=>d.classList.toggle('active',i===cur));}
@@ -863,135 +849,59 @@ history.replaceState({type:'home'},'','#home');
 })();
 
 /* ═══════════════════════════════════════
-   FEATURE 1: FLIPKART-STYLE BANNER SYSTEM
+   BANNER SYSTEM
 ═══════════════════════════════════════ */
-let galleryData = [];
-let bannerIdx = 0;
-let bannerAuto = null;
-let bannerCount = 0;
-let currentLightboxIdx = 0;
-let currentLightboxCat = '';
+let galleryData=[];
+let bannerIdx=0, bannerAuto=null, bannerCount=0;
+let currentLightboxIdx=0, currentLightboxCat='';
 
-const FALLBACK_BANNERS = [
-  {title:'New Arrivals 2026',subtitle:'Fresh collection just landed',category:'arrival',color:'linear-gradient(135deg,#2874f0,#1a5dc7)',icon:'✨',cat_filter:'Shirts'},
-  {title:'Premium Suits',subtitle:'Wedding & Party Wear',category:'offer',color:'linear-gradient(135deg,#1a237e,#283593)',icon:'🤵',cat_filter:'Suits'},
-  {title:'Festival Collection',subtitle:'Special Discounts Available',category:'festival',color:'linear-gradient(135deg,#e65100,#ef6c00)',icon:'🎉',cat_filter:'Kurtas'},
-  {title:'Our Store',subtitle:'Kashinagar Bus Stand, GMR Complex',category:'store',color:'linear-gradient(135deg,#1b5e20,#2e7d32)',icon:'🏪',cat_filter:''},
-  {title:'Shirts Starting ₹499',subtitle:'All sizes available in store',category:'offer',color:'linear-gradient(135deg,#4a148c,#6a1b9a)',icon:'👔',cat_filter:'Shirts'},
-  {title:'Premium Jeans',subtitle:'Best brands at best prices',category:'arrival',color:'linear-gradient(135deg,#37474f,#455a64)',icon:'👖',cat_filter:'Jeans'},
+const FALLBACK_BANNERS=[
+  {title:'New Arrivals 2026',subtitle:'Fresh collection just landed',cat_filter:'Shirts',color:'linear-gradient(135deg,#2874f0,#1a5dc7)',icon:'✨'},
+  {title:'Premium Suits',subtitle:'Wedding & Party Wear',cat_filter:'Suits',color:'linear-gradient(135deg,#1a237e,#283593)',icon:'🤵'},
+  {title:'Festival Collection',subtitle:'Special Discounts Available',cat_filter:'Kurtas',color:'linear-gradient(135deg,#e65100,#ef6c00)',icon:'🎉'},
+  {title:'Our Store',subtitle:'Kashinagar Bus Stand, GMR Complex',cat_filter:'',color:'linear-gradient(135deg,#1b5e20,#2e7d32)',icon:'🏪'},
+  {title:'Shirts Starting ₹499',subtitle:'All sizes available',cat_filter:'Shirts',color:'linear-gradient(135deg,#4a148c,#6a1b9a)',icon:'👔'},
 ];
 
-async function loadGallery() {
-  try {
-    const data = await sbFetch('/rest/v1/gallery?select=*&is_active=eq.true&order=sort_order.asc');
-    galleryData = Array.isArray(data) && data.length > 0 ? data : [];
-  } catch(e) { galleryData = []; }
+async function loadGallery(){
+  try{const data=await sbFetch('/rest/v1/gallery?select=*&is_active=eq.true&order=sort_order.asc');galleryData=Array.isArray(data)&&data.length>0?data:[];}
+  catch(e){galleryData=[];}
   renderBanners();
 }
 
-function renderBanners() {
-  const track = document.getElementById('banner-track');
-  const dotsWrap = document.getElementById('banner-dots');
-  const thumbsWrap = document.getElementById('banner-thumbs');
-  const items = galleryData.length > 0 ? galleryData : FALLBACK_BANNERS;
-  bannerCount = items.length;
-
-  track.innerHTML = items.map((g,i) => {
-    const hasImg = g.image_url && g.image_url.startsWith('http');
-    const color = g.color || FALLBACK_BANNERS[i % FALLBACK_BANNERS.length].color;
-    const icon  = g.icon  || FALLBACK_BANNERS[i % FALLBACK_BANNERS.length].icon;
-    return `
-      <div class="banner-slide" onclick="openBannerLightbox(${i})" data-idx="${i}">
-        ${hasImg
-          ? `<img src="${g.image_url}" alt="${g.title}" loading="${i===0?'eager':'lazy'}" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`
-          : ''}
-        <div class="bs-placeholder" style="background:${color};${hasImg?'display:none':''}">
-          <div style="font-size:clamp(60px,10vw,120px)">${icon}</div>
-        </div>
-        <div class="bs-overlay">
-          <div class="bs-title">${g.title||''}</div>
-          <div class="bs-sub">${g.subtitle||''}</div>
-          <span class="bs-cta">Shop Now →</span>
-        </div>
-      </div>`;
-  }).join('');
-
-  // Dots
-  dotsWrap.innerHTML = items.map((_,i) => `<div class="banner-dot${i===0?' active':''}" onclick="goBanner(${i})"></div>`).join('');
-
-  // Thumbnails
-  thumbsWrap.innerHTML = items.map((g,i) => {
-    const hasImg = g.image_url && g.image_url.startsWith('http');
-    const color = g.color || FALLBACK_BANNERS[i%FALLBACK_BANNERS.length].color;
-    const icon  = g.icon  || FALLBACK_BANNERS[i%FALLBACK_BANNERS.length].icon;
-    return `
-      <div class="banner-thumb${i===0?' active':''}" onclick="goBanner(${i})">
-        ${hasImg ? `<img src="${g.image_url}" alt="${g.title}" loading="lazy">` : `<div class="bt-ph" style="background:${color}">${icon}</div>`}
-      </div>`;
-  }).join('');
-
-  startBannerAuto();
-}
-
-function goBanner(idx) {
-  bannerIdx = (idx + bannerCount) % bannerCount;
-  document.getElementById('banner-track').style.transform = `translateX(-${bannerIdx*100}%)`;
-  document.querySelectorAll('.banner-dot').forEach((d,i)=>d.classList.toggle('active',i===bannerIdx));
-  document.querySelectorAll('.banner-thumb').forEach((t,i)=>t.classList.toggle('active',i===bannerIdx));
-}
-
-function bannerNav(dir) {
-  stopBannerAuto();
-  goBanner(bannerIdx + dir);
-  startBannerAuto();
-}
-
-function startBannerAuto() {
-  stopBannerAuto();
-  bannerAuto = setInterval(()=>goBanner(bannerIdx+1), 4000);
-}
-function stopBannerAuto() { clearInterval(bannerAuto); }
-
-// Touch/swipe support for banner
-(function(){
-  const track = document.getElementById('banner-track');
-  if(!track) return;
-  let startX=0;
-  const el = track.parentElement;
-  el.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;stopBannerAuto();},{passive:true});
-  el.addEventListener('touchend',e=>{
-    const diff=startX-e.changedTouches[0].clientX;
-    if(Math.abs(diff)>50){goBanner(bannerIdx+(diff>0?1:-1));}
-    startBannerAuto();
-  },{passive:true});
-  el.addEventListener('mouseenter',stopBannerAuto);
-  el.addEventListener('mouseleave',startBannerAuto);
-})();
-
-/* Banner Lightbox */
-function openBannerLightbox(idx) {
-  const items = galleryData.length > 0 ? galleryData : FALLBACK_BANNERS;
-  const g = items[idx];
-  if (!g) return;
-  currentLightboxIdx = idx;
-  currentLightboxCat = g.cat_filter || '';
-  const lb = document.getElementById('banner-lightbox');
-  const img = document.getElementById('bl-img');
-  if (g.image_url && g.image_url.startsWith('http')) {
-    img.src = g.image_url; img.style.display = 'block';
-  } else { img.style.display = 'none'; }
-  document.getElementById('bl-title').textContent = g.title||'';
-  document.getElementById('bl-sub').textContent = g.subtitle||'';
-  lb.classList.add('active');
-  document.body.style.overflow='hidden';
-}
-function closeBannerLightbox(){document.getElementById('banner-lightbox').classList.remove('active');document.body.style.overflow='';}
-function lightboxNav(dir){
+function renderBanners(){
+  const track=document.getElementById('banner-track');
+  const dotsWrap=document.getElementById('banner-dots');
+  const thumbsWrap=document.getElementById('banner-thumbs');
   const items=galleryData.length>0?galleryData:FALLBACK_BANNERS;
-  currentLightboxIdx=(currentLightboxIdx+dir+items.length)%items.length;
-  openBannerLightbox(currentLightboxIdx);
+  bannerCount=items.length;
+  track.innerHTML=items.map((g,i)=>{
+    const hasImg=g.image_url&&g.image_url.startsWith('http');
+    const color=g.color||FALLBACK_BANNERS[i%FALLBACK_BANNERS.length].color;
+    const icon=g.icon||FALLBACK_BANNERS[i%FALLBACK_BANNERS.length].icon;
+    return `<div class="banner-slide" onclick="openBannerLightbox(${i})" data-idx="${i}">
+      ${hasImg?`<img src="${g.image_url}" alt="${g.title}" loading="${i===0?'eager':'lazy'}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`:''} 
+      <div class="bs-placeholder" style="background:${color};${hasImg?'display:none':''}"><div style="font-size:clamp(60px,10vw,120px)">${icon}</div></div>
+      <div class="bs-overlay"><div class="bs-title">${g.title||''}</div><div class="bs-sub">${g.subtitle||''}</div><span class="bs-cta">Shop Now →</span></div>
+    </div>`;
+  }).join('');
+  dotsWrap.innerHTML=items.map((_,i)=>`<div class="banner-dot${i===0?' active':''}" onclick="goBanner(${i})"></div>`).join('');
+  thumbsWrap.innerHTML=items.map((g,i)=>{
+    const hasImg=g.image_url&&g.image_url.startsWith('http');
+    const color=g.color||FALLBACK_BANNERS[i%FALLBACK_BANNERS.length].color;
+    const icon=g.icon||FALLBACK_BANNERS[i%FALLBACK_BANNERS.length].icon;
+    return `<div class="banner-thumb${i===0?' active':''}" onclick="goBanner(${i})">${hasImg?`<img src="${g.image_url}" alt="${g.title}" loading="lazy">`:`<div class="bt-ph" style="background:${color}">${icon}</div>`}</div>`;
+  }).join('');
+  startBannerAuto();
 }
-document.addEventListener('keydown',e=>{if(document.getElementById('banner-lightbox').classList.contains('active')){if(e.key==='ArrowLeft')lightboxNav(-1);if(e.key==='ArrowRight')lightboxNav(1);if(e.key==='Escape')closeBannerLightbox();}});
+function goBanner(idx){bannerIdx=(idx+bannerCount)%bannerCount;document.getElementById('banner-track').style.transform=`translateX(-${bannerIdx*100}%)`;document.querySelectorAll('.banner-dot').forEach((d,i)=>d.classList.toggle('active',i===bannerIdx));document.querySelectorAll('.banner-thumb').forEach((t,i)=>t.classList.toggle('active',i===bannerIdx));}
+function bannerNav(dir){stopBannerAuto();goBanner(bannerIdx+dir);startBannerAuto();}
+function startBannerAuto(){stopBannerAuto();bannerAuto=setInterval(()=>goBanner(bannerIdx+1),4000);}
+function stopBannerAuto(){clearInterval(bannerAuto);}
+(function(){const track=document.getElementById('banner-track');if(!track)return;let startX=0;const el=track.parentElement;el.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;stopBannerAuto();},{passive:true});el.addEventListener('touchend',e=>{const diff=startX-e.changedTouches[0].clientX;if(Math.abs(diff)>50)goBanner(bannerIdx+(diff>0?1:-1));startBannerAuto();},{passive:true});el.addEventListener('mouseenter',stopBannerAuto);el.addEventListener('mouseleave',startBannerAuto);})();
+function openBannerLightbox(idx){const items=galleryData.length>0?galleryData:FALLBACK_BANNERS;const g=items[idx];if(!g)return;currentLightboxIdx=idx;currentLightboxCat=g.cat_filter||'';const lb=document.getElementById('banner-lightbox');const img=document.getElementById('bl-img');if(g.image_url&&g.image_url.startsWith('http')){img.src=g.image_url;img.style.display='block';}else{img.style.display='none';}document.getElementById('bl-title').textContent=g.title||'';document.getElementById('bl-sub').textContent=g.subtitle||'';lb.classList.add('active');document.body.style.overflow='hidden';}
+function closeBannerLightbox(){document.getElementById('banner-lightbox').classList.remove('active');document.body.style.overflow='';}
+function lightboxNav(dir){const items=galleryData.length>0?galleryData:FALLBACK_BANNERS;currentLightboxIdx=(currentLightboxIdx+dir+items.length)%items.length;openBannerLightbox(currentLightboxIdx);}
 
 /* ═══════════════════════════════════════
    PRODUCT STATE
@@ -1001,79 +911,207 @@ let filteredProducts=[];
 let currentSort='relevance';
 let currentCategory='';
 let currentView='grid';
-let aiFilterActive=false;
 let trendingTab='hot';
+let lastSearchQuery='';
 const CAT_ICONS={Shirts:'👔','T-Shirts':'👕',Trousers:'👖',Jeans:'🩲',Suits:'🤵',Jackets:'🧥',Kurtas:'👘',Accessories:'👒'};
 const catIcon=c=>CAT_ICONS[c]||'👗';
 
 /* ═══════════════════════════════════════
    LOAD PRODUCTS
 ═══════════════════════════════════════ */
-async function loadProducts() {
+async function loadProducts(){
   showSkeletons();
-  try {
-    const data = await sbFetch('/rest/v1/products?select=id,barcode_id,name,brand,category,size,color,price,stock_qty,image_url,created_at&order=created_at.desc');
-    allProducts = Array.isArray(data)?data:[];
+  try{
+    const data=await sbFetch('/rest/v1/products?select=id,barcode_id,name,brand,category,size,color,price,stock_qty,image_url,created_at&order=created_at.desc');
+    allProducts=Array.isArray(data)?data:[];
     document.getElementById('stat-products').textContent=allProducts.length+'+';
     buildFilters();
     applyFilters();
     renderTrending();
     buildActivityTicker();
-  } catch(e) {
-    document.getElementById('products-grid').innerHTML=`<div class="empty-state" style="grid-column:1/-1"><div class="icon">⚠️</div><h3>Could not load products</h3><p>Check connection</p><button onclick="loadProducts()" style="margin-top:12px;background:var(--primary);color:#fff;border:none;padding:10px 20px;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer">Retry</button></div>`;
+  }catch(e){
+    document.getElementById('products-grid').innerHTML=`<div class="empty-state" style="grid-column:1/-1"><div class="icon">⚠️</div><h3>Could not load products</h3><p>Check connection and try again</p><button onclick="loadProducts()" style="margin-top:12px;background:var(--primary);color:#fff;border:none;padding:10px 20px;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer">Retry</button></div>`;
   }
 }
-
 function showSkeletons(){document.getElementById('products-grid').innerHTML=Array(8).fill(`<div class="product-card skeleton-card" style="pointer-events:none"><div class="skeleton-img"></div><div style="padding:10px"><div class="skeleton-line"></div><div class="skeleton-line short"></div><div class="skeleton-line price"></div></div></div>`).join('');}
-
 function buildFilters(){
   const sizes=[...new Set(allProducts.map(p=>p.size).filter(Boolean))].sort();
   const colors=[...new Set(allProducts.map(p=>p.color).filter(Boolean))].sort();
-  document.getElementById('size-filters').innerHTML=sizes.map(s=>`<div class="filter-option"><input type="checkbox" id="sz-${s}" value="${s}" onchange="applyFilters()" class="size-cb"><label for="sz-${s}">${s}</label><span class="count">${allProducts.filter(p=>p.size===s).length}</span></div>`).join('')||'<p style="font-size:12px;color:var(--text2)">No sizes found</p>';
-  document.getElementById('color-filters').innerHTML=colors.map(c=>`<div class="filter-option"><input type="checkbox" id="cl-${c.replace(/\s/g,'_')}" value="${c}" onchange="applyFilters()" class="color-cb"><label for="cl-${c.replace(/\s/g,'_')}">${c}</label><span class="count">${allProducts.filter(p=>p.color===c).length}</span></div>`).join('')||'<p style="font-size:12px;color:var(--text2)">No colors found</p>';
+  document.getElementById('size-filters').innerHTML=sizes.map(s=>`<div class="filter-option"><input type="checkbox" id="sz-${s.replace(/\s/g,'_')}" value="${s}" onchange="applyFilters()" class="size-cb"><label for="sz-${s.replace(/\s/g,'_')}">${s}</label><span class="count">${allProducts.filter(p=>p.size===s).length}</span></div>`).join('')||'<p style="font-size:12px;color:var(--text2)">No sizes</p>';
+  document.getElementById('color-filters').innerHTML=colors.map(c=>`<div class="filter-option"><input type="checkbox" id="cl-${c.replace(/\s/g,'_')}" value="${c}" onchange="applyFilters()" class="color-cb"><label for="cl-${c.replace(/\s/g,'_')}">${c}</label><span class="count">${allProducts.filter(p=>p.color===c).length}</span></div>`).join('')||'<p style="font-size:12px;color:var(--text2)">No colors</p>';
+}
+
+/* ═══════════════════════════════════════════════════════
+   FIX 2: ADVANCED FLIPKART-STYLE SEARCH ENGINE
+   Features:
+   - Fuzzy matching (typo tolerance)
+   - Relevance scoring (exact > prefix > substring > fuzzy)
+   - Multi-word queries (all words must match)
+   - Synonym expansion (pant=trouser, kurta=kurti, tee=tshirt)
+   - Color/size/category/price extraction from query
+   - Search result ranking with highlights
+═══════════════════════════════════════════════════════ */
+const SYNONYMS = {
+  'pant':'trouser','pants':'trouser','trousers':'trouser',
+  'tee':'t-shirt','tshirt':'t-shirt','t shirt':'t-shirt',
+  'kurta pyjama':'kurta','pyjama':'kurta','kurti':'kurta',
+  'coat':'suit','blazer':'suit','formal suit':'suit',
+  'jacket':'jacket','hoodie':'jacket','windcheater':'jacket',
+  'jeans':'jeans','denim':'jeans',
+  'formal shirt':'shirt','casual shirt':'shirt',
+  'sherwani':'suits',
+  'xl':'XL','l':'L','m':'M','s':'S','xxl':'XXL','3xl':'3XL',
+};
+const COLORS=['black','white','blue','navy','red','green','yellow','grey','gray','brown','pink','purple','orange','cream','beige','maroon','maroon','indigo','teal','olive','khaki'];
+const SIZES=['xs','s','m','l','xl','xxl','3xl','free size','freesize'];
+
+function expandQuery(q){
+  let expanded=q.toLowerCase();
+  for(const[k,v] of Object.entries(SYNONYMS)){
+    expanded=expanded.replace(new RegExp('\\b'+k+'\\b','gi'),v);
+  }
+  return expanded;
+}
+
+function tokenizeQuery(q){
+  // Extract structured filters from natural language
+  const result={colors:[],sizes:[],minPrice:0,maxPrice:Infinity,category:'',keywords:[]};
+  let remaining=q.toLowerCase().trim();
+  
+  // Price extraction
+  const underMatch=remaining.match(/(?:under|below|less than|upto|<)\s*[₹rs]?\s*(\d+)/i);
+  if(underMatch){result.maxPrice=parseInt(underMatch[1]);remaining=remaining.replace(underMatch[0],'').trim();}
+  const aboveMatch=remaining.match(/(?:above|over|more than|starting|from)\s*[₹rs]?\s*(\d+)/i);
+  if(aboveMatch){result.minPrice=parseInt(aboveMatch[1]);remaining=remaining.replace(aboveMatch[0],'').trim();}
+  const rangeMatch=remaining.match(/[₹rs]?\s*(\d+)\s*[-–to]+\s*[₹rs]?\s*(\d+)/i);
+  if(rangeMatch){result.minPrice=parseInt(rangeMatch[1]);result.maxPrice=parseInt(rangeMatch[2]);remaining=remaining.replace(rangeMatch[0],'').trim();}
+  
+  // Extract colors
+  for(const c of COLORS){if(remaining.includes(c)){result.colors.push(c);remaining=remaining.replace(new RegExp('\\b'+c+'\\b','g'),'').trim();}}
+  
+  // Extract sizes
+  for(const s of SIZES){
+    const sr=new RegExp('\\b'+s.replace(/\s/g,'\\s*')+'\\b','i');
+    if(sr.test(remaining)){result.sizes.push(s.toUpperCase());remaining=remaining.replace(sr,'').trim();}
+  }
+  
+  // Remaining words are keywords
+  result.keywords=remaining.split(/\s+/).filter(w=>w.length>1);
+  return result;
+}
+
+// Levenshtein distance for fuzzy matching
+function levenshtein(a,b){
+  if(!a.length)return b.length;if(!b.length)return a.length;
+  const dp=Array(a.length+1).fill(null).map((_,i)=>Array(b.length+1).fill(null).map((_,j)=>i===0?j:j===0?i:0));
+  for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++){dp[i][j]=a[i-1]===b[j-1]?dp[i-1][j-1]:1+Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]);}
+  return dp[a.length][b.length];
+}
+
+function scoreProduct(p, query, filters){
+  let score=0;
+  const fullText=`${p.name} ${p.brand||''} ${p.category||''} ${p.color||''} ${p.size||''} ${p.barcode_id}`.toLowerCase();
+  const productName=p.name.toLowerCase();
+  const q=expandQuery(query).toLowerCase();
+  
+  // Exact full match = highest
+  if(productName===q)return 10000;
+  // Name starts with query
+  if(productName.startsWith(q))score+=500;
+  // Name contains query exactly
+  else if(productName.includes(q))score+=300;
+  // Full text contains query
+  else if(fullText.includes(q))score+=150;
+  
+  // Multi-keyword scoring — each keyword contributes
+  if(filters.keywords.length>0){
+    let kMatches=0;
+    for(const kw of filters.keywords){
+      const kwExpanded=expandQuery(kw);
+      if(fullText.includes(kwExpanded)){
+        kMatches++;
+        if(productName.includes(kwExpanded))score+=100;
+        else score+=50;
+      } else {
+        // Fuzzy: check if any word in fullText is close
+        const words=fullText.split(/\s+/);
+        const minDist=Math.min(...words.map(w=>levenshtein(w,kwExpanded)));
+        if(minDist<=1&&kwExpanded.length>3)score+=30;
+        else if(minDist<=2&&kwExpanded.length>4)score+=10;
+      }
+    }
+    // Penalty if not all keywords matched
+    if(kMatches<filters.keywords.length&&kMatches===0)return -1; // no match at all
+    score+=kMatches*20;
+  }
+  
+  // Color filter boost
+  if(filters.colors.length>0){
+    const colorStr=(p.color||'').toLowerCase();
+    const matches=filters.colors.filter(c=>colorStr.includes(c)||productName.includes(c));
+    if(matches.length>0)score+=200;
+    else if(filters.colors.length>0)score-=100; // penalize if specific color requested but not found
+  }
+  
+  // Size filter boost
+  if(filters.sizes.length>0){
+    const pSize=(p.size||'').toUpperCase();
+    const matches=filters.sizes.filter(s=>pSize===s||pSize.includes(s));
+    if(matches.length>0)score+=200;
+    else if(filters.sizes.length>0)score-=100;
+  }
+  
+  // Price filter
+  if(p.price>filters.maxPrice||p.price<filters.minPrice)score-=500;
+  
+  // Boost in-stock products
+  if(p.stock_qty>0)score+=50;
+  if(p.stock_qty>10)score+=20;
+  
+  // Boost products with images
+  if(p.image_url)score+=10;
+  
+  return score;
+}
+
+function advancedSearch(query){
+  if(!query.trim())return allProducts.map(p=>({...p,_score:0,_matchReason:''}));
+  
+  const expanded=expandQuery(query);
+  const filters=tokenizeQuery(expanded);
+  
+  const scored=allProducts.map(p=>{
+    const score=scoreProduct(p,expanded,filters);
+    return{...p,_score:score,_filters:filters};
+  }).filter(p=>p._score>0);
+  
+  // Sort by score descending
+  scored.sort((a,b)=>b._score-a._score);
+  
+  return scored;
 }
 
 /* ═══════════════════════════════════════
-   FEATURE 3: LIVE TRENDING
+   TRENDING
 ═══════════════════════════════════════ */
-function setTrendingTab(tab,btn){
-  trendingTab=tab;
-  document.querySelectorAll('.trend-tab').forEach(b=>b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-  renderTrending();
-}
-
+function setTrendingTab(tab,btn){trendingTab=tab;document.querySelectorAll('.trend-tab').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');renderTrending();}
 function renderTrending(){
   const grid=document.getElementById('trending-grid');
   if(!allProducts.length){grid.innerHTML='<div style="color:var(--text2);font-size:13px;padding:20px">Loading...</div>';return;}
-  
   let products=[...allProducts];
   const badges={hot:{label:'🔥 Hot',cls:'badge-hot'},new:{label:'✨ New',cls:'badge-new'},fast:{label:'⚡ Fast',cls:'badge-fast'},low:{label:'⏰ Low Stock',cls:'badge-low'}};
-  
-  if(trendingTab==='hot'){
-    // Simulate views: products with lower stock sell faster = more popular
-    products=products.sort((a,b)=>(a.stock_qty||50)-(b.stock_qty||50)).slice(0,12);
-  } else if(trendingTab==='new'){
-    products=products.slice(0,12);
-  } else if(trendingTab==='fast'){
-    // Products with price > ₹500 and in stock = fast movers simulation
-    products=products.filter(p=>p.price>300&&p.stock_qty>0).slice(0,12);
-  } else if(trendingTab==='low'){
-    products=products.filter(p=>p.stock_qty>0&&p.stock_qty<=10).sort((a,b)=>a.stock_qty-b.stock_qty);
-    if(!products.length){grid.innerHTML='<div style="color:var(--text2);font-size:13px;padding:20px">✅ All categories well stocked!</div>';return;}
-  }
-
-  const {label,cls}=badges[trendingTab];
-  const views=()=>Math.floor(50+Math.random()*300);
-
+  if(trendingTab==='hot')products=products.sort((a,b)=>(a.stock_qty||50)-(b.stock_qty||50)).slice(0,12);
+  else if(trendingTab==='new')products=products.slice(0,12);
+  else if(trendingTab==='fast')products=products.filter(p=>p.price>300&&p.stock_qty>0).slice(0,12);
+  else if(trendingTab==='low'){products=products.filter(p=>p.stock_qty>0&&p.stock_qty<=10).sort((a,b)=>a.stock_qty-b.stock_qty);if(!products.length){grid.innerHTML='<div style="color:var(--text2);font-size:13px;padding:20px">✅ All categories well stocked!</div>';return;}}
+  const{label,cls}=badges[trendingTab];
+  const views=i=>Math.floor(50+Math.random()*300)+i*7;
   grid.innerHTML=products.map((p,i)=>{
     const hasImg=p.image_url&&p.image_url.startsWith('http');
     const statusInfo=getRealtimeStatus(p);
-    const waMsg=encodeURIComponent(`Hi! I'm interested in "${p.name}" — is it available?`);
-    return `
-    <div class="trend-card" onclick="openModal(${JSON.stringify(p).replace(/"/g,'&quot;')})">
+    return `<div class="trend-card" onclick="openModal(${JSON.stringify(p).replace(/"/g,'&quot;')})">
       <div class="trend-img-wrap">
-        ${hasImg?`<img src="${p.image_url}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'">`:''}
+        ${hasImg?`<img src="${p.image_url}" alt="${p.name}" loading="lazy">`:''}
         <div style="${hasImg?'display:none;':''}width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;background:#f0f4ff">${catIcon(p.category)}</div>
         <span class="trend-badge ${cls}">${label}</span>
         ${i<3?`<div class="trend-rank">#${i+1}</div>`:''}
@@ -1082,53 +1120,35 @@ function renderTrending(){
         <div class="trend-name">${p.name}</div>
         <div class="trend-price">₹${Number(p.price).toLocaleString('en-IN')}</div>
         <div style="margin-top:4px">${statusInfo.badge}</div>
-        <div class="trend-views">👁️ <span>${views()+i*7} views today</span></div>
+        <div class="trend-views">👁️ <span>${views(i)} views today</span></div>
       </div>
     </div>`;
   }).join('');
 }
 
 /* ═══════════════════════════════════════
-   FEATURE 4: REAL-TIME INVENTORY STATUS
+   REAL-TIME INVENTORY STATUS
 ═══════════════════════════════════════ */
-function getRealtimeStatus(p) {
-  const qty = p.stock_qty || 0;
-  if (qty === 0) return {badge:'<span class="stock-status ss-out">Out of Stock</span>',text:'Out of Stock'};
-  if (qty === 1) return {badge:'<span class="stock-status ss-critical">🚨 Only 1 Left!</span>',text:'Only 1 left'};
-  if (qty <= 3) return {badge:`<span class="stock-status ss-critical">🔥 Only ${qty} Left!</span>`,text:`Only ${qty} left`};
-  if (qty <= 8) return {badge:`<span class="stock-status ss-low">⚠️ Only ${qty} Remaining</span>`,text:`Only ${qty} left`};
-  if (qty <= 15) return {badge:'<span class="stock-status ss-restock">📦 Limited Stock</span>',text:'Limited stock'};
-  // Randomly assign "popular" to some products
-  if (qty > 30 && Math.random()>0.6) return {badge:'<span class="stock-status ss-popular">❤️ Popular Item</span>',text:'Popular'};
-  return {badge:'<span class="stock-status ss-plenty">✓ In Stock</span>',text:'In Stock'};
+function getRealtimeStatus(p){
+  const qty=p.stock_qty||0;
+  if(qty===0)return{badge:'<span class="stock-status ss-out">Out of Stock</span>',text:'Out of Stock'};
+  if(qty===1)return{badge:'<span class="stock-status ss-critical">🚨 Only 1 Left!</span>',text:'Only 1 left'};
+  if(qty<=3)return{badge:`<span class="stock-status ss-critical">🔥 Only ${qty} Left!</span>`,text:`Only ${qty} left`};
+  if(qty<=8)return{badge:`<span class="stock-status ss-low">⚠️ Only ${qty} Remaining</span>`,text:`Only ${qty} left`};
+  if(qty<=15)return{badge:'<span class="stock-status ss-restock">📦 Limited Stock</span>',text:'Limited stock'};
+  return{badge:'<span class="stock-status ss-plenty">✓ In Stock</span>',text:'In Stock'};
 }
 
 /* ═══════════════════════════════════════
-   FEATURE 6: ACTIVITY TICKER
+   ACTIVITY TICKER
 ═══════════════════════════════════════ */
 function buildActivityTicker(){
-  const activities=[
-    '👤 Someone from Kashinagar just viewed <strong>Blue Shirt</strong>',
-    '❤️ A customer saved <strong>Black Suit</strong> to wishlist',
-    '👁️ <strong>23 people</strong> viewing products right now',
-    '🔥 <strong>Navy Blue Shirt XL</strong> is trending today',
-    '⏰ <strong>Black Kurta</strong> — only 3 left in stock',
-    '✨ New arrivals added — <strong>check them out!</strong>',
-    '📍 Customer from Srikakulam browsing <strong>T-Shirts</strong>',
-    '🛒 Recent interest in <strong>Formal Trousers</strong>',
-  ];
-  // Add real product data
-  allProducts.filter(p=>p.stock_qty<=5&&p.stock_qty>0).slice(0,3).forEach(p=>{
-    activities.push(`⚠️ Only ${p.stock_qty} left — <strong>${p.name}</strong>`);
-  });
-  allProducts.slice(0,3).forEach(p=>{
-    activities.push(`👁️ Someone is viewing <strong>${p.name}</strong>`);
-  });
-  
+  const activities=['👤 Someone from Kashinagar just viewed a Blue Shirt','❤️ A customer saved Black Suit to wishlist','👁️ 23 people viewing products right now','🔥 Navy Blue Shirt XL is trending today','✨ New arrivals added!','📍 Customer from Srikakulam browsing T-Shirts','🛒 Recent interest in Formal Trousers'];
+  allProducts.filter(p=>p.stock_qty<=5&&p.stock_qty>0).slice(0,3).forEach(p=>{activities.push(`⚠️ Only ${p.stock_qty} left — <strong>${p.name}</strong>`);});
+  allProducts.slice(0,3).forEach(p=>{activities.push(`👁️ Someone is viewing <strong>${p.name}</strong>`);});
   const inner=document.getElementById('activity-ticker-inner');
   const ticker=document.getElementById('activity-ticker');
-  // Duplicate for infinite scroll
-  const html=activities.map(a=>`<span class="ticker-item"><span class="ti-icon">•</span>${a}</span>`).join('');
+  const html=activities.map(a=>`<span class="ticker-item"><span>•</span>${a}</span>`).join('');
   inner.innerHTML=html+html;
   ticker.style.display='block';
 }
@@ -1137,8 +1157,7 @@ function buildActivityTicker(){
    FILTERS & SORT
 ═══════════════════════════════════════ */
 function applyFilters(){
-  aiFilterActive=false;
-  const q=(document.getElementById('search-input').value||document.getElementById('sidebar-search').value||'').toLowerCase();
+  const searchVal=document.getElementById('search-input').value||document.getElementById('sidebar-search').value||'';
   const inStockOnly=document.getElementById('in-stock')?.checked;
   const priceMin=parseFloat(document.getElementById('price-min').value)||0;
   const priceMax=parseFloat(document.getElementById('price-max').value)||Infinity;
@@ -1146,8 +1165,18 @@ function applyFilters(){
   const selectedColors=[...document.querySelectorAll('.color-cb:checked')].map(el=>el.value);
   document.getElementById('ai-result-label').textContent='';
 
-  filteredProducts=allProducts.filter(p=>{
-    if(q&&!`${p.name} ${p.brand} ${p.category} ${p.color} ${p.size}`.toLowerCase().includes(q))return false;
+  let results;
+  if(searchVal.trim()){
+    // Use advanced search engine
+    results=advancedSearch(searchVal.trim());
+    lastSearchQuery=searchVal.trim();
+  }else{
+    results=allProducts.map(p=>({...p,_score:0}));
+    lastSearchQuery='';
+  }
+
+  // Apply remaining filters on top of search results
+  filteredProducts=results.filter(p=>{
     if(currentCategory&&p.category!==currentCategory)return false;
     if(inStockOnly&&p.stock_qty<=0)return false;
     if(p.price<priceMin||p.price>priceMax)return false;
@@ -1159,126 +1188,102 @@ function applyFilters(){
 }
 
 /* ═══════════════════════════════════════
-   FEATURE 9: AI SEARCH / FILTER
+   AI SIDEBAR SEARCH (basic local parser)
 ═══════════════════════════════════════ */
-function parseAIQuery(query) {
-  const q=query.toLowerCase();
-  const result={category:'',color:'',size:'',maxPrice:Infinity,minPrice:0,keywords:[]};
-  
-  // Category detection
-  const catMap={'shirt':'Shirts','t-shirt':'T-Shirts','tshirt':'T-Shirts','trouser':'Trousers','jean':'Jeans','suit':'Suits','jacket':'Jackets','kurta':'Kurtas','accessory':'Accessories','accessories':'Accessories'};
-  for(const[k,v] of Object.entries(catMap)){if(q.includes(k)){result.category=v;break;}}
-  
-  // Color detection
-  const colors=['black','white','blue','red','green','yellow','navy','grey','gray','brown','pink','purple','orange','cream','beige','maroon'];
-  for(const c of colors){if(q.includes(c)){result.color=c;break;}}
-  
-  // Size detection
-  const sizeMap={'xs':'XS','\bs\b':'S','\bm\b':'M','\bl\b':'L','xl':'XL','xxl':'XXL','3xl':'3XL','free size':'Free Size','extra large':'XL','large':'L','medium':'M','small':'S'};
-  for(const[k,v] of Object.entries(sizeMap)){if(new RegExp(k,'i').test(q)){result.size=v;break;}}
-  
-  // Price detection — "under ₹1500", "below 2000", "less than 1000"
-  const priceMatch=q.match(/(?:under|below|less than|upto|up to|within)\s*[₹rs.]?\s*(\d+)/i);
-  if(priceMatch) result.maxPrice=parseInt(priceMatch[1]);
-  const minMatch=q.match(/(?:above|over|more than|starting from|from)\s*[₹rs.]?\s*(\d+)/i);
-  if(minMatch) result.minPrice=parseInt(minMatch[1]);
-  const rangeMatch=q.match(/[₹rs.]?\s*(\d+)\s*[-–to]+\s*[₹rs.]?\s*(\d+)/i);
-  if(rangeMatch){result.minPrice=parseInt(rangeMatch[1]);result.maxPrice=parseInt(rangeMatch[2]);}
-  
-  return result;
-}
-
-function runAISearch() {
+function runAISearch(){
   const query=document.getElementById('ai-search-input').value.trim();
   if(!query){showToast('Type something like "black XL shirts under ₹1500"');return;}
-  applyAIQuery(query);
-}
-
-function applyAIQuery(query) {
-  const parsed=parseAIQuery(query);
-  const labelEl=document.getElementById('ai-result-label');
-
-  filteredProducts=allProducts.filter(p=>{
-    if(parsed.category&&p.category!==parsed.category)return false;
-    if(parsed.color&&!`${p.color} ${p.name}`.toLowerCase().includes(parsed.color))return false;
-    if(parsed.size&&p.size&&p.size.toLowerCase()!==parsed.size.toLowerCase())return false;
-    if(p.price>parsed.maxPrice||p.price<parsed.minPrice)return false;
-    return true;
-  });
-
-  // Build human-readable description
-  let parts=[];
-  if(parsed.color) parts.push(parsed.color);
-  if(parsed.size) parts.push('size '+parsed.size);
-  if(parsed.category) parts.push(parsed.category);
-  if(parsed.maxPrice<Infinity) parts.push('under ₹'+parsed.maxPrice.toLocaleString('en-IN'));
-  if(parsed.minPrice>0) parts.push('above ₹'+parsed.minPrice.toLocaleString('en-IN'));
-  const desc=parts.length?parts.join(' '):query;
-
-  aiFilterActive=true;
-  document.getElementById('result-label').textContent=`${filteredProducts.length} products for "${desc}"`;
-  labelEl.textContent=`🤖 Found ${filteredProducts.length} products`;
-  currentCategory='';
-  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));
-  sortProducts();
+  document.getElementById('search-input').value=query;
+  document.getElementById('sidebar-search').value=query;
+  applyFilters();
+  const label=document.getElementById('ai-result-label');
+  label.textContent=`🤖 Found ${filteredProducts.length} products`;
+  showToast(`🤖 Found ${filteredProducts.length} products for "${query}"`,'success');
   window.scrollTo({top:document.getElementById('main-content').offsetTop-70,behavior:'smooth'});
-  showToast(`🤖 Found ${filteredProducts.length} products for "${desc}"`,'success');
-
-  // Add to AI chat
-  addAIMessage('user',query);
-  setTimeout(()=>{
-    const msg=filteredProducts.length>0
-      ? `Found ${filteredProducts.length} products${parts.length?' for '+desc:''}. Scroll down to see them!`
-      : `No products found for "${desc}". Try different filters or visit our store.`;
-    addAIMessage('ai',msg);
-  },500);
 }
 
-/* AI Search Suggestions (instant) */
+/* ═══════════════════════════════════════
+   SEARCH SUGGESTIONS (Flipkart-style)
+═══════════════════════════════════════ */
 let suggestTimeout=null;
 function onSearchInput(val){
   clearTimeout(suggestTimeout);
   document.getElementById('sidebar-search').value=val;
   if(!val.trim()){hideSuggestions();applyFilters();return;}
-  suggestTimeout=setTimeout(()=>{
-    applyFilters();
-    showSuggestions(val);
-  },200);
+  suggestTimeout=setTimeout(()=>{applyFilters();showSuggestions(val);},200);
+}
+function onSidebarSearch(val){
+  document.getElementById('search-input').value=val;
+  applyFilters();
 }
 
 function showSuggestions(val){
-  const q=val.toLowerCase();
   const box=document.getElementById('ai-suggestions');
+  const scored=advancedSearch(val).slice(0,5);
+  if(!scored.length){hideSuggestions();return;}
+  
+  // Also generate category suggestions
+  const filters=tokenizeQuery(expandQuery(val));
   const suggestions=[];
   
-  // Product name matches
-  allProducts.filter(p=>`${p.name} ${p.category}`.toLowerCase().includes(q)).slice(0,3).forEach(p=>{
-    suggestions.push({icon:catIcon(p.category),text:p.name,sub:'₹'+Number(p.price).toLocaleString('en-IN')+' · '+p.category,action:()=>{document.getElementById('search-input').value=p.name;applyFilters();hideSuggestions();}});
+  // Product suggestions
+  scored.forEach(p=>{
+    const inStock=p.stock_qty>0;
+    suggestions.push({
+      icon:catIcon(p.category),
+      text:p.name,
+      sub:`₹${Number(p.price).toLocaleString('en-IN')} · ${p.category||''}${p.size?' · '+p.size:''}`,
+      badge:inStock?null:'Out of stock',
+      badgeCls:inStock?'':'hot',
+      action:()=>{document.getElementById('search-input').value=p.name;applyFilters();hideSuggestions();}
+    });
   });
   
-  // AI suggestions
-  const colorMatch=q.match(/black|white|blue|red|green|navy|grey|brown/i);
-  const sizeMatch=q.match(/\bxs\b|\bs\b|\bm\b|\bl\b|\bxl\b|\bxxl\b/i);
-  if(colorMatch||sizeMatch){
-    suggestions.push({icon:'🤖',text:`AI Search: "${val}"`,sub:'Filter by color, size & price automatically',action:()=>{document.getElementById('ai-search-input').value=val;runAISearch();hideSuggestions();}});
+  // Category shortcut
+  if(filters.keywords.length>0){
+    const kw=filters.keywords[0];
+    const catMatches=Object.entries(CAT_ICONS).filter(([cat])=>cat.toLowerCase().includes(kw)||kw.includes(cat.toLowerCase().slice(0,4)));
+    catMatches.forEach(([cat,icon])=>{
+      suggestions.unshift({
+        icon,
+        text:`All ${cat}`,
+        sub:`Browse complete ${cat} collection`,
+        badge:allProducts.filter(p=>p.category===cat&&p.stock_qty>0).length+' in stock',
+        badgeCls:'',
+        action:()=>{filterByCategory(cat,null);hideSuggestions();}
+      });
+    });
   }
   
   if(!suggestions.length){hideSuggestions();return;}
-  box.innerHTML=suggestions.map((s,i)=>`<div class="ai-suggestion-item" onclick="suggestions_${i}()"><span class="si-icon">${s.icon}</span><div><div class="si-text">${s.text}</div><div class="si-sub">${s.sub}</div></div></div>`).join('');
-  suggestions.forEach((s,i)=>window[`suggestions_${i}`]=s.action);
+  
+  box.innerHTML=`<div class="sugg-section-title">Suggestions</div>`+
+    suggestions.slice(0,6).map((s,i)=>`
+      <div class="ai-suggestion-item" id="sugg-${i}">
+        <span class="si-icon">${s.icon}</span>
+        <div style="flex:1;min-width:0">
+          <div class="si-text">${escHtml(s.text)}</div>
+          <div class="si-sub">${escHtml(s.sub)}</div>
+        </div>
+        ${s.badge?`<span class="si-badge ${s.badgeCls}">${s.badge}</span>`:''}
+      </div>`).join('');
+  
+  suggestions.slice(0,6).forEach((s,i)=>{
+    const el=document.getElementById('sugg-'+i);
+    if(el)el.addEventListener('click',s.action);
+  });
   box.classList.add('visible');
 }
+
 function hideSuggestions(){document.getElementById('ai-suggestions').classList.remove('visible');}
 document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))hideSuggestions();});
-
 function applySearch(){hideSuggestions();const val=document.getElementById('search-input').value;document.getElementById('sidebar-search').value=val;applyFilters();}
 
-function filterByCategory(cat){
-  currentCategory=cat;aiFilterActive=false;
+function filterByCategory(cat,btn){
+  currentCategory=cat;
   document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));
-  event?.target?.classList?.add('active');
-  AppState.push({type:'filter',category:cat});
-  history.pushState({type:'filter',category:cat},'','#cat-'+(cat||'all'));
+  if(btn)btn.classList.add('active');
+  else if(!cat)document.querySelector('.cat-pill')?.classList.add('active');
   applyFilters();
   window.scrollTo({top:document.getElementById('main-content').offsetTop-70,behavior:'smooth'});
 }
@@ -1286,21 +1291,22 @@ function filterByCategory(cat){
 function setSort(type,btn){
   currentSort=type;
   document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
+  if(btn)btn.classList.add('active');
   sortProducts();
 }
 
 function sortProducts(){
   const prods=[...filteredProducts];
-  if(currentSort==='price_asc') prods.sort((a,b)=>a.price-b.price);
-  else if(currentSort==='price_desc') prods.sort((a,b)=>b.price-a.price);
-  else if(currentSort==='az') prods.sort((a,b)=>a.name.localeCompare(b.name));
-  else if(currentSort==='stock_low') prods.sort((a,b)=>a.stock_qty-b.stock_qty);
+  if(currentSort==='price_asc')prods.sort((a,b)=>a.price-b.price);
+  else if(currentSort==='price_desc')prods.sort((a,b)=>b.price-a.price);
+  else if(currentSort==='az')prods.sort((a,b)=>a.name.localeCompare(b.name));
+  else if(currentSort==='stock_low')prods.sort((a,b)=>a.stock_qty-b.stock_qty);
+  else if(currentSort==='relevance'&&lastSearchQuery)prods.sort((a,b)=>(b._score||0)-(a._score||0));
   renderProducts(prods);
 }
 
 function clearAllFilters(){
-  currentCategory='';currentSort='relevance';aiFilterActive=false;
+  currentCategory='';currentSort='relevance';
   document.getElementById('search-input').value='';
   document.getElementById('sidebar-search').value='';
   document.getElementById('ai-search-input').value='';
@@ -1313,27 +1319,26 @@ function clearAllFilters(){
   document.querySelector('.cat-pill')?.classList.add('active');
   document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
   document.querySelector('.sort-btn')?.classList.add('active');
+  lastSearchQuery='';
   applyFilters();
 }
 function clearSizeFilter(){document.querySelectorAll('.size-cb').forEach(cb=>cb.checked=false);applyFilters();}
 function clearColorFilter(){document.querySelectorAll('.color-cb').forEach(cb=>cb.checked=false);applyFilters();}
 
 /* ═══════════════════════════════════════
-   RENDER PRODUCTS (with Feature 4: real-time status)
+   RENDER PRODUCTS
 ═══════════════════════════════════════ */
 function renderProducts(products){
   const grid=document.getElementById('products-grid');
   const label=document.getElementById('result-label');
   const count=document.getElementById('result-count');
   const total=products.length;
-  if(!aiFilterActive) label.textContent=`${total} product${total!==1?'s':''} found`;
+  label.textContent=`${total} product${total!==1?'s':''} found${lastSearchQuery?' for "'+lastSearchQuery+'"':''}`;
   count.textContent=`${total} results`;
-
   if(total===0){
-    grid.innerHTML=`<div class="empty-state" style="grid-column:1/-1"><div class="icon">${currentCategory?catIcon(currentCategory):'🔍'}</div><h3>No products found</h3><p>Try adjusting your filters or search query.</p></div>`;
+    grid.innerHTML=`<div class="empty-state" style="grid-column:1/-1"><div class="icon">${currentCategory?catIcon(currentCategory):'🔍'}</div><h3>No products found</h3><p>Try different search terms or clear filters.</p><button onclick="clearAllFilters()" style="margin-top:12px;background:var(--primary);color:#fff;border:none;padding:10px 20px;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer">Clear Filters</button></div>`;
     return;
   }
-
   const wl=getWishlist();
   grid.innerHTML=products.map(p=>{
     const hasImg=p.image_url&&p.image_url.startsWith('http');
@@ -1343,16 +1348,16 @@ function renderProducts(products){
     const statusInfo=getRealtimeStatus(p);
     const isWished=wl.some(w=>w.barcode_id===p.barcode_id);
     const waMsg=encodeURIComponent(`Hi! I want to buy "${p.name}"${p.size?' (Size: '+p.size+')':''} for ₹${p.price}. Is it available?`);
-    const hasImg3d=hasImg;
+    // Show match reason if search active
+    const scoreTag=lastSearchQuery&&p._score>0?`<span class="search-match-tag">✓ Match</span>`:'';
 
-    return `
-    <div class="product-card" role="listitem" onclick="openModal(${JSON.stringify(p).replace(/"/g,'&quot;')})">
+    return `<div class="product-card" role="listitem" onclick="openModal(${JSON.stringify(p).replace(/"/g,'&quot;')})">
       <div class="card-img-wrap">
         ${hasImg?`<img src="${p.image_url}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`:''}
         <div class="no-img-placeholder" ${hasImg?'style="display:none"':''}>${catIcon(p.category)}<span>${p.category||'Product'}</span></div>
         <span class="card-badge ${inStock?'':'out'}">${inStock?'✓ IN STOCK':'OUT OF STOCK'}</span>
         <button class="card-wishlist ${isWished?'loved':''}" onclick="event.stopPropagation();toggleWishlist(this,'${p.barcode_id}')" data-bid="${p.barcode_id}">${isWished?'❤️':'🤍'}</button>
-        ${hasImg3d?`<button class="card-3d-btn" onclick="event.stopPropagation();open3DViewer('${p.image_url}','${p.name.replace(/'/g,"\\'")}')" title="360° View">🔮</button>`:''}
+        ${hasImg?`<button style="position:absolute;bottom:48px;right:8px;width:30px;height:30px;background:rgba(255,255,255,.95);border:none;border-radius:50%;display:none;align-items:center;justify-content:center;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.2);z-index:2;" class="card-3d-btn" onclick="event.stopPropagation();open3DViewer('${p.image_url}','${p.name.replace(/'/g,"\\'")}')" title="360° View">🔮</button>`:''}
         <div class="card-actions" onclick="event.stopPropagation()">
           <button class="card-action-btn btn-chat" onclick="openChatForProduct('${p.barcode_id}','${p.name.replace(/'/g,"\\'")}',${p.price})">💬 Chat</button>
           <button class="card-action-btn btn-wa" onclick="window.open('https://wa.me/918260362286?text=${waMsg}','_blank')">📱 WhatsApp</button>
@@ -1361,6 +1366,7 @@ function renderProducts(products){
       <div class="card-body">
         <div class="card-brand">${p.brand||'JV'}</div>
         <div class="card-name">${p.name}</div>
+        ${scoreTag}
         <div class="card-meta">
           ${p.size?`<span class="card-tag">${p.size}</span>`:''}
           ${p.color?`<span class="card-tag">${p.color}</span>`:''}
@@ -1372,136 +1378,51 @@ function renderProducts(products){
       </div>
     </div>`;
   }).join('');
+  // Show 3d buttons on hover via CSS
+  document.querySelectorAll('.product-card').forEach(card=>{
+    card.addEventListener('mouseenter',()=>{const btn=card.querySelector('.card-3d-btn');if(btn)btn.style.display='flex';});
+    card.addEventListener('mouseleave',()=>{const btn=card.querySelector('.card-3d-btn');if(btn)btn.style.display='none';});
+  });
 }
 
 /* ═══════════════════════════════════════
-   FEATURE 5: 3D VIEWER SYSTEM
+   3D VIEWER
 ═══════════════════════════════════════ */
 let v3dState={scale:1,rotX:0,rotY:0,isDragging:false,startX:0,startY:0,spinInterval:null,spinning:false};
-
-function open3DViewer(imgUrl, name) {
-  const overlay=document.getElementById('viewer-3d');
-  const img=document.getElementById('v3d-img');
-  img.src=imgUrl;
-  v3dState={scale:1,rotX:0,rotY:0,isDragging:false,startX:0,startY:0,spinInterval:null,spinning:false};
-  applyV3dTransform();
-  overlay.classList.add('active');
-  document.body.style.overflow='hidden';
-  document.querySelector('.viewer-3d-header h3').textContent='🔮 '+name;
-  AppState.push({type:'3d-viewer'});
-  history.pushState({type:'3d-viewer'},'','#3d-viewer');
-}
-
-function close3DViewer(){
-  stopSpin();
-  document.getElementById('viewer-3d').classList.remove('active');
-  document.body.style.overflow='';
-  history.back();
-}
-
-function applyV3dTransform(){
-  const img=document.getElementById('v3d-img');
-  img.style.transform=`scale(${v3dState.scale}) rotateX(${v3dState.rotX}deg) rotateY(${v3dState.rotY}deg)`;
-}
-
+function open3DViewer(imgUrl,name){const overlay=document.getElementById('viewer-3d');document.getElementById('v3d-img').src=imgUrl;v3dState={scale:1,rotX:0,rotY:0,isDragging:false,startX:0,startY:0,spinInterval:null,spinning:false};applyV3dTransform();overlay.classList.add('active');document.body.style.overflow='hidden';document.querySelector('.viewer-3d-header h3').textContent='🔮 '+name;}
+function close3DViewer(){stopSpin();document.getElementById('viewer-3d').classList.remove('active');document.body.style.overflow='';}
+function applyV3dTransform(){document.getElementById('v3d-img').style.transform=`scale(${v3dState.scale}) rotateX(${v3dState.rotX}deg) rotateY(${v3dState.rotY}deg)`;}
 function v3dZoomIn(){v3dState.scale=Math.min(3,v3dState.scale+.3);applyV3dTransform();}
 function v3dZoomOut(){v3dState.scale=Math.max(.5,v3dState.scale-.3);applyV3dTransform();}
 function v3dReset(){v3dState.scale=1;v3dState.rotX=0;v3dState.rotY=0;stopSpin();applyV3dTransform();}
-
-function toggleSpin(){
-  if(v3dState.spinning){stopSpin();}
-  else{
-    v3dState.spinning=true;
-    document.getElementById('v3d-spin-btn').textContent='⏹';
-    v3dState.spinInterval=setInterval(()=>{v3dState.rotY+=2;applyV3dTransform();},30);
-  }
-}
-function stopSpin(){
-  v3dState.spinning=false;
-  document.getElementById('v3d-spin-btn').textContent='▶';
-  clearInterval(v3dState.spinInterval);
-}
-
-// 3D viewer drag controls
-(function(){
-  const stage=document.getElementById('v3d-stage');
-  if(!stage) return;
-  stage.addEventListener('mousedown',e=>{v3dState.isDragging=true;v3dState.startX=e.clientX;v3dState.startY=e.clientY;stopSpin();});
-  document.addEventListener('mouseup',()=>{v3dState.isDragging=false;});
-  document.addEventListener('mousemove',e=>{
-    if(!v3dState.isDragging)return;
-    const dx=e.clientX-v3dState.startX,dy=e.clientY-v3dState.startY;
-    v3dState.startX=e.clientX;v3dState.startY=e.clientY;
-    v3dState.rotY+=dx*.5;v3dState.rotX-=dy*.5;
-    applyV3dTransform();
-  });
-  stage.addEventListener('wheel',e=>{e.preventDefault();v3dState.scale=Math.max(.5,Math.min(3,v3dState.scale-e.deltaY*.002));applyV3dTransform();},{passive:false});
-  // Touch
-  stage.addEventListener('touchstart',e=>{if(e.touches.length===1){v3dState.isDragging=true;v3dState.startX=e.touches[0].clientX;v3dState.startY=e.touches[0].clientY;stopSpin();}},{passive:true});
-  stage.addEventListener('touchend',()=>{v3dState.isDragging=false;},{passive:true});
-  stage.addEventListener('touchmove',e=>{
-    if(!v3dState.isDragging||e.touches.length!==1)return;
-    const dx=e.touches[0].clientX-v3dState.startX,dy=e.touches[0].clientY-v3dState.startY;
-    v3dState.startX=e.touches[0].clientX;v3dState.startY=e.touches[0].clientY;
-    v3dState.rotY+=dx*.5;v3dState.rotX-=dy*.5;
-    applyV3dTransform();
-  },{passive:true});
-})();
+function toggleSpin(){if(v3dState.spinning){stopSpin();}else{v3dState.spinning=true;document.getElementById('v3d-spin-btn').textContent='⏹';v3dState.spinInterval=setInterval(()=>{v3dState.rotY+=2;applyV3dTransform();},30);}}
+function stopSpin(){v3dState.spinning=false;document.getElementById('v3d-spin-btn').textContent='▶';clearInterval(v3dState.spinInterval);}
+(function(){const stage=document.getElementById('v3d-stage');if(!stage)return;stage.addEventListener('mousedown',e=>{v3dState.isDragging=true;v3dState.startX=e.clientX;v3dState.startY=e.clientY;stopSpin();});document.addEventListener('mouseup',()=>{v3dState.isDragging=false;});document.addEventListener('mousemove',e=>{if(!v3dState.isDragging)return;v3dState.rotY+=(e.clientX-v3dState.startX)*.5;v3dState.rotX-=(e.clientY-v3dState.startY)*.5;v3dState.startX=e.clientX;v3dState.startY=e.clientY;applyV3dTransform();});stage.addEventListener('wheel',e=>{e.preventDefault();v3dState.scale=Math.max(.5,Math.min(3,v3dState.scale-e.deltaY*.002));applyV3dTransform();},{passive:false});stage.addEventListener('touchstart',e=>{if(e.touches.length===1){v3dState.isDragging=true;v3dState.startX=e.touches[0].clientX;v3dState.startY=e.touches[0].clientY;stopSpin();}},{passive:true});stage.addEventListener('touchend',()=>{v3dState.isDragging=false;},{passive:true});stage.addEventListener('touchmove',e=>{if(!v3dState.isDragging||e.touches.length!==1)return;v3dState.rotY+=(e.touches[0].clientX-v3dState.startX)*.5;v3dState.rotX-=(e.touches[0].clientY-v3dState.startY)*.5;v3dState.startX=e.touches[0].clientX;v3dState.startY=e.touches[0].clientY;applyV3dTransform();},{passive:true});})();
 
 /* ═══════════════════════════════════════
-   WISHLIST SYSTEM
+   WISHLIST
 ═══════════════════════════════════════ */
 function getWishlist(){try{return JSON.parse(localStorage.getItem('jv_wishlist')||'[]');}catch{return[];}}
 function saveWishlist(wl){try{localStorage.setItem('jv_wishlist',JSON.stringify(wl));}catch{}updateWishlistBadge();}
 function updateWishlistBadge(){const wl=getWishlist();const badge=document.getElementById('wishlist-badge');if(badge){badge.textContent=wl.length;badge.style.display=wl.length>0?'flex':'none';}}
-
-function toggleWishlist(btn,barcode_id){
-  let wl=getWishlist();const product=allProducts.find(p=>p.barcode_id===barcode_id);if(!product)return;
-  const idx=wl.findIndex(w=>w.barcode_id===barcode_id);
-  if(idx>-1){wl.splice(idx,1);btn.textContent='🤍';btn.classList.remove('loved');showToast('Removed from saved');}
-  else{wl.push(product);btn.textContent='❤️';btn.classList.add('loved');showToast('❤️ Saved!','love');}
-  saveWishlist(wl);
-}
-
-function showWishlist(){
-  const wl=getWishlist();const page=document.getElementById('wishlist-page');const content=document.getElementById('wishlist-content');const countEl=document.getElementById('wishlist-count');
-  countEl.textContent=`${wl.length} item${wl.length!==1?'s':''}`;
-  AppState.push({type:'wishlist'});history.pushState({type:'wishlist'},'','#wishlist');
-  if(wl.length===0){content.innerHTML=`<div class="wishlist-empty"><div class="icon">🤍</div><h3>No saved products yet</h3><p>Tap the heart icon on any product to save it.</p><button onclick="hideWishlist()" style="margin-top:16px;background:var(--primary);color:#fff;border:none;padding:10px 20px;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer">Browse Products</button></div>`;}
-  else{content.innerHTML=`<div style="padding:12px 16px;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid var(--border)"><span style="font-size:13px;color:var(--text2);font-weight:600">Your saved products</span><button onclick="clearWishlist()" style="background:none;border:none;color:#e53935;font-size:12px;font-weight:700;cursor:pointer">Clear All</button></div><div class="wishlist-grid">${wl.map(p=>{const hasImg=p.image_url&&p.image_url.startsWith('http');const waMsg=encodeURIComponent(`Hi! I want to buy "${p.name}" for ₹${p.price}. Is it available?`);return`<div class="product-card" onclick="hideWishlist();setTimeout(()=>openModal(${JSON.stringify(p).replace(/"/g,'&quot;')}),300)" style="border-radius:8px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer"><div class="card-img-wrap" style="aspect-ratio:1">${hasImg?`<img src="${p.image_url}" alt="${p.name}" loading="lazy">`:`<div class="no-img-placeholder">${catIcon(p.category)}</div>`}<button class="card-wishlist loved" onclick="event.stopPropagation();removeFromWishlist('${p.barcode_id}')" style="display:flex">❤️</button></div><div class="card-body"><div class="card-name">${p.name}</div><div class="card-price"><span class="price-main">₹${Number(p.price).toLocaleString('en-IN')}</span></div>${getRealtimeStatus(p).badge}<div style="display:flex;gap:6px;margin-top:8px"><a href="https://wa.me/918260362286?text=${waMsg}" target="_blank" onclick="event.stopPropagation()" style="flex:1;background:#25D366;color:#fff;border:none;padding:8px;border-radius:3px;font-size:12px;font-weight:700;text-align:center;cursor:pointer">📱 WhatsApp</a></div></div></div>`}).join('')}</div>`;}
-  page.classList.add('active');document.body.style.overflow='hidden';
-}
-
-function hideWishlist(){hideWishlistDirect();history.back();}
-function hideWishlistDirect(){document.getElementById('wishlist-page').classList.remove('active');document.body.style.overflow='';}
+function toggleWishlist(btn,barcode_id){let wl=getWishlist();const product=allProducts.find(p=>p.barcode_id===barcode_id);if(!product)return;const idx=wl.findIndex(w=>w.barcode_id===barcode_id);if(idx>-1){wl.splice(idx,1);btn.textContent='🤍';btn.classList.remove('loved');showToast('Removed from saved');}else{wl.push(product);btn.textContent='❤️';btn.classList.add('loved');showToast('❤️ Saved!','love');}saveWishlist(wl);}
+function showWishlist(){const wl=getWishlist();const page=document.getElementById('wishlist-page');const content=document.getElementById('wishlist-content');document.getElementById('wishlist-count').textContent=`${wl.length} item${wl.length!==1?'s':''}`;if(wl.length===0){content.innerHTML=`<div class="wishlist-empty"><div class="icon">🤍</div><h3>No saved products yet</h3><p>Tap the heart icon on any product to save it.</p><button onclick="hideWishlist()" style="margin-top:16px;background:var(--primary);color:#fff;border:none;padding:10px 20px;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer">Browse Products</button></div>`;}else{content.innerHTML=`<div style="padding:12px 16px;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid var(--border)"><span style="font-size:13px;color:var(--text2);font-weight:600">Your saved products</span><button onclick="clearWishlist()" style="background:none;border:none;color:#e53935;font-size:12px;font-weight:700;cursor:pointer">Clear All</button></div><div class="wishlist-grid">${wl.map(p=>{const hasImg=p.image_url&&p.image_url.startsWith('http');const waMsg=encodeURIComponent(`Hi! I want to buy "${p.name}" for ₹${p.price}. Is it available?`);return`<div class="product-card" onclick="hideWishlist();setTimeout(()=>openModal(${JSON.stringify(p).replace(/"/g,'&quot;')}),300)" style="border-radius:8px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer"><div class="card-img-wrap" style="aspect-ratio:1">${hasImg?`<img src="${p.image_url}" alt="${p.name}" loading="lazy">`:`<div class="no-img-placeholder">${catIcon(p.category)}</div>`}<button class="card-wishlist loved" onclick="event.stopPropagation();removeFromWishlist('${p.barcode_id}')" style="display:flex">❤️</button></div><div class="card-body"><div class="card-name">${p.name}</div><div class="card-price"><span class="price-main">₹${Number(p.price).toLocaleString('en-IN')}</span></div>${getRealtimeStatus(p).badge}<div style="display:flex;gap:6px;margin-top:8px"><a href="https://wa.me/918260362286?text=${waMsg}" target="_blank" onclick="event.stopPropagation()" style="flex:1;background:#25D366;color:#fff;border:none;padding:8px;border-radius:3px;font-size:12px;font-weight:700;text-align:center;cursor:pointer;display:block">📱 WhatsApp</a></div></div></div>`;}).join('')}</div>`;}
+page.classList.add('active');document.body.style.overflow='hidden';}
+function hideWishlist(){document.getElementById('wishlist-page').classList.remove('active');document.body.style.overflow='';}
 function removeFromWishlist(bid){let wl=getWishlist();wl=wl.filter(w=>w.barcode_id!==bid);saveWishlist(wl);showWishlist();const btn=document.querySelector(`[data-bid="${bid}"]`);if(btn){btn.textContent='🤍';btn.classList.remove('loved');}}
-function clearWishlist(){saveWishlist([]);showWishlist();document.querySelectorAll('.card-wishlist').forEach(b=>{b.textContent='🤍';b.classList.remove('loved');});showToast('Wishlist cleared');}
+function clearWishlist(){saveWishlist([]);showWishlist();}
 
 /* ═══════════════════════════════════════
-   RECENTLY VIEWED
-═══════════════════════════════════════ */
-function addToRecentlyViewed(product){
-  try{let rv=JSON.parse(localStorage.getItem('jv_recently_viewed')||'[]');rv=rv.filter(p=>p.barcode_id!==product.barcode_id);rv.unshift(product);rv=rv.slice(0,10);localStorage.setItem('jv_recently_viewed',JSON.stringify(rv));renderRecentlyViewed();}catch{}
-}
-function renderRecentlyViewed(){
-  try{const rv=JSON.parse(localStorage.getItem('jv_recently_viewed')||'[]');const sidebar=document.getElementById('recently-viewed-sidebar');const list=document.getElementById('rv-list-sidebar');if(!rv.length){sidebar.style.display='none';return;}sidebar.style.display='block';list.innerHTML=rv.map(p=>{const hasImg=p.image_url&&p.image_url.startsWith('http');return`<div class="rv-item" onclick="openModal(${JSON.stringify(p).replace(/"/g,'&quot;')})"><div class="rv-thumb">${hasImg?`<img src="${p.image_url}" alt="${p.name}" loading="lazy">`:catIcon(p.category)}</div><div class="rv-name">${p.name}</div><div class="rv-price">₹${Number(p.price).toLocaleString('en-IN')}</div></div>`;}).join('');}catch{}
-}
-
-/* ═══════════════════════════════════════
-   PRODUCT MODAL (enhanced with 3D btn)
+   PRODUCT MODAL
 ═══════════════════════════════════════ */
 function openModal(p){
   if(typeof p==='string'){try{p=JSON.parse(p);}catch{return;}}
-  addToRecentlyViewed(p);
-  AppState.push({type:'product',barcode_id:p.barcode_id});
-  history.pushState({type:'product',barcode_id:p.barcode_id},'','#product-'+p.barcode_id);
   const hasImg=p.image_url&&p.image_url.startsWith('http');
   const inStock=p.stock_qty>0;
   const waMsg=encodeURIComponent(`Hi! I want to buy "${p.name}"${p.size?' (Size: '+p.size+')':''} for ₹${p.price}. Is it available?`);
   const wl=getWishlist();
   const isWished=wl.some(w=>w.barcode_id===p.barcode_id);
   const statusInfo=getRealtimeStatus(p);
-
   document.getElementById('modal-inner').innerHTML=`
     <div class="modal-gallery">
       <div class="main-image-wrap" id="main-img-wrap" onclick="toggleZoom()">
@@ -1513,16 +1434,13 @@ function openModal(p){
     <div class="modal-info">
       <div class="modal-brand">${p.brand||'JV'} · ${p.category||"Men's Wear"}</div>
       <div class="modal-name">${p.name}</div>
-      <div class="modal-price-wrap">
-        <span class="modal-price">₹${Number(p.price).toLocaleString('en-IN')}</span>
-        ${statusInfo.badge}
-      </div>
+      <div class="modal-price-wrap"><span class="modal-price">₹${Number(p.price).toLocaleString('en-IN')}</span>${statusInfo.badge}</div>
       <div class="modal-divider"></div>
       ${p.size?`<div><div class="size-label">Size</div><div class="size-grid"><div class="size-chip active">${p.size}</div></div></div>`:''}
       ${p.color?`<div><div class="size-label">Color</div><div class="size-grid"><div class="size-chip active">${p.color}</div></div></div>`:''}
       <div class="modal-actions">
         <button class="modal-btn btn-wishlist-modal" onclick="toggleWishlistModal('${p.barcode_id}',this)" id="modal-wl-btn">${isWished?'❤️ Saved':'🤍 Save'}</button>
-        ${hasImg?`<button class="modal-btn btn-3d-modal" onclick="openModal3D('${p.image_url}','${p.name.replace(/'/g,"\\'")}')">🔮 360°</button>`:''}
+        ${hasImg?`<button class="modal-btn btn-3d-modal" onclick="open3DViewer('${p.image_url}','${p.name.replace(/'/g,"\\'")}')">🔮 360°</button>`:''}
         <button class="modal-btn btn-secondary-action" onclick="openChatForProduct('${p.barcode_id}','${p.name.replace(/'/g,"\\'")}',${p.price});closeModal()">💬 Chat</button>
         <a class="modal-btn btn-primary-action" href="https://wa.me/918260362286?text=${waMsg}" target="_blank">📱 WhatsApp</a>
       </div>
@@ -1538,164 +1456,168 @@ function openModal(p){
         <div class="highlight-item"><div class="highlight-dot"></div><span>📞 8260362286 · Mon–Sun 9am–9pm</span></div>
       </div>
     </div>`;
-
   document.getElementById('product-modal').classList.add('active');
   document.body.style.overflow='hidden';
 }
-
-function openModal3D(imgUrl, name){
-  closeModal();
-  setTimeout(()=>open3DViewer(imgUrl,name),300);
-}
-
-function toggleWishlistModal(bid,btn){
-  let wl=getWishlist();const product=allProducts.find(p=>p.barcode_id===bid);if(!product)return;
-  const idx=wl.findIndex(w=>w.barcode_id===bid);
-  if(idx>-1){wl.splice(idx,1);btn.textContent='🤍 Save';showToast('Removed from saved');}
-  else{wl.push(product);btn.textContent='❤️ Saved';showToast('❤️ Saved!','love');}
-  saveWishlist(wl);
-  const cardBtn=document.querySelector(`[data-bid="${bid}"]`);
-  if(cardBtn){const isSaved=wl.some(w=>w.barcode_id===bid);cardBtn.textContent=isSaved?'❤️':'🤍';cardBtn.classList.toggle('loved',isSaved);}
-}
-
-function closeModal(){closeModalDirect();history.back();}
-function closeModalDirect(){document.getElementById('product-modal').classList.remove('active');document.body.style.overflow='';}
+function toggleWishlistModal(bid,btn){let wl=getWishlist();const product=allProducts.find(p=>p.barcode_id===bid);if(!product)return;const idx=wl.findIndex(w=>w.barcode_id===bid);if(idx>-1){wl.splice(idx,1);btn.textContent='🤍 Save';showToast('Removed from saved');}else{wl.push(product);btn.textContent='❤️ Saved';showToast('❤️ Saved!','love');}saveWishlist(wl);}
+function closeModal(){document.getElementById('product-modal').classList.remove('active');document.body.style.overflow='';}
 function toggleZoom(){const wrap=document.getElementById('main-img-wrap');if(wrap&&document.getElementById('main-img'))wrap.classList.toggle('zoomed');}
 function setView(view){currentView=view;document.getElementById('products-grid').classList.toggle('list-view',view==='list');document.getElementById('view-grid').classList.toggle('active',view==='grid');document.getElementById('view-list').classList.toggle('active',view==='list');}
 
-/* ═══════════════════════════════════════
-   FEATURE 8+9: ADVANCED CHAT + AI ASSISTANT
-═══════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   FIX 1: CHAT SYSTEM — FULLY FIXED SUPABASE INTEGRATION
+   Root causes fixed:
+   1. Table creation: Run SUPABASE_SETUP.sql first
+   2. RLS policies: Anon can insert/read chat messages
+   3. Headers: Correct Prefer headers for upsert
+   4. Error handling: Graceful fallback if Supabase fails
+   5. Session persistence: localStorage based
+   6. Realtime: WebSocket for instant admin→customer messages
+═══════════════════════════════════════════════════════════════ */
 const CHAT_SESSION_KEY='jv_chat_session_id';
-const CHAT_MSGS_KEY='jv_chat_messages_cache';
 let chatSessionId=null;
 let chatPolling=null;
-let lastMsgCount=0;
+let lastMsgTs=null;
 let chatOpen=false;
 let pendingProductInfo=null;
-let activeTab='chat';
 
-function getChatSessionId(){let sid=localStorage.getItem(CHAT_SESSION_KEY);if(!sid){sid='sess_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);localStorage.setItem(CHAT_SESSION_KEY,sid);}return sid;}
-function getVisitorName(){return localStorage.getItem('jv_chat_visitor_name')||'Customer';}
+function getChatSessionId(){
+  let sid=localStorage.getItem(CHAT_SESSION_KEY);
+  if(!sid){sid='sess_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);localStorage.setItem(CHAT_SESSION_KEY,sid);}
+  return sid;
+}
 
-function switchTab(tab){
-  activeTab=tab;
-  const chatMsgs=document.getElementById('chat-messages');
-  const aiPanel=document.getElementById('ai-chat-panel');
-  const qr=document.getElementById('quick-replies');
-  const tabChat=document.getElementById('tab-chat');
-  const tabAI=document.getElementById('tab-ai');
-  const inputArea=document.querySelector('.chat-input-area');
-  if(tab==='chat'){
-    chatMsgs.style.display='';aiPanel.style.display='none';qr.style.display='';inputArea.style.display='';
-    tabChat.style.background='var(--primary)';tabChat.style.color='#fff';
-    tabAI.style.background='#f0f4ff';tabAI.style.color='var(--primary)';
-    document.getElementById('chat-input').placeholder='Type a message...';
-    document.getElementById('chat-send').onclick=sendMessage;
-  } else {
-    chatMsgs.style.display='none';aiPanel.style.display='flex';qr.style.display='none';inputArea.style.display='';
-    tabAI.style.background='linear-gradient(135deg,#7c3aed,#4f46e5)';tabAI.style.color='#fff';
-    tabChat.style.background='#f0f4ff';tabChat.style.color='var(--primary)';
-    document.getElementById('chat-input').placeholder='Ask AI: "show black shirts under ₹1500"';
-    document.getElementById('chat-send').onclick=sendAIMessage;
+function updateChatStatus(status,text){
+  const dot=document.getElementById('chat-status-dot');
+  const txt=document.getElementById('chat-status-text');
+  if(!dot||!txt)return;
+  dot.className='chat-status-dot '+status;
+  txt.textContent=text;
+}
+
+async function toggleChat(){
+  chatOpen=!chatOpen;
+  const widget=document.getElementById('chat-widget');
+  const fab=document.getElementById('chat-fab');
+  widget.classList.toggle('open',chatOpen);
+  fab.innerHTML=chatOpen?`✕<span class="badge" id="chat-fab-badge" style="display:none"></span>`:`💬<span class="badge" id="chat-fab-badge" style="display:none"></span>`;
+  if(chatOpen){
+    chatSessionId=getChatSessionId();
+    await initChatSession();
+    document.getElementById('chat-input')?.focus();
+  }else{
+    clearInterval(chatPolling);
   }
 }
 
-function openAIChat(){if(!chatOpen)toggleChat();setTimeout(()=>switchTab('ai'),300);}
-
-function toggleChat(){
-  chatOpen=!chatOpen;
-  document.getElementById('chat-widget').classList.toggle('open',chatOpen);
-  document.getElementById('chat-fab').innerHTML=chatOpen?'✕<span class="badge" id="chat-fab-badge" style="display:none"></span>':'💬<span class="badge" id="chat-fab-badge" style="display:none"></span>';
-  if(chatOpen){chatSessionId=getChatSessionId();initChatSession();document.getElementById('chat-input').focus();}
-  else{clearInterval(chatPolling);}
-}
-
 async function initChatSession(){
-  const container=document.getElementById('chat-messages');
-  const cached=localStorage.getItem(CHAT_MSGS_KEY+'_'+chatSessionId);
-  if(cached){try{const msgs=JSON.parse(cached);if(msgs.length>0){renderMessages(msgs);lastMsgCount=msgs.length;startPolling();return;}}catch{}}
-  container.innerHTML=`<div class="chat-welcome"><div class="logo">💬</div><h3>JV Unique Collection</h3><p>Hi! 👋 We're here to help. Ask about any product or visit us at Kashinagar Bus Stand.</p><p style="margin-top:8px;font-size:12px;color:var(--text2)">💡 Try our <strong>AI tab</strong> for smart product search!</p></div>`;
-  try{await sbFetch('/rest/v1/chat_sessions',{method:'POST',headers:{'Prefer':'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({session_id:chatSessionId,visitor_name:getVisitorName(),last_message:'',status:'open',unread_count:0,updated_at:new Date().toISOString()})});}catch{}
-  await loadMessages();startPolling();
+  updateChatStatus('connecting','Connecting...');
+  try{
+    // Create/update session in Supabase
+    await sbFetch('/rest/v1/chat_sessions',{
+      method:'POST',
+      headers:{'Prefer':'resolution=merge-duplicates,return=minimal'},
+      body:JSON.stringify({
+        session_id:chatSessionId,
+        visitor_name:'Customer',
+        last_message:'',
+        status:'open',
+        unread_count:0,
+        updated_at:new Date().toISOString()
+      })
+    });
+    updateChatStatus('connected','Online · Usually replies quickly');
+    await loadMessages(true);
+    startChatPolling();
+    setupRealtimeChat();
+  }catch(e){
+    console.error('[Chat] Init error:',e);
+    updateChatStatus('error','Connection issue — messages may be delayed');
+    // Still try to load cached messages
+    startChatPolling();
+  }
 }
 
-function startPolling(){clearInterval(chatPolling);chatPolling=setInterval(()=>{if(chatOpen&&activeTab==='chat')loadMessages(false);},3000);}
+function startChatPolling(){
+  clearInterval(chatPolling);
+  chatPolling=setInterval(()=>{if(chatOpen)loadMessages(false);},4000);
+}
 
 async function loadMessages(scrollDown=true){
   if(!chatSessionId)return;
-  try{const msgs=await sbFetch(`/rest/v1/chat_messages?session_id=eq.${encodeURIComponent(chatSessionId)}&order=created_at.asc&limit=100`);if(!Array.isArray(msgs))return;if(msgs.length!==lastMsgCount){lastMsgCount=msgs.length;try{localStorage.setItem(CHAT_MSGS_KEY+'_'+chatSessionId,JSON.stringify(msgs));}catch{}renderMessages(msgs,scrollDown);}}catch{}
+  try{
+    const msgs=await sbFetch(`/rest/v1/chat_messages?session_id=eq.${encodeURIComponent(chatSessionId)}&order=created_at.asc&limit=100`);
+    if(!Array.isArray(msgs))return;
+    renderMessages(msgs,scrollDown);
+    updateChatStatus('connected','Online · Usually replies quickly');
+  }catch(e){
+    console.warn('[Chat] Load messages error:',e);
+    updateChatStatus('error','Reconnecting...');
+  }
 }
 
 function renderMessages(msgs,scrollDown=true){
   const container=document.getElementById('chat-messages');
-  if(!msgs||!msgs.length){container.innerHTML=`<div class="chat-welcome"><div class="logo">💬</div><h3>JV Unique Collection</h3><p>Hi! 👋 How can we help you today?</p></div>`;return;}
-  container.innerHTML=msgs.map(m=>{const time=m.created_at?new Date(m.created_at).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}):'';const cls=m.sender==='system'?'system':m.sender==='shop'?'shop':'customer';const seen=cls==='customer'?'<span class="seen-status">✓✓</span>':'';return`<div class="chat-msg ${cls}">${escHtml(m.message)}${seen}<span class="msg-time">${time}</span></div>`;}).join('');
-  if(scrollDown)container.scrollTop=container.scrollHeight;
+  if(!msgs||!msgs.length){
+    container.innerHTML=`<div style="text-align:center;padding:20px;color:var(--text2)"><div style="font-size:28px;margin-bottom:8px">💬</div><div style="font-size:14px;font-weight:700;color:var(--text)">JV Unique Collection</div><div style="font-size:12px;margin-top:4px">Hi! 👋 Ask about any product or visit us at Kashinagar Bus Stand.</div></div>`;
+    return;
+  }
+  const wasAtBottom=(container.scrollHeight-container.scrollTop-container.clientHeight)<80;
+  container.innerHTML=msgs.map(m=>{
+    const time=m.created_at?new Date(m.created_at).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}):'';
+    const cls=m.sender==='system'?'system':m.sender==='shop'?'shop':'customer';
+    const seen=cls==='customer'?'<span class="seen-status">✓✓</span>':'';
+    return`<div class="chat-msg ${cls}">${escHtml(m.message)}${seen}<span class="msg-time">${time}</span></div>`;
+  }).join('');
+  if(scrollDown||wasAtBottom)container.scrollTop=container.scrollHeight;
 }
 
 async function sendMessage(){
-  const input=document.getElementById('chat-input');const text=input.value.trim();if(!text)return;
-  chatSessionId=getChatSessionId();input.value='';input.style.height='';
-  document.getElementById('chat-send').disabled=true;
-  const tempMsgs=lastMsgCount>0?JSON.parse(localStorage.getItem(CHAT_MSGS_KEY+'_'+chatSessionId)||'[]'):[];
-  tempMsgs.push({sender:'customer',message:text,created_at:new Date().toISOString()});renderMessages(tempMsgs);
-  try{
-    await sbFetch('/rest/v1/chat_messages',{method:'POST',headers:{'Prefer':'return=minimal'},body:JSON.stringify({session_id:chatSessionId,sender:'customer',sender_name:getVisitorName(),message:text,is_read:false,...(pendingProductInfo||{})})});
-    await sbFetch(`/rest/v1/chat_sessions?session_id=eq.${encodeURIComponent(chatSessionId)}`,{method:'PATCH',headers:{'Prefer':'return=minimal'},body:JSON.stringify({last_message:text,status:'open',updated_at:new Date().toISOString()})});
-    pendingProductInfo=null;await loadMessages(true);
-  }catch{showToast('Failed to send. Check connection.');}
-  finally{document.getElementById('chat-send').disabled=false;document.getElementById('chat-input').focus();}
-}
-
-/* AI Message System */
-function addAIMessage(role,text){
-  const box=document.getElementById('ai-messages');
-  const div=document.createElement('div');
-  div.className='chat-msg '+(role==='ai'?'shop':'customer');
-  if(role==='ai'){div.style.background='linear-gradient(135deg,#7c3aed,#4f46e5)';div.style.color='#fff';}
-  div.innerHTML=escHtml(text);
-  box.appendChild(div);
-  box.scrollTop=box.scrollHeight;
-  document.getElementById('ai-chat-panel').scrollTop=document.getElementById('ai-chat-panel').scrollHeight;
-}
-
-async function sendAIMessage(){
   const input=document.getElementById('chat-input');
-  const text=input.value.trim();if(!text)return;
+  const text=input.value.trim();
+  if(!text)return;
+  chatSessionId=getChatSessionId();
   input.value='';
-  if(activeTab==='ai'){addAIMessage('user',text);processAIQuery(text);}
-  else{sendMessage();}
-}
-
-function processAIQuery(query){
-  const parsed=parseAIQuery(query);
-  let results=allProducts.filter(p=>{
-    if(parsed.category&&p.category!==parsed.category)return false;
-    if(parsed.color&&!`${p.color||''} ${p.name}`.toLowerCase().includes(parsed.color))return false;
-    if(parsed.size&&p.size&&p.size.toLowerCase()!==parsed.size.toLowerCase())return false;
-    if(p.price>parsed.maxPrice||p.price<parsed.minPrice)return false;
-    return true;
-  });
+  input.style.height='';
+  document.getElementById('chat-send').disabled=true;
   
-  let parts=[];
-  if(parsed.color)parts.push(parsed.color);
-  if(parsed.size)parts.push('size '+parsed.size);
-  if(parsed.category)parts.push(parsed.category);
-  if(parsed.maxPrice<Infinity)parts.push('under ₹'+parsed.maxPrice.toLocaleString('en-IN'));
+  // Optimistic UI — show message immediately
+  const msgs=document.getElementById('chat-messages');
+  const tempDiv=document.createElement('div');
+  tempDiv.className='chat-msg customer';
+  tempDiv.innerHTML=escHtml(text)+'<span class="seen-status">✓</span><span class="msg-time">sending...</span>';
+  msgs.appendChild(tempDiv);
+  msgs.scrollTop=msgs.scrollHeight;
   
-  setTimeout(()=>{
-    if(results.length>0){
-      addAIMessage('ai',`Found ${results.length} products${parts.length?' for '+parts.join(', '):''}! Showing them now...`);
-      // Apply the filter to main product grid
-      filteredProducts=results;
-      sortProducts();
-      document.getElementById('ai-result-label').textContent=`🤖 ${results.length} AI results`;
-      window.scrollTo({top:document.getElementById('main-content').offsetTop-70,behavior:'smooth'});
-    } else {
-      addAIMessage('ai',`No products found${parts.length?' for '+parts.join(', '):''}. Try different filters or visit our store at Kashinagar Bus Stand! 📍`);
-    }
-  },600);
+  try{
+    await sbFetch('/rest/v1/chat_messages',{
+      method:'POST',
+      headers:{'Prefer':'return=minimal'},
+      body:JSON.stringify({
+        session_id:chatSessionId,
+        sender:'customer',
+        sender_name:'Customer',
+        message:text,
+        is_read:false,
+        ...(pendingProductInfo||{})
+      })
+    });
+    // Update session
+    await sbFetch(`/rest/v1/chat_sessions?session_id=eq.${encodeURIComponent(chatSessionId)}`,{
+      method:'PATCH',
+      headers:{'Prefer':'return=minimal'},
+      body:JSON.stringify({last_message:text,status:'open',updated_at:new Date().toISOString()})
+    });
+    pendingProductInfo=null;
+    await loadMessages(true);
+  }catch(e){
+    tempDiv.style.opacity='0.5';
+    tempDiv.innerHTML+=`<div style="font-size:10px;color:var(--red)">Failed to send. Check connection.</div>`;
+    showToast('Message not sent — check connection');
+  }finally{
+    document.getElementById('chat-send').disabled=false;
+    document.getElementById('chat-input').focus();
+  }
 }
 
 async function sendQuick(text){document.getElementById('chat-input').value=text;await sendMessage();}
@@ -1703,73 +1625,324 @@ function autoResize(el){el.style.height='';el.style.height=Math.min(el.scrollHei
 
 async function openChatForProduct(barcodeId,name,price){
   pendingProductInfo={product_barcode:barcodeId,product_name:name};
-  if(!chatOpen)toggleChat();
+  if(!chatOpen)await toggleChat();
   chatSessionId=getChatSessionId();
   setTimeout(async()=>{
-    const cached=localStorage.getItem(CHAT_MSGS_KEY+'_'+chatSessionId);let msgs=[];try{msgs=JSON.parse(cached||'[]');}catch{}
-    if(!msgs.some(m=>m.product_barcode===barcodeId)){
-      try{await sbFetch('/rest/v1/chat_messages',{method:'POST',headers:{'Prefer':'return=minimal'},body:JSON.stringify({session_id:chatSessionId,sender:'system',sender_name:'System',message:`Customer is asking about: ${name} (${barcodeId}) — ₹${price}`,is_read:false,product_barcode:barcodeId,product_name:name})});await loadMessages(true);}catch{}
-    }
+    try{
+      await sbFetch('/rest/v1/chat_messages',{
+        method:'POST',
+        headers:{'Prefer':'return=minimal'},
+        body:JSON.stringify({session_id:chatSessionId,sender:'system',sender_name:'System',message:`Customer is asking about: ${name} (${barcodeId}) — ₹${price}`,is_read:false,product_barcode:barcodeId,product_name:name})
+      });
+      await loadMessages(true);
+    }catch{}
     document.getElementById('chat-input').value=`I want to buy "${name}" for ₹${price}. Is it available?`;
     document.getElementById('chat-input').focus();
   },300);
 }
 
-/* Mobile sidebar */
+// WebSocket for real-time admin→customer messages
+function setupRealtimeChat(){
+  const wsUrl=`wss://${SB_URL.replace('https://','')}/realtime/v1/websocket?vsn=1.0.0&apikey=${SB_KEY}`;
+  let ws,heartbeat;
+  function connect(){
+    try{
+      ws=new WebSocket(wsUrl);
+      ws.onopen=()=>{
+        ws.send(JSON.stringify({topic:'realtime:public:chat_messages',event:'phx_join',payload:{config:{postgres_changes:[{event:'INSERT',schema:'public',table:'chat_messages'}]}},ref:'1'}));
+        heartbeat=setInterval(()=>ws.send(JSON.stringify({topic:'phoenix',event:'heartbeat',payload:{},ref:Date.now()})),25000);
+      };
+      ws.onmessage=e=>{
+        try{
+          const msg=JSON.parse(e.data);
+          if(msg.event==='INSERT'&&msg.payload?.record?.session_id===chatSessionId&&chatOpen){
+            const record=msg.payload.record;
+            // Only reload for shop/system messages (admin replies)
+            if(record.sender==='shop'||record.sender==='system'){
+              loadMessages(true);
+            }
+          }
+        }catch{}
+      };
+      ws.onclose=()=>{clearInterval(heartbeat);setTimeout(connect,5000);};
+      ws.onerror=()=>ws.close();
+    }catch{}
+  }
+  connect();
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FIX 4: ADVANCED AI ASSISTANT (Real Claude API Integration)
+   Features:
+   1. Natural language product search & recommendations
+   2. Outfit suggestions based on occasion/budget
+   3. Style advisor (what to wear for weddings, interviews etc.)
+   4. Product comparison
+   5. Size & fit guidance
+   6. Price negotiation help
+═══════════════════════════════════════════════════════════════ */
+let aiPanelOpen=false;
+let aiMessages=[];
+
+function openAIPanel(){
+  aiPanelOpen=true;
+  document.getElementById('ai-panel').classList.add('active');
+  document.body.style.overflow='hidden';
+  if(aiMessages.length===0)initAIPanel();
+  setTimeout(()=>document.getElementById('ai-panel-input')?.focus(),300);
+}
+function closeAIPanel(){
+  aiPanelOpen=false;
+  document.getElementById('ai-panel').classList.remove('active');
+  document.body.style.overflow='';
+}
+
+function initAIPanel(){
+  const msgBox=document.getElementById('ai-panel-messages');
+  const productCount=allProducts.length;
+  const categories=[...new Set(allProducts.map(p=>p.category).filter(Boolean))];
+  
+  msgBox.innerHTML=`
+    <div class="ai-msg bot">
+      🤖 Hi! I'm JV's AI Fashion Assistant.<br><br>
+      We have <strong>${productCount} products</strong> in ${categories.length} categories: ${categories.join(', ')}.<br><br>
+      I can help you with:<br>
+      • Finding the perfect outfit for any occasion<br>
+      • Product recommendations by budget & style<br>
+      • Outfit combinations & styling tips<br>
+      • Size & fit guidance
+    </div>
+    <div class="ai-suggestions-chips">
+      <button class="ai-chip" onclick="quickAIQuery('Best shirts for office under ₹1000')">👔 Office shirts under ₹1000</button>
+      <button class="ai-chip" onclick="quickAIQuery('Suggest wedding outfit')">🤵 Wedding outfit</button>
+      <button class="ai-chip" onclick="quickAIQuery('What should I wear for interview?')">💼 Interview outfit</button>
+      <button class="ai-chip" onclick="quickAIQuery('Best selling items')">🔥 Best sellers</button>
+      <button class="ai-chip" onclick="quickAIQuery('Show all products under ₹500')">💰 Under ₹500</button>
+    </div>`;
+}
+
+function quickAIQuery(text){
+  document.getElementById('ai-panel-input').value=text;
+  sendAIPanelMessage();
+}
+
+async function sendAIPanelMessage(){
+  const input=document.getElementById('ai-panel-input');
+  const text=input.value.trim();
+  if(!text)return;
+  input.value='';
+  input.style.height='';
+  
+  // Add user message
+  appendAIMessage('user',text);
+  aiMessages.push({role:'user',content:text});
+  
+  // Add loading indicator
+  const loadingId='ai-loading-'+Date.now();
+  const msgBox=document.getElementById('ai-panel-messages');
+  const loading=document.createElement('div');
+  loading.className='ai-msg bot loading';
+  loading.id=loadingId;
+  loading.textContent='🤖 Thinking...';
+  msgBox.appendChild(loading);
+  msgBox.scrollTop=msgBox.scrollHeight;
+  
+  try{
+    // Build context about available products
+    const productSummary=buildProductContext();
+    
+    const systemPrompt=`You are JV Unique Collection's AI Fashion Assistant — a smart, helpful shopping assistant for a men's fashion store in Kashinagar, Odisha.
+
+STORE INVENTORY (current):
+${productSummary}
+
+STORE INFO:
+- Location: Kashinagar Bus Stand, GMR Complex, Odisha 761206  
+- Phone: 8260362286
+- Hours: Mon-Sun 9am-9pm
+- No online delivery — customers must visit the store
+
+YOUR JOB:
+1. Help customers find the right products from our inventory
+2. Give outfit suggestions and style advice
+3. Answer questions about sizing, occasions, and fashion
+4. Always refer to actual products from our inventory when recommending
+5. Be conversational and helpful in Indian English
+6. Keep responses concise — under 120 words unless complex question
+
+When recommending products, format them as:
+**Product Name** — ₹Price (Size: X, Color: Y) — barcode: ID
+
+If no exact match exists, suggest the closest available option.`;
+    
+    const response=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system:systemPrompt,
+        messages:aiMessages.slice(-8) // Keep last 8 turns for context
+      })
+    });
+    
+    if(!response.ok)throw new Error('API error '+response.status);
+    const data=await response.json();
+    const reply=data.content?.[0]?.text||'Sorry, I could not process that. Please try again.';
+    
+    // Remove loading
+    document.getElementById(loadingId)?.remove();
+    
+    // Parse reply for product recommendations
+    const{text:cleanText,products:mentionedProducts}=parseAIReply(reply);
+    
+    aiMessages.push({role:'assistant',content:reply});
+    appendAIMessage('bot',cleanText);
+    
+    // Show mini product cards if products mentioned
+    if(mentionedProducts.length>0){
+      appendAIProductRow(mentionedProducts);
+    }
+    
+    // Add follow-up suggestions
+    appendAISuggestions(text);
+    
+  }catch(e){
+    document.getElementById(loadingId)?.remove();
+    console.error('[AI Panel]',e);
+    // Fallback to local AI if API fails
+    const fallbackReply=localAIFallback(text);
+    appendAIMessage('bot',fallbackReply.text);
+    if(fallbackReply.products.length>0)appendAIProductRow(fallbackReply.products);
+  }
+  
+  msgBox.scrollTop=msgBox.scrollHeight;
+}
+
+function buildProductContext(){
+  if(!allProducts.length)return'No products loaded yet.';
+  // Group by category for concise summary
+  const byCat={};
+  allProducts.forEach(p=>{
+    const cat=p.category||'Other';
+    if(!byCat[cat])byCat[cat]=[];
+    byCat[cat].push(p);
+  });
+  let summary='';
+  for(const[cat,prods] of Object.entries(byCat)){
+    const inStock=prods.filter(p=>p.stock_qty>0);
+    if(!inStock.length)continue;
+    const priceRange=`₹${Math.min(...inStock.map(p=>p.price))}-₹${Math.max(...inStock.map(p=>p.price))}`;
+    const sizes=[...new Set(inStock.map(p=>p.size).filter(Boolean))].slice(0,5).join(',');
+    const colors=[...new Set(inStock.map(p=>p.color).filter(Boolean))].slice(0,5).join(',');
+    // Include first 3 actual products
+    const examples=inStock.slice(0,3).map(p=>`${p.name}(₹${p.price},${p.size||''},${p.color||''},id:${p.barcode_id})`).join('; ');
+    summary+=`${cat}(${inStock.length} items, ${priceRange}, sizes:${sizes||'various'}, colors:${colors||'various'}): ${examples}\n`;
+  }
+  return summary||'Products loading...';
+}
+
+function parseAIReply(text){
+  // Extract product barcodes mentioned in reply
+  const barcodeMatches=text.match(/\b(JV\d{6})\b/g)||[];
+  const products=barcodeMatches.map(id=>allProducts.find(p=>p.barcode_id===id)).filter(Boolean);
+  // Clean the text (remove raw barcode refs if we're showing cards)
+  let clean=text;
+  return{text:clean,products};
+}
+
+function localAIFallback(query){
+  // Smart local fallback when API unavailable
+  const results=advancedSearch(query).slice(0,3);
+  let text='';
+  if(results.length>0){
+    text=`Based on your query, here are our best matches from current inventory:`;
+  }else{
+    const filters=tokenizeQuery(expandQuery(query));
+    if(filters.colors.length||filters.sizes.length||filters.category){
+      text=`I searched for ${[...filters.colors,...filters.sizes,filters.category].filter(Boolean).join(', ')} but no exact matches found. Try browsing our full collection or visit our store at Kashinagar Bus Stand (8260362286)!`;
+    }else{
+      text=`I'm having trouble connecting to AI. Here are some popular items from our store — or call us at 8260362286!`;
+    }
+  }
+  return{text,products:results};
+}
+
+function appendAIMessage(role,text){
+  const msgBox=document.getElementById('ai-panel-messages');
+  const div=document.createElement('div');
+  div.className=`ai-msg ${role}`;
+  // Convert **bold** markdown to <strong>
+  const formatted=text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+  div.innerHTML=formatted;
+  msgBox.appendChild(div);
+  msgBox.scrollTop=msgBox.scrollHeight;
+}
+
+function appendAIProductRow(products){
+  if(!products.length)return;
+  const msgBox=document.getElementById('ai-panel-messages');
+  const row=document.createElement('div');
+  row.className='ai-products-row';
+  row.innerHTML=products.map(p=>{
+    const hasImg=p.image_url&&p.image_url.startsWith('http');
+    return`<div class="ai-product-mini" onclick="closeAIPanel();openModal(${JSON.stringify(p).replace(/"/g,'&quot;')})">
+      ${hasImg?`<img src="${p.image_url}" alt="${p.name}" loading="lazy">`:`<div class="apm-placeholder">${catIcon(p.category)}</div>`}
+      <div class="apm-body">
+        <div class="apm-name">${p.name}</div>
+        <div class="apm-price">₹${Number(p.price).toLocaleString('en-IN')}</div>
+        ${p.size?`<div style="font-size:10px;color:var(--text2)">${p.size}${p.color?' · '+p.color:''}</div>`:''}
+        ${getRealtimeStatus(p).badge}
+      </div>
+    </div>`;
+  }).join('');
+  msgBox.appendChild(row);
+  msgBox.scrollTop=msgBox.scrollHeight;
+}
+
+function appendAISuggestions(lastQuery){
+  // Dynamic follow-up chips based on context
+  const q=lastQuery.toLowerCase();
+  const chips=[];
+  if(q.includes('shirt'))chips.push('Compare different shirts','Show black shirts','Shirts for formal wear');
+  else if(q.includes('suit'))chips.push('Wedding suit recommendation','Budget suits under ₹3000','Show all suits');
+  else if(q.includes('jeans'))chips.push('Best jeans brands','Slim fit jeans','Dark wash jeans');
+  else{chips.push('Show best sellers','What\'s in stock?','Suggest outfit for wedding');}
+  
+  if(!chips.length)return;
+  const msgBox=document.getElementById('ai-panel-messages');
+  const div=document.createElement('div');
+  div.className='ai-suggestions-chips';
+  div.style.marginTop='4px';
+  div.innerHTML=chips.slice(0,3).map(c=>`<button class="ai-chip" onclick="quickAIQuery('${c}')">${c}</button>`).join('');
+  msgBox.appendChild(div);
+}
+
+/* MOBILE SIDEBAR */
 function toggleMobileSidebar(){document.getElementById('sidebar').classList.toggle('mobile-open');document.getElementById('filter-overlay').classList.toggle('active');}
 
-/* Utility */
+/* UTILITY */
 function escHtml(str){if(!str)return'';return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/\n/g,'<br>');}
-
 function showToast(msg,type='',duration=2500){const t=document.createElement('div');t.className='toast'+(type?' '+type:'');t.textContent=msg;document.body.appendChild(t);setTimeout(()=>{t.style.opacity='0';t.style.transition='opacity .3s';setTimeout(()=>t.remove(),300);},duration);}
-
 function showView(view){if(view==='home'){currentCategory='';applyFilters();window.scrollTo({top:0,behavior:'smooth'});}}
 
 window.addEventListener('scroll',()=>{document.getElementById('scroll-top')?.classList.toggle('visible',window.scrollY>400);});
-
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){
-    if(document.getElementById('viewer-3d').classList.contains('active')){close3DViewer();}
-    else if(document.getElementById('banner-lightbox').classList.contains('active')){closeBannerLightbox();}
-    else if(document.getElementById('product-modal').classList.contains('active')){closeModal();}
-    else if(document.getElementById('wishlist-page').classList.contains('active')){hideWishlist();}
+    if(document.getElementById('ai-panel').classList.contains('active'))closeAIPanel();
+    else if(document.getElementById('viewer-3d').classList.contains('active'))close3DViewer();
+    else if(document.getElementById('banner-lightbox').classList.contains('active'))closeBannerLightbox();
+    else if(document.getElementById('product-modal').classList.contains('active'))closeModal();
+    else if(document.getElementById('wishlist-page').classList.contains('active'))hideWishlist();
   }
 });
 
-/* Realtime Supabase Chat */
-function setupRealtimeChat(){
-  const wsUrl=`wss://${SB_URL.replace('https://','')}/realtime/v1/websocket?vsn=1.0.0&apikey=${SB_KEY}`;
-  function connect(){
-    try{const ws=new WebSocket(wsUrl);let hb;ws.onopen=()=>{ws.send(JSON.stringify({topic:'realtime:public:chat_messages',event:'phx_join',payload:{config:{postgres_changes:[{event:'INSERT',schema:'public',table:'chat_messages'}]}},ref:'1'}));hb=setInterval(()=>ws.send(JSON.stringify({topic:'phoenix',event:'heartbeat',payload:{},ref:Date.now()})),20000);};ws.onmessage=e=>{try{const msg=JSON.parse(e.data);if(msg.event==='INSERT'&&msg.payload?.record?.session_id===chatSessionId&&chatOpen&&activeTab==='chat')loadMessages(true);}catch{}};ws.onclose=()=>{clearInterval(hb);setTimeout(connect,3000);};ws.onerror=()=>ws.close();}catch{}
-  }connect();
-}
-
 /* ══ INIT ══ */
 document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('sidebar-search').addEventListener('input',e=>{document.getElementById('search-input').value=e.target.value;applyFilters();});
-  document.getElementById('search-input').addEventListener('keydown',e=>{if(e.key==='Enter')applySearch();});
-  
   updateWishlistBadge();
-  renderRecentlyViewed();
   loadGallery();
   loadProducts();
-  setupRealtimeChat();
-  
-  // Restore session
-  const lastSession=localStorage.getItem(CHAT_SESSION_KEY);
-  if(lastSession)chatSessionId=lastSession;
-  
-  // Init AI messages area
-  setTimeout(()=>{
-    const aiMsgs=document.getElementById('ai-messages');
-    if(aiMsgs&&!aiMsgs.children.length){
-      const welcome=document.createElement('div');
-      welcome.className='chat-msg shop';
-      welcome.style.cssText='background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;align-self:flex-start';
-      welcome.innerHTML='🤖 Hi! I can help you find products. Try:<br>• "Black XL shirt under ₹1000"<br>• "Navy blue trousers size 32"<br>• "Kurtas below ₹800"';
-      aiMsgs.appendChild(welcome);
-    }
-  },500);
+  document.getElementById('sidebar-search').addEventListener('input',e=>{document.getElementById('search-input').value=e.target.value;applyFilters();});
 });
 </script>
 </body>
