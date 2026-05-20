@@ -19,8 +19,9 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="google-site-verification" content="pw_6rn-9T8NFMrXwle4OPtP-4usNJ9LI0HsJsQZ8msY">
-<link rel="icon" type="image/png" href="og-image.jpg">
 <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
 
 <script type="application/ld+json">
 {
@@ -658,6 +659,326 @@ button{cursor:pointer;font-family:inherit}
 }
 .compare-chip .rm{cursor:pointer;opacity:.7;font-size:14px}
 .compare-btn{background:#fff;color:var(--primary);border:none;padding:8px 18px;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:inherit}
+/* ── FLIPKART BANNER SLIDER ── */
+.flipkart-banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #f1f3f6;
+  user-select: none;
+  /* Fixed height like Flipkart */
+  height: clamp(160px, 28vw, 320px);
+}
+ 
+.fb-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+ 
+/* Each banner slide */
+.fb-slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+ 
+.fb-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.fb-slide:hover img {
+  transform: scale(1.02);
+}
+ 
+/* Placeholder slide (when no image uploaded yet) */
+.fb-slide-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+}
+.fb-slide-placeholder .fp-icon { font-size: clamp(32px,5vw,56px); }
+.fb-slide-placeholder .fp-title {
+  font-size: clamp(18px,3.5vw,36px);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 1px;
+  text-align: center;
+  padding: 0 16px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.fb-slide-placeholder .fp-sub {
+  font-size: clamp(11px,2vw,16px);
+  color: rgba(255,255,255,0.8);
+  font-weight: 500;
+  text-align: center;
+}
+ 
+/* Gradient overlay on bottom of each slide */
+.fb-slide::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(transparent, rgba(0,0,0,0.45));
+  pointer-events: none;
+}
+ 
+/* Caption on slide */
+.fb-caption {
+  position: absolute;
+  bottom: 14px; left: 20px; right: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+.fb-caption .fc-title {
+  font-size: clamp(13px, 2.5vw, 22px);
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  line-height: 1.2;
+}
+.fb-caption .fc-sub {
+  font-size: clamp(10px, 1.8vw, 14px);
+  color: rgba(255,255,255,0.85);
+  margin-top: 2px;
+  font-weight: 500;
+}
+.fb-cat-tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 10px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+ 
+/* Left / Right arrows — exactly like Flipkart */
+.fb-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: clamp(28px,4vw,40px);
+  height: clamp(50px,8vw,80px);
+  background: rgba(255,255,255,0.92);
+  border: none;
+  cursor: pointer;
+  font-size: clamp(20px,3vw,32px);
+  color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.2s, color 0.2s;
+  border-radius: 2px;
+  line-height: 1;
+}
+.fb-arrow:hover {
+  background: #fff;
+  color: #222;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+.fb-prev { left: 0; border-radius: 0 4px 4px 0; }
+.fb-next { right: 0; border-radius: 4px 0 0 4px; }
+ 
+/* Dot indicators — Flipkart style */
+.fb-dots {
+  position: absolute;
+  bottom: 10px;
+  right: 16px;
+  display: flex;
+  gap: 5px;
+  z-index: 10;
+}
+.fb-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+.fb-dot.active {
+  background: #fff;
+  width: 22px;
+  border-radius: 4px;
+}
+ 
+/* Loading skeleton for banner */
+.fb-skeleton {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #e8eaed 25%, #f5f5f5 50%, #e8eaed 75%);
+  background-size: 200% 100%;
+  animation: fbShimmer 1.4s infinite;
+}
+@keyframes fbShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+ 
+/* ── GALLERY LIGHTBOX ── */
+.gallery-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  align-items: center;
+  justify-content: center;
+}
+.gallery-lightbox.open {
+  display: flex;
+}
+.glb-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(6px);
+}
+.glb-box {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border-radius: 12px;
+  width: 94%;
+  max-width: 780px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: lbPop 0.3s cubic-bezier(0.2,0.8,0.3,1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+@keyframes lbPop {
+  from { opacity:0; transform: scale(0.9) translateY(20px); }
+  to   { opacity:1; transform: scale(1) translateY(0); }
+}
+.glb-close {
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.glb-close:hover { background: rgba(0,0,0,0.9); }
+ 
+.glb-header {
+  padding: 16px 20px 10px;
+  border-bottom: 1px solid #eee;
+}
+.glb-header .glb-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #212121;
+}
+.glb-header .glb-sub {
+  font-size: 13px;
+  color: #878787;
+  margin-top: 2px;
+}
+ 
+.glb-img-wrap {
+  position: relative;
+  background: #f5f5f5;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.glb-img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  display: block;
+}
+.glb-no-img {
+  text-align: center;
+  padding: 60px;
+  color: #bbb;
+}
+.glb-no-img span { font-size: 60px; display: block; margin-bottom: 12px; }
+ 
+.glb-info {
+  padding: 14px 20px;
+  border-top: 1px solid #eee;
+  font-size: 13px;
+  color: #555;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.glb-info .gi-cat {
+  background: #f0f4ff;
+  color: #2874f0;
+  border: 1px solid #c7d7fb;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+ 
+.glb-actions {
+  padding: 12px 20px 16px;
+  display: flex;
+  gap: 10px;
+}
+.glb-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: opacity 0.2s;
+  text-decoration: none;
+}
+.glb-btn:hover { opacity: 0.88; }
+.glb-btn-wa   { background: #25D366; color: #fff; }
+.glb-btn-chat { background: #2874f0; color: #fff; }
+ 
+@media (max-width: 480px) {
+  .fb-caption .fc-title { font-size: 13px; }
+  .fb-caption .fc-sub   { display: none; }
+  .fb-arrow { width: 24px; }
+  .glb-img { max-height: 250px; }
+}
+
 </style>
 </head>
 <body>
@@ -748,14 +1069,34 @@ button{cursor:pointer;font-family:inherit}
   </div>
 </div>
 
-<!-- ══ STORE GALLERY (Fix #4) ══ -->
-<div class="gallery-section" id="gallery-section">
-  <div class="section-title-bar">
-    <h2>📸 Store Gallery &amp; Offers</h2>
-    <span class="see-all" onclick="showGallery()">View All →</span>
+<div class="flipkart-banner" id="flipkartBanner">
+  <div class="fb-track" id="fbTrack">
+    <!-- Banners injected by JS -->
   </div>
-  <div class="gallery-carousel" id="gallery-carousel">
-    <!-- Gallery cards injected by JS -->
+ 
+  <!-- Left / Right arrows -->
+  <button class="fb-arrow fb-prev" id="fbPrev" onclick="bannerNav(-1)">&#8249;</button>
+  <button class="fb-arrow fb-next" id="fbNext" onclick="bannerNav(1)">&#8250;</button>
+ 
+  <!-- Dot indicators -->
+  <div class="fb-dots" id="fbDots"></div>
+</div>
+ 
+<!-- GALLERY LIGHTBOX (opens on banner click) -->
+<div class="gallery-lightbox" id="galleryLightbox">
+  <div class="glb-overlay" onclick="closeLightbox()"></div>
+  <div class="glb-box">
+    <button class="glb-close" onclick="closeLightbox()">✕</button>
+    <div class="glb-header" id="glbHeader"></div>
+    <div class="glb-img-wrap">
+      <img class="glb-img" id="glbImg" src="" alt="">
+      <div class="glb-no-img" id="glbNoImg" style="display:none">
+        <span>📸</span>
+        <p>Image loading...</p>
+      </div>
+    </div>
+    <div class="glb-info" id="glbInfo"></div>
+    <div class="glb-actions" id="glbActions"></div>
   </div>
 </div>
 
@@ -1800,6 +2141,206 @@ function setupRealtimeChat() {
   }
   connect();
 }
+
+ 
+// ═══════════════════════════════════════════════
+//  FLIPKART BANNER SYSTEM
+//  Loads from /api/gallery
+//  Auto-slides every 4 seconds
+//  Click → opens lightbox with full image + info
+// ═══════════════════════════════════════════════
+ 
+let bannerItems    = [];
+let bannerCurrent  = 0;
+let bannerTimer    = null;
+let bannerTotal    = 0;
+ 
+// Category colors for placeholder slides
+const BANNER_COLORS = {
+  offer:   'linear-gradient(135deg,#ff6b35,#f7931e)',
+  store:   'linear-gradient(135deg,#1a1a2e,#16213e)',
+  festival:'linear-gradient(135deg,#6a0572,#c2185b)',
+  arrival: 'linear-gradient(135deg,#0f2027,#2874f0)',
+  general: 'linear-gradient(135deg,#1b1b2f,#2874f0)',
+};
+const BANNER_ICONS = {
+  offer:'🎉', store:'🏪', festival:'🪔', arrival:'✨', general:'📸'
+};
+ 
+async function loadBanners() {
+  const track = document.getElementById('fbTrack');
+  const dots  = document.getElementById('fbDots');
+ 
+  // Show skeleton while loading
+  track.innerHTML = `<div class="fb-slide"><div class="fb-skeleton"></div></div>`;
+ 
+  try {
+    const res  = await fetch('/api/gallery');
+    const data = await res.json();
+    bannerItems = (data.gallery || []).filter(g => g.is_active);
+  } catch(e) {
+    bannerItems = [];
+  }
+ 
+  // If no banners uploaded yet — show default placeholder slides
+  if (!bannerItems.length) {
+    bannerItems = [
+      { id:0, title:'New Arrivals 2026', subtitle:'Fresh stock just arrived — Visit us today!', category:'arrival', image_url:null },
+      { id:0, title:'Premium Suits & Shirts', subtitle:'Best quality at best price', category:'store', image_url:null },
+      { id:0, title:'Special Festival Offers', subtitle:'Eid · Diwali · Onam · New Year deals', category:'festival', image_url:null },
+      { id:0, title:'JV Unique Collection', subtitle:'Kashinagar Bus Stand · 8260362286', category:'general', image_url:null },
+    ];
+  }
+ 
+  bannerTotal = bannerItems.length;
+  renderBannerSlides();
+  renderBannerDots();
+  startBannerAuto();
+}
+ 
+function renderBannerSlides() {
+  const track = document.getElementById('fbTrack');
+  const catLabels = { offer:'OFFER', store:'STORE', festival:'FESTIVAL', arrival:'NEW ARRIVAL', general:'GALLERY' };
+ 
+  track.innerHTML = bannerItems.map((b, i) => {
+    const hasImg = b.image_url && b.image_url.startsWith('http');
+    const bg     = BANNER_COLORS[b.category] || BANNER_COLORS.general;
+    const icon   = BANNER_ICONS[b.category]  || '📸';
+    const tag    = catLabels[b.category]      || 'GALLERY';
+ 
+    return `
+    <div class="fb-slide" onclick="openBannerLightbox(${i})">
+      ${hasImg
+        ? `<img src="${b.image_url}" alt="${b.title}" loading="${i === 0 ? 'eager' : 'lazy'}"
+               onerror="this.style.display='none';this.nextSibling.style.display='flex'">`
+        : ''
+      }
+      <div class="fb-slide-placeholder" style="background:${bg};display:${hasImg ? 'none' : 'flex'}">
+        <div class="fp-icon">${icon}</div>
+        <div class="fp-title">${b.title}</div>
+        <div class="fp-sub">${b.subtitle || ''}</div>
+      </div>
+      <div class="fb-caption">
+        <div class="fb-cat-tag">${tag}</div>
+        <div class="fc-title">${b.title}</div>
+        ${b.subtitle ? `<div class="fc-sub">${b.subtitle}</div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+ 
+function renderBannerDots() {
+  const dots = document.getElementById('fbDots');
+  dots.innerHTML = bannerItems.map((_, i) =>
+    `<button class="fb-dot ${i===0?'active':''}" onclick="event.stopPropagation();goBanner(${i})"></button>`
+  ).join('');
+}
+ 
+function updateBannerUI() {
+  // Move track
+  document.getElementById('fbTrack').style.transform = `translateX(-${bannerCurrent * 100}%)`;
+  // Update dots
+  document.querySelectorAll('.fb-dot').forEach((d,i) => d.classList.toggle('active', i === bannerCurrent));
+}
+ 
+function goBanner(idx) {
+  bannerCurrent = (idx + bannerTotal) % bannerTotal;
+  updateBannerUI();
+  resetBannerAuto();
+}
+ 
+function bannerNav(dir) {
+  goBanner(bannerCurrent + dir);
+}
+ 
+function startBannerAuto() {
+  clearInterval(bannerTimer);
+  bannerTimer = setInterval(() => goBanner(bannerCurrent + 1), 4000);
+}
+ 
+function resetBannerAuto() {
+  clearInterval(bannerTimer);
+  bannerTimer = setInterval(() => goBanner(bannerCurrent + 1), 4000);
+}
+ 
+// Pause on hover
+document.addEventListener('DOMContentLoaded', () => {
+  const banner = document.getElementById('flipkartBanner');
+  if (banner) {
+    banner.addEventListener('mouseenter', () => clearInterval(bannerTimer));
+    banner.addEventListener('mouseleave', startBannerAuto);
+    // Touch swipe
+    let touchStartX = 0;
+    banner.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
+    banner.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) goBanner(bannerCurrent + (diff > 0 ? 1 : -1));
+    }, {passive:true});
+  }
+});
+ 
+// ═══════════════════════════════════════════════
+//  BANNER LIGHTBOX
+//  Opens full image + info when banner clicked
+// ═══════════════════════════════════════════════
+function openBannerLightbox(idx) {
+  const b = bannerItems[idx];
+  if (!b) return;
+ 
+  const hasImg = b.image_url && b.image_url.startsWith('http');
+  const catLabels = { offer:'🎉 Offer', store:'🏪 Store Photo', festival:'🪔 Festival', arrival:'✨ New Arrivals', general:'📸 Gallery' };
+  const waMsg = encodeURIComponent(`Hi! I saw your banner "${b.title}" on the website. I want more info!`);
+ 
+  // Header
+  document.getElementById('glbHeader').innerHTML = `
+    <div class="glb-title">${b.title}</div>
+    ${b.subtitle ? `<div class="glb-sub">${b.subtitle}</div>` : ''}
+  `;
+ 
+  // Image
+  const img   = document.getElementById('glbImg');
+  const noImg = document.getElementById('glbNoImg');
+  if (hasImg) {
+    img.src = b.image_url;
+    img.style.display = 'block';
+    noImg.style.display = 'none';
+  } else {
+    img.style.display = 'none';
+    noImg.style.display = 'block';
+  }
+ 
+  // Info
+  document.getElementById('glbInfo').innerHTML = `
+    <span class="gi-cat">${catLabels[b.category] || b.category}</span>
+    <span>📍 Kashinagar Bus Stand, GMR Complex</span>
+    <span>🕘 Mon–Sun 9am–9pm</span>
+  `;
+ 
+  // Actions
+  document.getElementById('glbActions').innerHTML = `
+    <a class="glb-btn glb-btn-wa" href="https://wa.me/918260362286?text=${waMsg}" target="_blank" rel="noopener">
+      📱 WhatsApp Us
+    </a>
+    <button class="glb-btn glb-btn-chat" onclick="closeLightbox();toggleChat()">
+      💬 Chat with Us
+    </button>
+  `;
+ 
+  document.getElementById('galleryLightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+ 
+  // Push history for back button
+  history.pushState({ type:'lightbox', idx }, '', '#banner-' + idx);
+}
+ 
+function closeLightbox() {
+  document.getElementById('galleryLightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+ 
+// Load banners on init (called inside DOMContentLoaded)
+// Add   loadBanners();   to your DOMContentLoaded block
+
 
 // ═══════════════════════════════════════════
 //  INIT
