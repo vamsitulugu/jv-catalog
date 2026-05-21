@@ -895,7 +895,7 @@ body.dark-mode .chat-msg.customer{background:#1e293b}
       <div class="ai-avatar">🤖</div>
       <div>
         <h3>JV AI Assistant</h3>
-        <div style="font-size:10px;color:rgba(255,255,255,.65);margin-top:1px">Powered by Claude AI</div>
+        <div style="font-size:10px;color:rgba(255,255,255,.65);margin-top:1px">✦ Smart AI</div>
       </div>
       <div class="ai-status-dot" style="margin-left:auto;margin-right:12px"></div>
       <button class="ai-panel-close" onclick="closeAIPanel()">✕</button>
@@ -1537,114 +1537,384 @@ async function openChatForProduct(bid,name,price){
 }
 
 /* ════════════════════════════════════
-   AI ASSISTANT — UPGRADED
+   FREE LOCAL AI ENGINE — No API Key
+   Smart NLP with product data, outfit
+   logic, and intent detection built-in
 ════════════════════════════════════ */
-const CLAUDE_API_KEY='YOUR_API_KEY_HERE';
-const AI_PROXY_URL='';
+ 
+// ═══════════════════════════════════════════════════════════════
+// JV UNIQUE COLLECTION — FREE AI ENGINE (No API Key Required)
+// Smart local fallback with NLP, outfit logic, and product search
+// ═══════════════════════════════════════════════════════════════
+ 
+const JV_AI = (() => {
+ 
+  // ── INTENT DETECTION ─────────────────────────────────────────
+  const INTENTS = {
+    greeting:     /\b(hi|hello|hey|namaste|namaskar|sup|good morning|good evening|good afternoon)\b/i,
+    thanks:       /\b(thanks|thank you|dhanyavad|shukriya|great|awesome|perfect|nice)\b/i,
+    hoodie:       /\b(hoodie|hoodies|sweatshirt|pullover|sweater|fleece|warm top)\b/i,
+    trackpant:    /\b(track|jogger|joggers|gym pant|sport pant|sweatpant|trackpant|track pant)\b/i,
+    shirt:        /\b(shirt|shirts|formal shirt|casual shirt|dress shirt|full sleeve|half sleeve)\b/i,
+    tshirt:       /\b(t-shirt|tshirt|tee|polo|round neck|v.?neck)\b/i,
+    trouser:      /\b(trouser|trousers|pant|pants|formal pant|chino|chinos|slacks)\b/i,
+    jeans:        /\b(jean|jeans|denim|denims)\b/i,
+    jacket:       /\b(jacket|jackets|windcheater|coat|blazer|bomber)\b/i,
+    kurta:        /\b(kurta|kurtas|kurti|ethnic|pyjama|traditional)\b/i,
+    accessory:    /\b(accessory|accessories|belt|wallet|cap|hat|sunglasses)\b/i,
+    wedding:      /\b(wedding|shaadi|shadi|marriage|function|ceremony|barat|engagement|mehndi|reception)\b/i,
+    casual:       /\b(casual|everyday|daily|regular|comfort|chill|hangout|weekend)\b/i,
+    formal:       /\b(formal|office|work|interview|professional|corporate|business|meeting)\b/i,
+    gym:          /\b(gym|workout|exercise|fitness|sport|running|jogging|athletic|training)\b/i,
+    festival:     /\b(festival|puja|diwali|eid|holi|onam|navratri|durga|party|celebration)\b/i,
+    budget:       /\b(cheap|budget|affordable|low price|cheap|under|below|less than|₹|rs\.?|inr)\b/i,
+    bestSeller:   /\b(best|top|popular|trending|most loved|recommend|suggest|hit|selling)\b/i,
+    newArrival:   /\b(new|latest|fresh|just arrived|newly|recent)\b/i,
+    inStock:      /\b(available|in stock|stock|do you have|got|carry)\b/i,
+    outOfStock:   /\b(out of stock|not available|finished|sold out)\b/i,
+    size:         /\b(size|sz|fit|fitting|measurement|small|medium|large|xl|xxl|3xl|xs)\b/i,
+    color:        /\b(color|colour|black|white|blue|navy|red|green|grey|gray|brown|pink|purple|orange|cream|beige|maroon)\b/i,
+    price:        /\b(price|cost|rate|how much|kitna|kya daam|charges|amount)\b/i,
+    location:     /\b(address|location|where|kashinagar|ganjam|map|directions|how to reach|find)\b/i,
+    timing:       /\b(timing|hours|open|close|time|when|schedule|holiday|sunday|monday)\b/i,
+    contact:      /\b(contact|call|phone|number|whatsapp|message|reach|talk|speak)\b/i,
+    compare:      /\b(compare|difference|vs|versus|better|which one|which is)\b/i,
+    gift:         /\b(gift|present|gifting|birthday|anniversary|surprise|for him|for brother|for husband|for dad|for father)\b/i,
+    winter:       /\b(winter|cold|chill|warm|warmth|January|December|November|October)\b/i,
+    summer:       /\b(summer|hot|heat|cool|June|July|August|light)\b/i,
+  };
+ 
+  // ── EXTRACT PRICE FROM QUERY ──────────────────────────────────
+  function extractPrice(q) {
+    const under = q.match(/(?:under|below|less than|upto|<)\s*[₹rs]?\s*(\d+)/i);
+    const above = q.match(/(?:above|over|more than|starting|from|min|minimum)\s*[₹rs]?\s*(\d+)/i);
+    const range = q.match(/[₹rs]?\s*(\d+)\s*[-–to]+\s*[₹rs]?\s*(\d+)/i);
+    if (range) return { min: +range[1], max: +range[2] };
+    if (under) return { min: 0, max: +under[1] };
+    if (above) return { min: +above[1], max: Infinity };
+    return null;
+  }
+ 
+  // ── EXTRACT SIZE FROM QUERY ───────────────────────────────────
+  function extractSize(q) {
+    const m = q.match(/\b(XS|S|M|L|XL|XXL|3XL|free\s*size)\b/i);
+    return m ? m[1].toUpperCase().replace(/\s/g,'') : null;
+  }
+ 
+  // ── EXTRACT COLOR FROM QUERY ──────────────────────────────────
+  const COLORS = ['black','white','blue','navy','red','green','grey','gray','brown','pink','purple','orange','cream','beige','maroon','indigo','teal','olive','khaki','yellow','dark blue','light blue'];
+  function extractColor(q) {
+    const ql = q.toLowerCase();
+    return COLORS.find(c => ql.includes(c)) || null;
+  }
+ 
+  // ── DETECT ALL INTENTS ────────────────────────────────────────
+  function detectIntents(q) {
+    const found = {};
+    for (const [name, regex] of Object.entries(INTENTS)) {
+      if (regex.test(q)) found[name] = true;
+    }
+    return found;
+  }
+ 
+  // ── FILTER PRODUCTS ───────────────────────────────────────────
+  function filterProducts(products, { category, priceRange, size, color, inStock = true, limit = 5 }) {
+    return products
+      .filter(p => {
+        if (inStock && p.stock_qty <= 0) return false;
+        if (category && p.category !== category) return false;
+        if (priceRange) {
+          if (p.price < priceRange.min || p.price > priceRange.max) return false;
+        }
+        if (size) {
+          const ps = (p.size || '').toUpperCase().replace(/\s/g,'');
+          if (!ps.includes(size.replace(/\s/g,''))) return false;
+        }
+        if (color) {
+          const pc = (p.color || '').toLowerCase();
+          if (!pc.includes(color.toLowerCase())) return false;
+        }
+        return true;
+      })
+      .sort((a, b) => b.stock_qty - a.stock_qty)
+      .slice(0, limit);
+  }
+ 
+  // ── OUTFIT SUGGESTIONS ────────────────────────────────────────
+  const OUTFITS = {
+    wedding: {
+      reply: `🎉 **Perfect Wedding Outfits from JV!**\n\nFor weddings & functions, I recommend:\n• **Kurtas** — festive, elegant, very popular\n• **Formal Shirts** with Trousers — sharp look\n• **Jackets** over kurta for baraat\n\nHere are top picks available right now:`,
+      cats: ['Kurtas', 'Shirts', 'Trousers', 'Jackets']
+    },
+    formal: {
+      reply: `👔 **Professional & Office Look**\n\nFor office / interview, nothing beats:\n• **Formal Shirts** (full sleeve, solid colors)\n• **Trousers** (dark colors — navy, black, grey)\n• **Jeans** + Shirt for smart-casual days\n\nHere are in-stock options:`,
+      cats: ['Shirts', 'Trousers', 'Jeans']
+    },
+    casual: {
+      reply: `😎 **Casual Everyday Style**\n\nFor daily comfortable wear:\n• **T-Shirts** — super comfortable\n• **Jeans** or **Track Pants** — easy to style\n• **Hoodies** for cool evenings\n\nHere's what's available:`,
+      cats: ['T-Shirts', 'Jeans', 'Track Pants', 'Hoodies']
+    },
+    gym: {
+      reply: `💪 **Gym & Workout Outfit**\n\nBest picks for the gym:\n• **Track Pants** — stretchable, comfortable (new stock!)\n• **T-Shirts** — breathable, good fit\n• **Hoodies** for warm-up sessions\n\nIn stock right now:`,
+      cats: ['Track Pants', 'T-Shirts', 'Hoodies']
+    },
+    festival: {
+      reply: `🪔 **Festival Ready Looks!**\n\nFor Diwali, Puja, Eid & celebrations:\n• **Kurtas** — traditional and festive\n• **Shirts** in bright/printed patterns\n• **Jackets** for evening celebrations\n\nAvailable now:`,
+      cats: ['Kurtas', 'Shirts', 'Jackets']
+    },
+    winter: {
+      reply: `🧥 **Winter Warm Collection**\n\nStay warm in style:\n• **Hoodies** — our newest arrivals! 🔥\n• **Jackets** — windcheaters and heavy jackets\n• **Full sleeve Shirts** for layering\n\nHere's what's in stock:`,
+      cats: ['Hoodies', 'Jackets', 'Shirts']
+    },
+    gift: {
+      reply: `🎁 **Gift Ideas for Him**\n\nBest gifting options from JV:\n• **Shirts** — always a great gift\n• **Hoodies** — trendy and practical\n• **Kurtas** for festive occasions\n• **Accessories** — belts, caps etc.\n\n💡 *Tip: Visit our store & we'll help pick the right size!*\n\nTop picks:`,
+      cats: ['Shirts', 'Hoodies', 'Kurtas']
+    }
+  };
+ 
+  // ── CATEGORY MAP ──────────────────────────────────────────────
+  const CAT_MAP = {
+    hoodie:    'Hoodies',
+    trackpant: 'Track Pants',
+    shirt:     'Shirts',
+    tshirt:    'T-Shirts',
+    trouser:   'Trousers',
+    jeans:     'Jeans',
+    jacket:    'Jackets',
+    kurta:     'Kurtas',
+    accessory: 'Accessories',
+  };
+ 
+  // ── STORE INFO RESPONSES ──────────────────────────────────────
+  const STORE_INFO = {
+    location: `📍 **Our Store Location**\n\n**JV Unique Collection**\nKashinagar Bus Stand, GMR Complex\nKashinagar, Odisha — 761206\n\n🗺️ Near the main bus stand — very easy to find! Just ask for *GMR Complex* at the bus stand.`,
+    timing:   `🕘 **Store Timings**\n\n📅 **Monday to Sunday** — We're open all days!\n⏰ **9:00 AM to 9:00 PM**\n\nNo holidays — come anytime! 😊`,
+    contact:  `📞 **Contact Us**\n\n📱 **Call / WhatsApp:** 8260362286\n📍 **Store:** Kashinagar Bus Stand, GMR Complex\n🕘 **Timings:** 9 AM – 9 PM (Mon–Sun)\n\nJust WhatsApp us and we'll help you! 💬`,
+  };
+ 
+  // ── MAIN RESPOND FUNCTION ─────────────────────────────────────
+  function respond(query, products) {
+    const q = query.trim();
+    const ql = q.toLowerCase();
+    const intents = detectIntents(ql);
+    const priceRange = extractPrice(ql);
+    const size = extractSize(q);
+    const color = extractColor(ql);
+ 
+    // ── Greetings ─────────────────────────────────────────────
+    if (intents.greeting && Object.keys(intents).length <= 2) {
+      const greets = [
+        `👋 **Namaste! Welcome to JV Unique Collection!**\n\nI'm your smart fashion assistant. We have **Hoodies**, **Track Pants**, **Shirts**, **Jeans**, **Kurtas** & much more!\n\nWhat are you looking for today? 😊`,
+        `🙏 **Hello! JV Unique yahan hai!**\n\nTell me what you need — shirts, hoodies, track pants, or something for a special occasion? I'll find the best options from our stock! 👕`,
+      ];
+      return { text: greets[Math.floor(Math.random() * greets.length)], products: [] };
+    }
+ 
+    // ── Thanks ────────────────────────────────────────────────
+    if (intents.thanks) {
+      return { text: `😊 **You're welcome!**\n\nHappy to help! Visit us at **Kashinagar Bus Stand, GMR Complex** or WhatsApp at **8260362286**.\n\nAnything else I can help you with? 🛍️`, products: [] };
+    }
+ 
+    // ── Store Info ────────────────────────────────────────────
+    if (intents.location) return { text: STORE_INFO.location, products: [] };
+    if (intents.timing)   return { text: STORE_INFO.timing,   products: [] };
+    if (intents.contact)  return { text: STORE_INFO.contact,  products: [] };
+ 
+    // ── Price inquiry (just asking, no category) ──────────────
+    if (intents.price && !priceRange && !Object.values(CAT_MAP).some(c => ql.includes(c.toLowerCase()))) {
+      const prices = products.filter(p => p.stock_qty > 0).map(p => p.price);
+      const minP = Math.min(...prices);
+      const maxP = Math.max(...prices);
+      return {
+        text: `💰 **Price Range at JV Unique Collection**\n\n• **Starting from ₹${minP}**\n• **Up to ₹${maxP}**\n• Most items ₹299 – ₹1,500\n\n✅ We offer great quality at the best prices in Kashinagar!\n\nWant me to show products in a specific budget?`,
+        products: []
+      };
+    }
+ 
+    // ── Outfit / Occasion suggestions ────────────────────────
+    for (const [occasion, data] of Object.entries(OUTFITS)) {
+      if (intents[occasion] || (occasion === 'gym' && intents.gym) || (occasion === 'winter' && intents.winter)) {
+        const outfitProducts = [];
+        for (const cat of data.cats) {
+          const catProds = filterProducts(products, { category: cat, priceRange, size, color, limit: 2 });
+          outfitProducts.push(...catProds);
+          if (outfitProducts.length >= 5) break;
+        }
+        return { text: data.reply, products: outfitProducts };
+      }
+    }
+ 
+    // ── Specific category + filters ──────────────────────────
+    for (const [intentKey, category] of Object.entries(CAT_MAP)) {
+      if (intents[intentKey]) {
+        const filtered = filterProducts(products, { category, priceRange, size, color, limit: 6 });
+        const totalInCat = products.filter(p => p.category === category && p.stock_qty > 0).length;
+ 
+        let filterDesc = [];
+        if (color) filterDesc.push(`**${color}** color`);
+        if (size)  filterDesc.push(`size **${size}**`);
+        if (priceRange) {
+          if (priceRange.max < Infinity) filterDesc.push(`under **₹${priceRange.max}**`);
+          else filterDesc.push(`above **₹${priceRange.min}**`);
+        }
+        const filterStr = filterDesc.length ? ` (${filterDesc.join(', ')})` : '';
+ 
+        if (filtered.length === 0) {
+          const allInCat = filterProducts(products, { category, limit: 4 });
+          return {
+            text: `🔍 **${category}${filterStr}**\n\nNo exact match found with those filters. But here are all available ${category} in stock:\n\n💡 Visit our store for more options or call **8260362286**!`,
+            products: allInCat
+          };
+        }
+ 
+        const emoji = { Hoodies:'🧥', 'Track Pants':'🩳', Shirts:'👔', 'T-Shirts':'👕', Trousers:'👖', Jeans:'🩲', Jackets:'🧤', Kurtas:'👘', Accessories:'👒' }[category] || '👗';
+        return {
+          text: `${emoji} **${category}${filterStr}**\n\nFound **${filtered.length}** of ${totalInCat} ${category} in stock! Here are the best picks:`,
+          products: filtered
+        };
+      }
+    }
+ 
+    // ── Budget-only search ────────────────────────────────────
+    if (priceRange && !intents.shirt && !intents.tshirt && !intents.hoodie && !intents.trackpant) {
+      const filtered = filterProducts(products, { priceRange, size, color, limit: 6 });
+      const label = priceRange.max < Infinity
+        ? `Under ₹${priceRange.max}` 
+        : `Above ₹${priceRange.min}`;
+      if (filtered.length === 0) {
+        return { text: `💸 No products found in that price range. Our collection starts from ₹${Math.min(...products.map(p=>p.price))}. Try a higher budget?`, products: [] };
+      }
+      return {
+        text: `💰 **${label} — ${filtered.length} products found!**\n\nGreat value options:`,
+        products: filtered
+      };
+    }
+ 
+    // ── Color-only search ─────────────────────────────────────
+    if (color && !intents.shirt && !intents.hoodie && !intents.trackpant && !intents.tshirt) {
+      const filtered = filterProducts(products, { color, priceRange, size, limit: 6 });
+      if (filtered.length > 0) {
+        return { text: `🎨 **${color.charAt(0).toUpperCase() + color.slice(1)} Products — ${filtered.length} found!**\n\nAvailable in ${color}:`, products: filtered };
+      }
+    }
+ 
+    // ── Size-only search ──────────────────────────────────────
+    if (size && !intents.shirt && !intents.hoodie && !intents.trackpant) {
+      const filtered = filterProducts(products, { size, limit: 6 });
+      if (filtered.length > 0) {
+        return { text: `📏 **Size ${size} — ${filtered.length} products available!**\n\nAll products in size ${size}:`, products: filtered };
+      }
+    }
+ 
+    // ── Best sellers / recommendations ────────────────────────
+    if (intents.bestSeller || intents.newArrival) {
+      const filtered = filterProducts(products, { limit: 6 });
+      const label = intents.newArrival ? '✨ **Latest Arrivals**' : '🔥 **Best Sellers & Top Picks**';
+      return { text: `${label}\n\nHere are our most popular in-stock products right now:`, products: filtered };
+    }
+ 
+    // ── Stock query ───────────────────────────────────────────
+    if (intents.inStock) {
+      const totalInStock = products.filter(p => p.stock_qty > 0).length;
+      const cats = [...new Set(products.filter(p => p.stock_qty > 0).map(p => p.category).filter(Boolean))];
+      return {
+        text: `✅ **Yes, we have plenty in stock!**\n\n**${totalInStock} products** currently available across:\n${cats.map(c => `• ${c}`).join('\n')}\n\nWant me to show a specific category? 😊`,
+        products: []
+      };
+    }
+ 
+    // ── Compare intent ────────────────────────────────────────
+    if (intents.compare) {
+      return {
+        text: `🔄 **Compare Products Feature**\n\nYou can compare up to 3 products side-by-side!\n\n**How to use:**\n1. Hover over any product card\n2. Click the 🔄 compare button\n3. Select 2–3 products\n4. Hit **Compare →** button at the bottom\n\nWant me to suggest products to compare? Tell me the category! 😊`,
+        products: []
+      };
+    }
+ 
+    // ── Fuzzy keyword search fallback ─────────────────────────
+    const keywords = ql.split(/\s+/).filter(w => w.length > 2);
+    const fuzzyResults = products.filter(p => {
+      if (p.stock_qty <= 0) return false;
+      const haystack = `${p.name} ${p.category} ${p.color} ${p.brand} ${p.size}`.toLowerCase();
+      return keywords.some(kw => haystack.includes(kw));
+    }).slice(0, 5);
+ 
+    if (fuzzyResults.length > 0) {
+      return {
+        text: `🔍 **Search results for "${q}"**\n\nFound ${fuzzyResults.length} matching products:`,
+        products: fuzzyResults
+      };
+    }
+ 
+    // ── Default fallback ──────────────────────────────────────
+    const random = filterProducts(products, { limit: 4 });
+    return {
+      text: `🤔 Hmm, I couldn't find an exact match for **"${q}"**.\n\nTry asking:\n• *"Show hoodies"*\n• *"Track pants under ₹800"*\n• *"Black XL shirt"*\n• *"Wedding outfit suggestion"*\n\nOr **call us at 8260362286** — we'll help you find it! 📞\n\nMeanwhile, here are some popular picks:`,
+      products: random
+    };
+  }
+ 
+  return { respond };
+})();
+ 
+ 
+/* ════════════════════════════════════
+   AI ASSISTANT PANEL — FREE VERSION
+════════════════════════════════════ */
 let aiPanelOpen=false,aiMessages=[];
-
+ 
 function openAIPanel(){aiPanelOpen=true;document.getElementById('ai-panel').classList.add('active');document.body.style.overflow='hidden';if(aiMessages.length===0)initAIPanel();setTimeout(()=>document.getElementById('ai-panel-input')?.focus(),300);}
 function closeAIPanel(){aiPanelOpen=false;document.getElementById('ai-panel').classList.remove('active');document.body.style.overflow='';}
+function quickAIQuery(text){document.getElementById('ai-panel-input').value=text;sendAIPanelMessage();}
+ 
 function initAIPanel(){
   const mb=document.getElementById('ai-panel-messages');
+  if(!mb)return;
   const pc=allProducts.length;
-  const cats=[...new Set(allProducts.map(p=>p.category).filter(Boolean))];
-  mb.innerHTML=`<div class="ai-msg bot">🤖 Hi! I'm JV's AI Fashion Assistant.<br><br>We have <strong>${pc} products</strong> including <strong>Hoodies</strong>, <strong>Track Pants</strong> and much more!<br><br>I can help with outfit ideas, product recommendations, size guidance & more. 👕</div>
+  mb.innerHTML=`<div class="ai-msg bot">🤖 <strong>Namaste! I'm JV's AI Fashion Assistant.</strong><br><br>We have <strong>${pc} products</strong> in stock — including brand new <strong>Hoodies 🧥</strong> and <strong>Track Pants 🩳</strong>!<br><br>I can help you with:<br>• Product search &amp; recommendations<br>• Outfit ideas for any occasion<br>• Budget-based suggestions<br>• Size &amp; colour availability<br><br>💡 <em>Smart AI powered by your store data — always free!</em></div>
     <div class="ai-suggestions-chips">
       <button class="ai-chip" onclick="quickAIQuery('Show best hoodies')">🧥 Best Hoodies</button>
       <button class="ai-chip" onclick="quickAIQuery('Track pants under ₹800')">🩳 Track Pants</button>
-      <button class="ai-chip" onclick="quickAIQuery('Best shirts for office under ₹1000')">👔 Office Shirts</button>
       <button class="ai-chip" onclick="quickAIQuery('Suggest wedding outfit')">🎉 Wedding Outfit</button>
-      <button class="ai-chip" onclick="quickAIQuery('Show me under ₹500')">💰 Under ₹500</button>
+      <button class="ai-chip" onclick="quickAIQuery('Best shirts for office')">👔 Office Look</button>
+      <button class="ai-chip" onclick="quickAIQuery('Show under ₹500')">💰 Under ₹500</button>
+      <button class="ai-chip" onclick="quickAIQuery('Gym workout outfit')">💪 Gym Outfit</button>
     </div>`;
 }
-function quickAIQuery(text){document.getElementById('ai-panel-input').value=text;sendAIPanelMessage();}
-
+ 
 async function sendAIPanelMessage(){
   const input=document.getElementById('ai-panel-input');
+  if(!input)return;
   const text=input.value.trim();
   if(!text)return;
   input.value='';input.style.height='';
   appendAIMessage('user',text);
   aiMessages.push({role:'user',content:text});
-  // Typing indicator
-  const loadingId='ai-loading-'+Date.now();
   const mb=document.getElementById('ai-panel-messages');
-  const loading=document.createElement('div');
-  loading.className='ai-typing';loading.id=loadingId;
-  loading.innerHTML='<span></span><span></span><span></span>';
-  mb.appendChild(loading);mb.scrollTop=mb.scrollHeight;
-  const productSummary=buildProductContext();
-  const systemPrompt=`You are JV Unique Collection's AI Fashion Assistant — friendly, smart, helpful for a men's fashion store in Kashinagar, Odisha, India.
-
-STORE INVENTORY:
-${productSummary}
-
-STORE INFO:
-- Location: Kashinagar Bus Stand, GMR Complex, Odisha 761206
-- Phone: 8260362286 (WhatsApp & calls)
-- Hours: Mon–Sun 9am–9pm. No online delivery.
-- New categories: Hoodies and Track Pants (just added!)
-
-YOUR ROLE:
-1. Recommend products from actual inventory
-2. Outfit advice for occasions (weddings, gym, casual, festivals, interviews)
-3. Help with hoodie/track pant queries especially — these are new!
-4. Size & colour guidance
-5. Be conversational in Indian English, under 100 words
-6. When listing products: • **Name** — ₹Price (Size | Color) [ID: barcode]`;
-  try{
-    let reply='';
-    if(CLAUDE_API_KEY&&CLAUDE_API_KEY!=='YOUR_API_KEY_HERE'){
-      const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':CLAUDE_API_KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:600,system:systemPrompt,messages:aiMessages.slice(-8)})});
-      if(!res.ok)throw new Error('API '+res.status);
-      const d=await res.json();reply=d.content?.[0]?.text||'';
-    }else if(AI_PROXY_URL){
-      const res=await fetch(AI_PROXY_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:systemPrompt,messages:aiMessages.slice(-8)})});
-      if(!res.ok)throw new Error('Proxy '+res.status);
-      const d=await res.json();reply=d.content||d.reply||d.text||'';
-    }else throw new Error('no-key');
-    document.getElementById(loadingId)?.remove();
-    const{text:ct,products:mp}=parseAIReply(reply);
-    aiMessages.push({role:'assistant',content:reply});
-    appendAIMessage('bot',ct);
-    if(mp.length>0)appendAIProductRow(mp);
-    appendAISuggestions(text);
-  }catch(e){
-    document.getElementById(loadingId)?.remove();
-    console.error('[AI]',e);
-    if(e.message==='no-key'){appendAIMessage('bot','⚠️ AI not configured yet. Add your Anthropic API key in the code (search for YOUR_API_KEY_HERE).\n\nMeanwhile I can still search products for you!');}
-    else{const fb=localAIFallback(text);appendAIMessage('bot',fb.text);if(fb.products.length>0)appendAIProductRow(fb.products);}
-    appendAISuggestions(text);
-  }
+  const loadingDiv=document.createElement('div');
+  const loadingId='ai-loading-'+Date.now();
+  loadingDiv.className='ai-typing';
+  loadingDiv.id=loadingId;
+  loadingDiv.innerHTML='<span></span><span></span><span></span>';
+  mb.appendChild(loadingDiv);
+  mb.scrollTop=mb.scrollHeight;
+  // Realistic "thinking" delay
+  await new Promise(r=>setTimeout(r,380+Math.random()*480));
+  const el=document.getElementById(loadingId);
+  if(el)el.remove();
+  // Run free local AI
+  const result=JV_AI.respond(text,allProducts||[]);
+  aiMessages.push({role:'assistant',content:result.text});
+  appendAIMessage('bot',result.text);
+  if(result.products&&result.products.length>0)appendAIProductRow(result.products);
+  appendAISuggestions(text);
   mb.scrollTop=mb.scrollHeight;
 }
-function buildProductContext(){
-  if(!allProducts.length)return'No products loaded.';
-  const byCat={};
-  allProducts.forEach(p=>{const c=p.category||'Other';if(!byCat[c])byCat[c]=[];byCat[c].push(p);});
-  let s='';
-  for(const[cat,prods] of Object.entries(byCat)){
-    const ins=prods.filter(p=>p.stock_qty>0);if(!ins.length)continue;
-    const pr=`₹${Math.min(...ins.map(p=>p.price))}-₹${Math.max(...ins.map(p=>p.price))}`;
-    const sizes=[...new Set(ins.map(p=>p.size).filter(Boolean))].slice(0,5).join(',');
-    const colors=[...new Set(ins.map(p=>p.color).filter(Boolean))].slice(0,5).join(',');
-    const examples=ins.slice(0,3).map(p=>`${p.name}(₹${p.price},sz:${p.size||'?'},clr:${p.color||'?'},id:${p.barcode_id})`).join('; ');
-    s+=`${cat}(${ins.length} in stock, ${pr}, sizes:[${sizes||'various'}], colors:[${colors||'various'}]): ${examples}\n`;
-  }
-  return s||'Loading...';
-}
-function parseAIReply(text){const bm=text.match(/\b([A-Z]{2}\d{6})\b/g)||[];const products=bm.map(id=>allProducts.find(p=>p.barcode_id===id)).filter(Boolean);return{text,products};}
-function localAIFallback(query){
-  const q=query.toLowerCase();
-  if(q.includes('hoodie')||q.includes('sweatshirt')||q.includes('pullover'))return{text:'Here are our Hoodies collection:',products:allProducts.filter(p=>p.category==='Hoodies'&&p.stock_qty>0).slice(0,4)};
-  if(q.includes('track')||q.includes('jogger')||q.includes('gym'))return{text:'Here are our Track Pants collection:',products:allProducts.filter(p=>p.category==='Track Pants'&&p.stock_qty>0).slice(0,4)};
-  if(q.includes('wedding')||q.includes('shadi'))return{text:'For weddings, I suggest Kurtas and formal Shirts:',products:allProducts.filter(p=>['Kurtas','Shirts'].includes(p.category)&&p.stock_qty>0).slice(0,4)};
-  if(q.includes('interview')||q.includes('office'))return{text:'For professional looks — Shirts with Trousers:',products:allProducts.filter(p=>['Shirts','Trousers'].includes(p.category)&&p.stock_qty>0).slice(0,4)};
-  if(q.includes('under')||q.includes('budget')){const mp=parseInt(q.match(/\d+/)?.[0])||500;return{text:`Products under ₹${mp}:`,products:allProducts.filter(p=>p.price<=mp&&p.stock_qty>0).sort((a,b)=>a.price-b.price).slice(0,4)};}
-  const res=advancedSearch(query).slice(0,4);
-  return{text:res.length?`Best matches for "${query}":`:  `No exact match for "${query}". Call us at 8260362286!`,products:res};
-}
+ 
+// buildProductContext/parseAIReply kept as stubs (not used by local AI)
+function buildProductContext(){return'Local AI active';}
+function parseAIReply(t){return{text:t,products:[]};}
+ 
 function appendAIMessage(role,text){
   const mb=document.getElementById('ai-panel-messages');
   const d=document.createElement('div');d.className=`ai-msg ${role}`;
@@ -1660,12 +1930,18 @@ function appendAIProductRow(products){
 }
 function appendAISuggestions(lastQ){
   const q=lastQ.toLowerCase();
-  const chips=[];
-  if(q.includes('hoodie'))chips.push('Black hoodies XL','Hoodies under ₹1000','Best winter hoodies');
-  else if(q.includes('track'))chips.push('Track pants for gym','Track pants under ₹600','Black track pants');
-  else if(q.includes('shirt'))chips.push('Show black shirts','Formal shirts','Shirts under ₹700');
-  else chips.push('Show hoodies','Show track pants','Best sellers under ₹1000');
+  let chips=[];
+  if(/hoodie|sweatshirt|pullover/i.test(q))chips=['Black hoodie XL','Hoodies under ₹1000','Best winter hoodies'];
+  else if(/track|jogger/i.test(q))chips=['Track pants under ₹600','Black track pants','Track pants for gym'];
+  else if(/shirt/i.test(q))chips=['Black shirts XL','Formal shirts under ₹700','Blue casual shirt'];
+  else if(/wedding|shadi/i.test(q))chips=['Show kurtas','Jackets for party','Formal shirts for wedding'];
+  else if(/office|interview|formal/i.test(q))chips=['Navy trousers','White formal shirt','Formal under ₹1500'];
+  else if(/kurta|ethnic/i.test(q))chips=['Kurtas for Diwali','Best kurta under ₹800','Festival outfit'];
+  else if(/gym|workout/i.test(q))chips=['Track pants for gym','T-shirts under ₹400','Sports outfit'];
+  else if(/under|budget|cheap/i.test(q))chips=['Under ₹300','Under ₹500','Under ₹800'];
+  else chips=['Show hoodies 🧥','Track pants 🩳','Best sellers 🔥'];
   const mb=document.getElementById('ai-panel-messages');
+  if(!mb)return;
   const d=document.createElement('div');d.className='ai-suggestions-chips';d.style.marginTop='4px';
   d.innerHTML=chips.slice(0,3).map(c=>`<button class="ai-chip" onclick="quickAIQuery('${c}')">${c}</button>`).join('');
   mb.appendChild(d);
