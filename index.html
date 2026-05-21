@@ -1777,12 +1777,16 @@ If no exact match exists, suggest the closest available option.`;
     
     const response=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{
+        'Content-Type':'application/json',
+        'x-api-key':'YOUR_ANTHROPIC_API_KEY_HERE',
+        'anthropic-version':'2023-06-01'
+      },
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514',
         max_tokens:1000,
         system:systemPrompt,
-        messages:aiMessages.slice(-8) // Keep last 8 turns for context
+        messages:aiMessages.slice(-8)
       })
     });
     
