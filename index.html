@@ -353,7 +353,7 @@ button{cursor:pointer;font-family:inherit}
 .chat-status-dot.connected{background:#4ade80}
 .chat-status-dot.connecting{background:#fb641b;animation:pulse-badge 1s infinite}
 .chat-status-dot.error{background:var(--red)}
-.quick-replies{padding:8px 10px;display:flex;gap:6px;overflow-x:auto;background:#fff;border-top:1px solid var(--border);}
+.quick-replies{padding:8px 10px;display:flex;gap:6px;overflow-x:auto;background:#fff;border-top:1px solid var(--border);min-height:44px;align-items:center;flex-shrink:0;}
 .quick-replies::-webkit-scrollbar{display:none}
 .qr-chip{background:#f0f4ff;border:1px solid #c7d7fb;color:var(--primary);font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .2s;font-family:inherit;}
 .qr-chip:hover{background:var(--primary);color:#fff}
@@ -1464,20 +1464,14 @@ function closeModal(){document.getElementById('product-modal').classList.remove(
 function toggleZoom(){const wrap=document.getElementById('main-img-wrap');if(wrap&&document.getElementById('main-img'))wrap.classList.toggle('zoomed');}
 function setView(view){currentView=view;document.getElementById('products-grid').classList.toggle('list-view',view==='list');document.getElementById('view-grid').classList.toggle('active',view==='grid');document.getElementById('view-list').classList.toggle('active',view==='list');}
 
-/* ═══════════════════════════════════════════════════════════════
-   FIX 1: CHAT SYSTEM — FULLY FIXED SUPABASE INTEGRATION
-   Root causes fixed:
-   1. Table creation: Run SUPABASE_SETUP.sql first
-   2. RLS policies: Anon can insert/read chat messages
-   3. Headers: Correct Prefer headers for upsert
-   4. Error handling: Graceful fallback if Supabase fails
-   5. Session persistence: localStorage based
-   6. Realtime: WebSocket for instant admin→customer messages
-═══════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════
+   CHAT SYSTEM — FIXED v3.0
+   Fixes: session creation, message sending, admin visibility
+═══════════════════════════════════════════════════════════ */
 const CHAT_SESSION_KEY='jv_chat_session_id';
+const CHAT_NAME_KEY='jv_chat_visitor_name';
 let chatSessionId=null;
 let chatPolling=null;
-let lastMsgTs=null;
 let chatOpen=false;
 let pendingProductInfo=null;
 
@@ -1487,54 +1481,69 @@ function getChatSessionId(){
   return sid;
 }
 
+function getVisitorName(){
+  let name=localStorage.getItem(CHAT_NAME_KEY);
+  if(!name){name='Customer';localStorage.setItem(CHAT_NAME_KEY,name);}
+  return name;
+}
+
 function updateChatStatus(status,text){
   const dot=document.getElementById('chat-status-dot');
   const txt=document.getElementById('chat-status-text');
-  if(!dot||!txt)return;
-  dot.className='chat-status-dot '+status;
-  txt.textContent=text;
+  if(dot)dot.className='chat-status-dot '+status;
+  if(txt)txt.textContent=text;
 }
 
 async function toggleChat(){
   chatOpen=!chatOpen;
   const widget=document.getElementById('chat-widget');
-  const fab=document.getElementById('chat-fab');
   widget.classList.toggle('open',chatOpen);
-  fab.innerHTML=chatOpen?`✕<span class="badge" id="chat-fab-badge" style="display:none"></span>`:`💬<span class="badge" id="chat-fab-badge" style="display:none"></span>`;
+  const fab=document.getElementById('chat-fab');
   if(chatOpen){
+    fab.innerHTML='✕<span class="badge" id="chat-fab-badge" style="display:none"></span>';
     chatSessionId=getChatSessionId();
-    await initChatSession();
+    updateChatStatus('connecting','Connecting...');
+    await ensureSessionExists();
+    await loadMessages(true);
+    startChatPolling();
     document.getElementById('chat-input')?.focus();
   }else{
+    fab.innerHTML='💬<span class="badge" id="chat-fab-badge" style="display:none"></span>';
     clearInterval(chatPolling);
+    chatPolling=null;
   }
 }
 
-async function initChatSession(){
-  updateChatStatus('connecting','Connecting...');
+async function ensureSessionExists(){
   try{
-    // Create/update session in Supabase
-    await sbFetch('/rest/v1/chat_sessions',{
-      method:'POST',
-      headers:{'Prefer':'resolution=merge-duplicates,return=minimal'},
-      body:JSON.stringify({
-        session_id:chatSessionId,
-        visitor_name:'Customer',
-        last_message:'',
-        status:'open',
-        unread_count:0,
-        updated_at:new Date().toISOString()
-      })
-    });
+    // First check if session already exists
+    const checkRes=await sbFetch(`/rest/v1/chat_sessions?session_id=eq.${encodeURIComponent(chatSessionId)}&select=session_id`);
+    if(Array.isArray(checkRes)&&checkRes.length>0){
+      // Session exists — just update timestamp
+      await sbFetch(`/rest/v1/chat_sessions?session_id=eq.${encodeURIComponent(chatSessionId)}`,{
+        method:'PATCH',
+        headers:{'Prefer':'return=minimal'},
+        body:JSON.stringify({updated_at:new Date().toISOString(),status:'open'})
+      });
+    }else{
+      // Create new session
+      await sbFetch('/rest/v1/chat_sessions',{
+        method:'POST',
+        headers:{'Prefer':'return=minimal'},
+        body:JSON.stringify({
+          session_id:chatSessionId,
+          visitor_name:getVisitorName(),
+          last_message:'',
+          status:'open',
+          unread_count:0,
+          updated_at:new Date().toISOString()
+        })
+      });
+    }
     updateChatStatus('connected','Online · Usually replies quickly');
-    await loadMessages(true);
-    startChatPolling();
-    setupRealtimeChat();
   }catch(e){
-    console.error('[Chat] Init error:',e);
-    updateChatStatus('error','Connection issue — messages may be delayed');
-    // Still try to load cached messages
-    startChatPolling();
+    console.error('[Chat] session error:',e);
+    updateChatStatus('error','Connection issue');
   }
 }
 
@@ -1547,11 +1556,9 @@ async function loadMessages(scrollDown=true){
   if(!chatSessionId)return;
   try{
     const msgs=await sbFetch(`/rest/v1/chat_messages?session_id=eq.${encodeURIComponent(chatSessionId)}&order=created_at.asc&limit=100`);
-    if(!Array.isArray(msgs))return;
-    renderMessages(msgs,scrollDown);
+    if(Array.isArray(msgs))renderMessages(msgs,scrollDown);
     updateChatStatus('connected','Online · Usually replies quickly');
   }catch(e){
-    console.warn('[Chat] Load messages error:',e);
     updateChatStatus('error','Reconnecting...');
   }
 }
@@ -1566,79 +1573,102 @@ function renderMessages(msgs,scrollDown=true){
   container.innerHTML=msgs.map(m=>{
     const time=m.created_at?new Date(m.created_at).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}):'';
     const cls=m.sender==='system'?'system':m.sender==='shop'?'shop':'customer';
-    const seen=cls==='customer'?'<span class="seen-status">✓✓</span>':'';
-    return`<div class="chat-msg ${cls}">${escHtml(m.message)}${seen}<span class="msg-time">${time}</span></div>`;
+    return`<div class="chat-msg ${cls}">${escHtml(m.message)}<span class="msg-time">${time}</span></div>`;
   }).join('');
   if(scrollDown||wasAtBottom)container.scrollTop=container.scrollHeight;
 }
 
 async function sendMessage(){
   const input=document.getElementById('chat-input');
+  if(!input)return;
   const text=input.value.trim();
   if(!text)return;
+  
   chatSessionId=getChatSessionId();
   input.value='';
   input.style.height='';
-  document.getElementById('chat-send').disabled=true;
   
-  // Optimistic UI — show message immediately
-  const msgs=document.getElementById('chat-messages');
+  // Show message immediately in UI
+  const container=document.getElementById('chat-messages');
   const tempDiv=document.createElement('div');
   tempDiv.className='chat-msg customer';
-  tempDiv.innerHTML=escHtml(text)+'<span class="seen-status">✓</span><span class="msg-time">sending...</span>';
-  msgs.appendChild(tempDiv);
-  msgs.scrollTop=msgs.scrollHeight;
-  
+  tempDiv.innerHTML=escHtml(text)+'<span class="msg-time">sending...</span>';
+  container.appendChild(tempDiv);
+  container.scrollTop=container.scrollHeight;
+
   try{
+    // Make sure session exists first
+    await ensureSessionExists();
+    
+    // Send message
     await sbFetch('/rest/v1/chat_messages',{
       method:'POST',
       headers:{'Prefer':'return=minimal'},
       body:JSON.stringify({
         session_id:chatSessionId,
         sender:'customer',
-        sender_name:'Customer',
+        sender_name:getVisitorName(),
         message:text,
         is_read:false,
         ...(pendingProductInfo||{})
       })
     });
-    // Update session
+    
+    // Update session last_message
     await sbFetch(`/rest/v1/chat_sessions?session_id=eq.${encodeURIComponent(chatSessionId)}`,{
       method:'PATCH',
       headers:{'Prefer':'return=minimal'},
-      body:JSON.stringify({last_message:text,status:'open',updated_at:new Date().toISOString()})
+      body:JSON.stringify({
+        last_message:text,
+        status:'open',
+        updated_at:new Date().toISOString()
+      })
     });
+    
     pendingProductInfo=null;
     await loadMessages(true);
   }catch(e){
     tempDiv.style.opacity='0.5';
-    tempDiv.innerHTML+=`<div style="font-size:10px;color:var(--red)">Failed to send. Check connection.</div>`;
-    showToast('Message not sent — check connection');
-  }finally{
-    document.getElementById('chat-send').disabled=false;
-    document.getElementById('chat-input').focus();
+    tempDiv.innerHTML+=`<div style="font-size:10px;color:var(--red)">Failed to send</div>`;
+    console.error('[Chat] send error:',e);
   }
 }
 
-async function sendQuick(text){document.getElementById('chat-input').value=text;await sendMessage();}
+async function sendQuick(text){
+  if(!chatOpen)await toggleChat();
+  await new Promise(r=>setTimeout(r,300));
+  const input=document.getElementById('chat-input');
+  if(input){input.value=text;}
+  await sendMessage();
+}
+
 function autoResize(el){el.style.height='';el.style.height=Math.min(el.scrollHeight,80)+'px';}
 
 async function openChatForProduct(barcodeId,name,price){
   pendingProductInfo={product_barcode:barcodeId,product_name:name};
   if(!chatOpen)await toggleChat();
   chatSessionId=getChatSessionId();
+  await ensureSessionExists();
   setTimeout(async()=>{
     try{
       await sbFetch('/rest/v1/chat_messages',{
         method:'POST',
         headers:{'Prefer':'return=minimal'},
-        body:JSON.stringify({session_id:chatSessionId,sender:'system',sender_name:'System',message:`Customer is asking about: ${name} (${barcodeId}) — ₹${price}`,is_read:false,product_barcode:barcodeId,product_name:name})
+        body:JSON.stringify({
+          session_id:chatSessionId,
+          sender:'system',
+          sender_name:'System',
+          message:`Customer is asking about: ${name} (${barcodeId}) — ₹${price}`,
+          is_read:false,
+          product_barcode:barcodeId,
+          product_name:name
+        })
       });
       await loadMessages(true);
-    }catch{}
-    document.getElementById('chat-input').value=`I want to buy "${name}" for ₹${price}. Is it available?`;
-    document.getElementById('chat-input').focus();
-  },300);
+    }catch(e){console.error('[Chat] product context error:',e);}
+    const input=document.getElementById('chat-input');
+    if(input){input.value=`I want to buy "${name}" for ₹${price}. Is it available?`;input.focus();}
+  },400);
 }
 
 // WebSocket for real-time admin→customer messages
@@ -1779,8 +1809,9 @@ If no exact match exists, suggest the closest available option.`;
       method:'POST',
       headers:{
         'Content-Type':'application/json',
-        'x-api-key':'YOUR_ANTHROPIC_API_KEY_HERE',
-        'anthropic-version':'2023-06-01'
+        'x-api-key':'sk-ant-PASTE-YOUR-KEY-HERE',
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true'
       },
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514',
