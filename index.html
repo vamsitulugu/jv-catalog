@@ -1040,20 +1040,66 @@ function renderBanners(){
   const items=galleryData.length>0?galleryData:FALLBACK_BANNERS;
   bannerCount=items.length;
   track.innerHTML=items.map((g,i)=>{
+    const hasVideo=g.video_url&&g.video_url.startsWith('http');
     const hasImg=g.image_url&&g.image_url.startsWith('http');
     const color=g.color||FALLBACK_BANNERS[i%FALLBACK_BANNERS.length].color;
     const icon=g.icon||FALLBACK_BANNERS[i%FALLBACK_BANNERS.length].icon;
+    const mediaHtml=hasVideo
+      ?`<video autoplay muted loop playsinline
+           style="width:100%;height:360px;object-fit:cover;display:block"
+           poster="${hasImg?g.image_url:''}"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+           <source src="${g.video_url}" type="video/mp4">
+           <source src="${g.video_url}" type="video/webm">
+         </video>
+         <div class="bs-placeholder" style="background:${color};display:none"><div style="font-size:clamp(70px,12vw,130px)">${icon}</div></div>`
+      :hasImg
+        ?`<img src="${g.image_url}" alt="${g.title}" loading="${i===0?'eager':'lazy'}"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+           <div class="bs-placeholder" style="background:${color};display:none"><div style="font-size:clamp(70px,12vw,130px)">${icon}</div></div>`
+        :`<div class="bs-placeholder" style="background:${color}"><div style="font-size:clamp(70px,12vw,130px)">${icon}</div></div>`;
+
     return`<div class="banner-slide" onclick="openBannerLightbox(${i})">
-      ${hasImg?`<img src="${g.image_url}" alt="${g.title}" loading="${i===0?'eager':'lazy'}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`:''}
-      <div class="bs-placeholder" style="background:${color};${hasImg?'display:none':''}"><div style="font-size:clamp(70px,12vw,130px)">${icon}</div></div>
-      <div class="bs-overlay"><div class="bs-title">${g.title||''}</div><div class="bs-sub">${g.subtitle||''}</div><span class="bs-cta">Shop Now →</span></div>
+      ${mediaHtml}
+      <div class="bs-overlay">
+        <div class="bs-title">${g.title||''}</div>
+        <div class="bs-sub">${g.subtitle||''}</div>
+        <span class="bs-cta">Shop Now →</span>
+      </div>
+      ${hasVideo?'<div style="position:absolute;top:10px;right:14px;background:rgba(0,0,0,0.5);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;backdrop-filter:blur(4px)">▶ VIDEO</div>':''}
     </div>`;
   }).join('');
+
+  // pause all videos when slider changes
   dots.innerHTML=items.map((_,i)=>`<div class="banner-dot${i===0?' active':''}" onclick="goBanner(${i})"></div>`).join('');
-  thumbs.innerHTML=items.map((g,i)=>{const hasImg=g.image_url&&g.image_url.startsWith('http');const color=g.color||FALLBACK_BANNERS[i%5].color;const icon=g.icon||FALLBACK_BANNERS[i%5].icon;return`<div class="banner-thumb${i===0?' active':''}" onclick="goBanner(${i})">${hasImg?`<img src="${g.image_url}" alt="${g.title}" loading="lazy">`:`<div class="bt-ph" style="background:${color}">${icon}</div>`}</div>`;}).join('');
+  thumbs.innerHTML=items.map((g,i)=>{
+    const hasVideo=g.video_url&&g.video_url.startsWith('http');
+    const hasImg=g.image_url&&g.image_url.startsWith('http');
+    const color=g.color||FALLBACK_BANNERS[i%5].color;
+    const icon=g.icon||FALLBACK_BANNERS[i%5].icon;
+    return`<div class="banner-thumb${i===0?' active':''}" onclick="goBanner(${i})">
+      ${hasImg?`<img src="${g.image_url}" alt="${g.title}" loading="lazy">`
+              :`<div class="bt-ph" style="background:${color}">${hasVideo?'▶':icon}</div>`}
+    </div>`;
+  }).join('');
   startBannerAuto();
 }
-function goBanner(idx){bannerIdx=(idx+bannerCount)%bannerCount;document.getElementById('banner-track').style.transform=`translateX(-${bannerIdx*100}%)`;document.querySelectorAll('.banner-dot').forEach((d,i)=>d.classList.toggle('active',i===bannerIdx));document.querySelectorAll('.banner-thumb').forEach((t,i)=>t.classList.toggle('active',i===bannerIdx));}
+function goBanner(idx){
+  // pause all videos before switching
+  document.querySelectorAll('.banner-slide video').forEach(v=>{v.pause();});
+  
+  bannerIdx=(idx+bannerCount)%bannerCount;
+  document.getElementById('banner-track').style.transform=`translateX(-${bannerIdx*100}%)`;
+  document.querySelectorAll('.banner-dot').forEach((d,i)=>d.classList.toggle('active',i===bannerIdx));
+  document.querySelectorAll('.banner-thumb').forEach((t,i)=>t.classList.toggle('active',i===bannerIdx));
+  
+  // play the current slide's video if it has one
+  setTimeout(()=>{
+    const currentSlide=document.querySelectorAll('.banner-slide')[bannerIdx];
+    const video=currentSlide?.querySelector('video');
+    if(video)video.play().catch(()=>{});
+  },300);
+}
 function bannerNav(dir){stopBannerAuto();goBanner(bannerIdx+dir);startBannerAuto();}
 function startBannerAuto(){stopBannerAuto();bannerAuto=setInterval(()=>goBanner(bannerIdx+1),4000);}
 function stopBannerAuto(){clearInterval(bannerAuto);}
