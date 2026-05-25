@@ -1124,9 +1124,11 @@ async function loadProducts(){
   showSkeletons();
   try{
     const data=await sbFetch('/rest/v1/products?select=id,barcode_id,name,brand,category,size,color,price,stock_qty,image_url,created_at&order=created_at.desc');
-    allProducts=Array.isArray(data)?data:[];
-    document.getElementById('stat-products').textContent=allProducts.length+'+';
-    buildFilters();applyFilters();renderTrending();buildActivityTicker();
+    allProducts = Array.isArray(data) ? data : [];
+    document.getElementById('stat-products').textContent = allProducts.length + '+';
+    buildCategoryStockCache(allProducts);  // ← ADD THIS LINE
+    buildFilters(); applyFilters(); renderTrending(); buildActivityTicker();
+    renderNewArrivalsSection();
   }catch(e){
     document.getElementById('products-grid').innerHTML=`<div class="empty-state" style="grid-column:1/-1"><div class="icon">⚠️</div><h3>Could not load products</h3><p>Check connection and try again.</p><button onclick="loadProducts()" style="margin-top:12px;background:var(--primary);color:#fff;border:none;padding:10px 24px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer">Retry</button></div>`;
   }
@@ -1200,7 +1202,58 @@ function advancedSearch(query){
   const scored=allProducts.map(p=>{const s=scoreProduct(p,expanded,filters);return{...p,_score:s,_filters:filters};}).filter(p=>p._score>0);
   return scored.sort((a,b)=>b._score-a._score);
 }
+/* ════════════════════════════════════
+   NEW ARRIVALS — Last 7 Days
+════════════════════════════════════ */
+function getNewArrivals() {
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - 7);
+  return allProducts.filter(p => {
+    if (!p.created_at) return false;
+    return new Date(p.created_at) >= cutoff && p.stock_qty > 0;
+  });
+}
 
+function renderNewArrivalsSection() {
+  const newItems = getNewArrivals();
+  let section = document.getElementById('new-arrivals-section');
+  if (newItems.length === 0) {
+    if (section) section.style.display = 'none';
+    return;
+  }
+  if (!section) {
+    section = document.createElement('div');
+    section.id = 'new-arrivals-section';
+    section.className = 'trending-section';
+    section.style.borderLeft = '4px solid #16a34a';
+    // Insert before trending section
+    const trendSec = document.getElementById('trending-section');
+    trendSec.parentNode.insertBefore(section, trendSec);
+  }
+  section.style.display = 'block';
+  section.innerHTML = `
+    <div class="section-title-bar">
+      <h2>✨ New Arrivals <span style="background:#dcfce7;color:#16a34a;font-size:12px;padding:2px 10px;border-radius:20px;font-weight:700;margin-left:8px">${newItems.length} NEW</span></h2>
+      <span class="see-all" onclick="filterByCategory('',null)">View All →</span>
+    </div>
+    <div class="trending-grid" style="display:flex;gap:12px;overflow-x:auto;scrollbar-width:none">
+      ${newItems.slice(0, 10).map(p => {
+        const hasImg = p.image_url && p.image_url.startsWith('http');
+        return `<div class="trend-card" onclick="openModal(${JSON.stringify(p).replace(/"/g,'&quot;')})">
+          <div class="trend-img-wrap">
+            ${hasImg ? `<img src="${p.image_url}" alt="${p.name}" loading="lazy">` : ''}
+            <div style="${hasImg?'display:none;':''}width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;background:linear-gradient(135deg,#f0fdf4,#dcfce7)">${catIcon(p.category)}</div>
+            <span class="trend-badge badge-new">✨ NEW</span>
+          </div>
+          <div class="trend-body">
+            <div class="trend-name">${p.name}</div>
+            <div class="trend-price">₹${Number(p.price).toLocaleString('en-IN')}</div>
+            <div style="font-size:10px;color:#16a34a;font-weight:700;margin-top:3px">Just arrived!</div>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>`;
+}
 /* ════════════════════════════════════
    TRENDING
 ════════════════════════════════════ */
@@ -1239,14 +1292,29 @@ function renderTrending(){
 /* ════════════════════════════════════
    STOCK STATUS
 ════════════════════════════════════ */
-function getRealtimeStatus(p){
-  const q=p.stock_qty||0;
-  if(q===0)return{badge:'<span class="stock-status ss-out">Out of Stock</span>',text:'Out of Stock'};
-  if(q===1)return{badge:'<span class="stock-status ss-critical">🚨 Only 1 Left!</span>',text:'Only 1 left'};
-  if(q<=3)return{badge:`<span class="stock-status ss-critical">🔥 Only ${q} Left!</span>`,text:`Only ${q} left`};
-  if(q<=8)return{badge:`<span class="stock-status ss-low">⚠️ Only ${q} Remaining</span>`,text:`Only ${q} left`};
-  if(q<=15)return{badge:'<span class="stock-status ss-restock">📦 Limited Stock</span>',text:'Limited stock'};
-  return{badge:'<span class="stock-status ss-plenty">✓ In Stock</span>',text:'In Stock'};
+// Cache for category-level stock totals
+let _catStockCache = {};
+function buildCategoryStockCache(products) {
+  _catStockCache = {};
+  for (const p of products) {
+    const cat = p.category || 'Other';
+    if (!_catStockCache[cat]) _catStockCache[cat] = { total: 0, sizes: {} };
+    _catStockCache[cat].total += (p.stock_qty || 0);
+    const sz = p.size || 'One Size';
+    _catStockCache[cat].sizes[sz] = (_catStockCache[cat].sizes[sz] || 0) + (p.stock_qty || 0);
+  }
+}
+
+function getRealtimeStatus(p) {
+  const q = p.stock_qty || 0;
+  const catTotal = (_catStockCache[p.category] || {}).total || q;
+  
+  // Show category-level availability, not per-variant
+  if (q === 0) return { badge: '<span class="stock-status ss-out">Out of Stock</span>', text: 'Out of Stock' };
+  if (catTotal <= 3) return { badge: `<span class="stock-status ss-critical">🔥 Only ${catTotal} Left in ${p.category}!</span>`, text: `Only ${catTotal} left` };
+  if (catTotal <= 8) return { badge: `<span class="stock-status ss-low">⚠️ Only ${catTotal} Remaining</span>`, text: `Only ${catTotal} left` };
+  if (catTotal <= 20) return { badge: '<span class="stock-status ss-restock">📦 Limited Stock</span>', text: 'Limited stock' };
+  return { badge: '<span class="stock-status ss-plenty">✓ In Stock</span>', text: 'In Stock' };
 }
 
 /* ════════════════════════════════════
